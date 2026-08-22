@@ -1,0 +1,121 @@
+/* Fonts are loaded from index.html (preconnect + stylesheet) so the browser
+   starts fetching them before the CSS bundle parses. */
+
+:root {
+  --font-head: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Consolas, monospace;
+}
+
+/* ---- Display / headings ------------------------------------------------
+   Serif, regular weight, tight leading, negative tracking. Weight is never
+   pushed past 500 — heaviness reads as cheap here; scale does the work. */
+
+.t-display {
+  font-family: var(--font-head);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 6.5vw, 5.4rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 72;
+}
+
+.t-h1 {
+  font-family: var(--font-head);
+  font-weight: 400;
+  font-size: clamp(2.1rem, 4.6vw, 3.6rem);
+  line-height: 1.06;
+  letter-spacing: -0.018em;
+  font-variation-settings: "opsz" 48;
+}
+
+.t-h2 {
+  font-family: var(--font-head);
+  font-weight: 400;
+  font-size: clamp(1.7rem, 3.4vw, 2.7rem);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  font-variation-settings: "opsz" 36;
+}
+
+.t-h3 {
+  font-family: var(--font-head);
+  font-weight: 400;
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+/* ---- Body -------------------------------------------------------------- */
+
+.t-lead {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  line-height: 1.7;
+  color: var(--jt-muted);
+}
+
+.t-body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.72;
+}
+
+.t-small {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* ---- Eyebrow -----------------------------------------------------------
+   Section labels ("03 — OUR HERITAGE"). On light surfaces the text is muted
+   and the gold appears only as the hairline before it: gold text on warm
+   white is 1.98:1 and fails WCAG AA. On dark surfaces gold text is 8.4:1 and
+   is used directly. See design/contrast.test.ts, which pins both rules. */
+
+.t-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--jt-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.t-eyebrow::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: var(--jt-gold);
+  flex: none;
+}
+
+.on-dark .t-eyebrow {
+  color: var(--jt-gold);
+}
+
+.on-dark .t-eyebrow::before {
+  background: currentColor;
+  opacity: 0.6;
+}
+
+/* ---- Technical data ----------------------------------------------------
+   Article numbers, GSM, width, composition. Monospace with tabular figures
+   is what separates a fabric supplier from a fabric shop. */
+
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+
+/* ---- Utilities --------------------------------------------------------- */
+
+.t-measure { max-width: 62ch; }
+.t-measure-tight { max-width: 46ch; }
+.t-measure-head { max-width: 22ch; }

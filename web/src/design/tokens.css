@@ -1,0 +1,51 @@
+:root {
+  /* ---- Colour ---------------------------------------------------------
+     Gold is a hairline accent only: rules, eyebrows, active nav underline.
+     Never a fill, gradient or glow. Keep it under ~1% of page surface. */
+  --jt-black:        #0A0A0A;
+  --jt-ink:          #141414;
+  --jt-warm-white:   #FAF8F4;
+  --jt-ivory:        #F4EFE6;
+  --jt-cream:        #EDE6D9;
+  --jt-gold:         #C8A96A;
+  --jt-muted:        #6B6257;
+  --jt-muted-on-dark:#A79E92;
+
+  /* ---- Spacing (4px base) --------------------------------------------- */
+  --space-1:  0.25rem;   /*  4px */
+  --space-2:  0.5rem;    /*  8px */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-5:  1.5rem;    /* 24px */
+  --space-6:  2rem;      /* 32px */
+  --space-7:  3rem;      /* 48px */
+  --space-8:  4rem;      /* 64px */
+  --space-9:  5rem;      /* 80px */
+  --space-10: 7rem;      /* 112px */
+  --space-11: 8.75rem;   /* 140px */
+  --space-12: 10rem;     /* 160px */
+
+  /* ---- Layout ---------------------------------------------------------- */
+  --content-max: 1200px;
+  --page-max:    1440px;
+  --gutter:      var(--space-5);
+  --gutter-lg:   var(--space-8);
+
+  /* ---- Lines ----------------------------------------------------------- */
+  --rule:        1px solid var(--jt-cream);
+  --rule-gold:   1px solid var(--jt-gold);
+  --rule-on-dark:1px solid rgb(255 255 255 / 0.12);
+
+  /* ---- Motion ---------------------------------------------------------- */
+  --ease:        cubic-bezier(0.22, 1, 0.36, 1);
+  --duration:    600ms;
+
+  /* ---- Layers ---------------------------------------------------------- */
+  --z-header:    100;
+  --z-menu:      200;
+  --z-skiplink:  300;
+}
+
+@media (min-width: 768px) {
+  :root { --gutter: var(--space-8); }
+}
