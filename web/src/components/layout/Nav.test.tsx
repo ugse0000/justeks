@@ -4,10 +4,12 @@ import { renderAtRoute } from '../../test/render'
 import { Nav } from './Nav'
 
 test('ana menü brief sırasını korur', () => {
+  // "Home" burada yok: marka işareti zaten ana sayfaya gidiyor ve on maddelik
+  // çubuk sayfa genişliğini taşırıyordu. Kalan sıra brief'teki gibi.
   renderAtRoute(<Nav locale="en" />)
   const labels = screen.getAllByTestId('nav-link').map((l) => l.textContent)
   expect(labels).toEqual([
-    'Home', 'Fabrics', 'Collections', 'Industries', 'UK Origin',
+    'Fabrics', 'Collections', 'Industries', 'UK Origin',
     'Global Supply', 'Sourcing', 'About', 'Insights', 'Contact',
   ])
 })
@@ -15,10 +17,10 @@ test('ana menü brief sırasını korur', () => {
 test('TR menüsü aynı sırada ve TR yollarına gider', () => {
   renderAtRoute(<Nav locale="tr" />, '/tr')
   const links = screen.getAllByTestId('nav-link')
-  expect(links).toHaveLength(10)
-  expect(links[0]).toHaveAttribute('href', '/tr')
-  expect(links[1]).toHaveAttribute('href', '/tr/fabrics')
-  expect(links[9]).toHaveAttribute('href', '/tr/contact')
+  expect(links).toHaveLength(9)
+  expect(links[0]).toHaveAttribute('href', '/tr/fabrics')
+  expect(links[1]).toHaveAttribute('href', '/tr/collections')
+  expect(links[8]).toHaveAttribute('href', '/tr/contact')
 })
 
 test('aktif sayfa aria-current taşır', () => {
@@ -33,10 +35,19 @@ test('alt sayfada üst menü öğesi aktif kalır', () => {
   expect(active).toHaveAttribute('aria-current', 'page')
 })
 
-test('ana sayfa yalnızca kökte aktiftir', () => {
+test('yalnızca bulunulan sayfa aktif işaretlenir', () => {
   renderAtRoute(<Nav locale="en" />, '/fabrics')
-  const home = screen.getAllByTestId('nav-link').find((l) => l.textContent === 'Home')
-  expect(home).not.toHaveAttribute('aria-current')
+  const links = screen.getAllByTestId('nav-link')
+  const current = links.filter((l) => l.hasAttribute('aria-current'))
+  expect(current).toHaveLength(1)
+  expect(current[0].textContent).toBe('Fabrics')
+})
+
+test('ana sayfada hiçbir menü maddesi aktif değil', () => {
+  // Kökte marka işareti bulunulan yeri temsil eder; menüde karşılığı yok.
+  renderAtRoute(<Nav locale="en" />, '/')
+  const links = screen.getAllByTestId('nav-link')
+  expect(links.filter((l) => l.hasAttribute('aria-current'))).toHaveLength(0)
 })
 
 test('mobil menü klavyeyle açılıp kapanır', async () => {

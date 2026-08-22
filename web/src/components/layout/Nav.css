@@ -155,15 +155,15 @@
 }
 
 /*
- * The desktop bar needs the room it actually needs.
+ * The desktop bar opens where it actually fits.
  *
- * Ten top-level links plus search, the quote button and the language switch
- * measure ~1150px; with the brand mark and the page gutters that wants a
- * ~1430px viewport. The old 1100px threshold turned the full bar on ~330px
- * early, so it overflowed the page and forced a horizontal scrollbar. Below
- * this width the menu button takes over, which leaves the mark plenty of room.
+ * Nine top-level links plus search, the quote button and the language switch
+ * measure ~1000px; with the brand mark and the page gutters that needs a
+ * ~1305px viewport. The original 1100px threshold turned the bar on some
+ * 200px early, so it overflowed the page and forced a horizontal scrollbar.
+ * Below this width the menu button takes over.
  */
-@media (min-width: 1440px) {
+@media (min-width: 1320px) {
   .nav__primary, .nav__actions { display: flex; }
   .nav__toggle { display: none; }
 }
