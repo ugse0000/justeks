@@ -1,10 +1,10 @@
 import type { CollectionContent } from '../schema'
 
 const img = (slug: string, alt: string) => ({
-  src: `/images/collections/${slug}.svg`,
+  src: `/images/collections/${slug}.webp`,
   alt,
-  width: 1600,
-  height: 1067,
+  width: 1280,
+  height: 960,
 })
 
 export const collections: Record<string, CollectionContent> = {
@@ -27,7 +27,7 @@ export const collections: Record<string, CollectionContent> = {
     ],
     includes: ['Linen', 'Shirting'],
     relatedCategories: ['linen', 'shirting'],
-    image: img('linen', 'Layered linen swatches in natural, ivory and stone tones'),
+    image: img('linen', 'Beige linen folded into a spiral to show its drape'),
   },
 
   shirting: {
@@ -49,7 +49,7 @@ export const collections: Record<string, CollectionContent> = {
     ],
     includes: ['Shirting', 'Cotton', 'Linen'],
     relatedCategories: ['shirting', 'cotton', 'linen'],
-    image: img('shirting', 'Folded shirting fabrics showing poplin, oxford and twill surfaces side by side'),
+    image: img('shirting', 'Rolls of patterned shirting stacked on warehouse shelves'),
   },
 
   tailoring: {
@@ -71,7 +71,7 @@ export const collections: Record<string, CollectionContent> = {
     ],
     includes: ['Tailoring', 'Wool'],
     relatedCategories: ['tailoring', 'wool'],
-    image: img('tailoring', 'Wool suiting cloths stacked to show worsted twill and flannel surfaces'),
+    image: img('tailoring', 'Dark grey suiting cloth laid flat on a pale surface'),
   },
 
   natural: {
@@ -93,7 +93,7 @@ export const collections: Record<string, CollectionContent> = {
     ],
     includes: ['Linen', 'Cotton', 'Wool', 'Viscose'],
     relatedCategories: ['linen', 'cotton', 'wool', 'viscose'],
-    image: img('natural', 'Undyed natural fibre fabrics in flax, cotton and wool arranged together'),
+    image: img('natural', 'Hands holding raw cotton bolls before spinning'),
   },
 
   essential: {
@@ -115,7 +115,7 @@ export const collections: Record<string, CollectionContent> = {
     ],
     includes: ['Cotton', 'Viscose', 'Polyester', 'Knitted'],
     relatedCategories: ['cotton', 'viscose', 'polyester', 'knitted'],
-    image: img('essential', 'Neutral core fabrics folded in a stack showing plain woven and jersey surfaces'),
+    image: img('essential', 'Cream fabric arranged in soft folds'),
   },
 
   performance: {
@@ -137,7 +137,7 @@ export const collections: Record<string, CollectionContent> = {
     ],
     includes: ['Performance & Technical', 'Polyester', 'Tailoring'],
     relatedCategories: ['performance-technical', 'polyester', 'tailoring'],
-    image: img('performance', 'Technical shell fabrics with a matte coated surface and visible ripstop grid'),
+    image: img('performance', 'Water droplets resting on the surface of a treated striped fabric'),
   },
 
   workwear: {
@@ -159,7 +159,7 @@ export const collections: Record<string, CollectionContent> = {
     ],
     includes: ['Cotton', 'Denim', 'Performance & Technical', 'Polyester'],
     relatedCategories: ['cotton', 'denim', 'performance-technical', 'polyester'],
-    image: img('workwear', 'Heavy cotton drill and canvas workwear fabrics in utility tones'),
+    image: img('workwear', 'Heavy dark-dyed workwear cloth filling the frame'),
   },
 
   interior: {
@@ -181,6 +181,6 @@ export const collections: Record<string, CollectionContent> = {
     ],
     includes: ['Interior', 'Fashion Fabrics'],
     relatedCategories: ['interior', 'fashion'],
-    image: img('interior', 'Interior fabrics including jacquard and velvet arranged in warm neutral tones'),
+    image: img('interior', 'Beige and white striped drapery lit to show its vertical fall'),
   },
 }

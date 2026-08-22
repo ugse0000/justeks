@@ -2,6 +2,7 @@ import { screen } from '@testing-library/react'
 import { renderAtRoute } from '../test/render'
 import { FabricCategory } from './FabricCategory'
 import { FABRIC_SLUGS } from '../content/routes'
+import { getContent } from '../content'
 
 test.each([...FABRIC_SLUGS])('%s sayfası dolu içerik gösterir', (slug) => {
   renderAtRoute(<FabricCategory slug={slug} locale="en" />, `/fabrics/${slug}`)
@@ -58,9 +59,12 @@ test('sertifika adı veya logosu basılmaz', () => {
 })
 
 test('görsel alt metniyle render edilir', () => {
+  // Alt metni içerikten okuyoruz: sayfanın görseli gerçekten alt metniyle
+  // sunduğunu doğrulamak istiyoruz, metnin kendisini sabitlemeyi değil.
+  const { image } = getContent('en').fabricCategories.linen
   renderAtRoute(<FabricCategory slug="linen" locale="en" />, '/fabrics/linen')
-  const img = screen.getByRole('img', { name: /linen weave/i })
-  expect(img).toHaveAttribute('src', '/images/fabrics/linen.svg')
+  const img = screen.getByRole('img', { name: image.alt })
+  expect(img).toHaveAttribute('src', '/images/fabrics/linen.webp')
 })
 
 test('breadcrumb json-ld üretilir', () => {

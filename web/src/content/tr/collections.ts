@@ -1,10 +1,10 @@
 import type { CollectionContent } from '../schema'
 
 const img = (slug: string, alt: string) => ({
-  src: `/images/collections/${slug}.svg`,
+  src: `/images/collections/${slug}.webp`,
   alt,
-  width: 1600,
-  height: 1067,
+  width: 1280,
+  height: 960,
 })
 
 // Koleksiyon adları marka adlandırmasıdır ve İngilizce korunur.
@@ -28,7 +28,7 @@ export const collections: Record<string, CollectionContent> = {
     ],
     includes: ['Keten', 'Gömleklik'],
     relatedCategories: ['linen', 'shirting'],
-    image: img('linen', 'Natürel, ivory ve taş tonlarında katmanlanmış keten kumaş parçaları'),
+    image: img('linen', 'Dökümünü gösterecek şekilde spiral katlanmış bej keten'),
   },
 
   shirting: {
@@ -50,7 +50,7 @@ export const collections: Record<string, CollectionContent> = {
     ],
     includes: ['Gömleklik', 'Pamuk', 'Keten'],
     relatedCategories: ['shirting', 'cotton', 'linen'],
-    image: img('shirting', 'Poplin, oxford ve dimi yüzeylerini yan yana gösteren katlanmış gömleklik kumaşlar'),
+    image: img('shirting', 'Depo raflarında istiflenmiş desenli gömleklik kumaş topları'),
   },
 
   tailoring: {
@@ -72,7 +72,7 @@ export const collections: Record<string, CollectionContent> = {
     ],
     includes: ['Takım Elbiselik', 'Yün'],
     relatedCategories: ['tailoring', 'wool'],
-    image: img('tailoring', 'Kamgarn dimi ve flanel yüzeylerini gösterecek şekilde istiflenmiş yün takım elbiselik kumaşlar'),
+    image: img('tailoring', 'Açık renk bir yüzeye serilmiş koyu gri takım elbiselik kumaş'),
   },
 
   natural: {
@@ -94,7 +94,7 @@ export const collections: Record<string, CollectionContent> = {
     ],
     includes: ['Keten', 'Pamuk', 'Yün', 'Viskon'],
     relatedCategories: ['linen', 'cotton', 'wool', 'viscose'],
-    image: img('natural', 'Keten, pamuk ve yünden oluşan boyasız doğal lifli kumaşlar bir arada'),
+    image: img('natural', 'Eğrilmeden önceki ham pamuk kozalarını tutan eller'),
   },
 
   essential: {
@@ -116,7 +116,7 @@ export const collections: Record<string, CollectionContent> = {
     ],
     includes: ['Pamuk', 'Viskon', 'Polyester', 'Örme'],
     relatedCategories: ['cotton', 'viscose', 'polyester', 'knitted'],
-    image: img('essential', 'Düz dokuma ve süprem yüzeyleri gösteren nötr çekirdek kumaş istifi'),
+    image: img('essential', 'Yumuşak kıvrımlar hâlinde yerleştirilmiş krem rengi kumaş'),
   },
 
   performance: {
@@ -138,7 +138,7 @@ export const collections: Record<string, CollectionContent> = {
     ],
     includes: ['Performans ve Teknik', 'Polyester', 'Takım Elbiselik'],
     relatedCategories: ['performance-technical', 'polyester', 'tailoring'],
-    image: img('performance', 'Mat kaplamalı yüzey ve görünür ripstop dokusuyla teknik kabuk kumaşları'),
+    image: img('performance', 'İşlem görmüş çizgili kumaşın yüzeyinde duran su damlaları'),
   },
 
   workwear: {
@@ -160,7 +160,7 @@ export const collections: Record<string, CollectionContent> = {
     ],
     includes: ['Pamuk', 'Denim', 'Performans ve Teknik', 'Polyester'],
     relatedCategories: ['cotton', 'denim', 'performance-technical', 'polyester'],
-    image: img('workwear', 'Kullanım tonlarında ağır pamuklu drill ve kanvas iş kıyafeti kumaşları'),
+    image: img('workwear', 'Kareyi dolduran ağır, koyu boyalı iş giysisi kumaşı'),
   },
 
   interior: {
@@ -182,6 +182,6 @@ export const collections: Record<string, CollectionContent> = {
     ],
     includes: ['İç Mekân', 'Moda Kumaşları'],
     relatedCategories: ['interior', 'fashion'],
-    image: img('interior', 'Sıcak nötr tonlarda jakar ve kadife içeren iç mekân kumaşları'),
+    image: img('interior', 'Dikey dökümünü gösterecek şekilde aydınlatılmış bej beyaz çizgili perdelik'),
   },
 }

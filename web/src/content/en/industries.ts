@@ -1,10 +1,10 @@
 import type { IndustryContent } from '../schema'
 
 const img = (slug: string, alt: string) => ({
-  src: `/images/industries/${slug}.svg`,
+  src: `/images/industries/${slug}.webp`,
   alt,
-  width: 1600,
-  height: 1067,
+  width: 1280,
+  height: 960,
 })
 
 export const industries: Record<string, IndustryContent> = {
@@ -32,7 +32,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Repeatability', body: 'A carry-over piece needs the same cloth next season, not an equivalent.' },
     ],
     recommendedFabrics: ['linen', 'cotton', 'viscose', 'fashion', 'knitted'],
-    image: img('fashion-apparel', 'Fashion fabrics in seasonal tones arranged for a collection review'),
+    image: img('fashion-apparel', 'A designer measuring a patterned jacket on a dress form in a studio'),
   },
 
   shirting: {
@@ -59,7 +59,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Pattern repeat', body: 'Stripes and checks increase consumption; the allowance belongs in the quotation.' },
     ],
     recommendedFabrics: ['shirting', 'cotton', 'linen'],
-    image: img('shirting', 'Shirting fabrics folded to show poplin, oxford and twill surfaces'),
+    image: img('shirting', 'A machinist sewing a garment at an industrial sewing machine'),
   },
 
   tailoring: {
@@ -86,7 +86,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Weight by component', body: 'Trouser cloth is often specified heavier than the matching jacket cloth.' },
     ],
     recommendedFabrics: ['tailoring', 'wool', 'polyester'],
-    image: img('tailoring', 'Wool suiting cloths with a pressed edge visible along the fold'),
+    image: img('tailoring', 'A tailor measuring a bespoke jacket on a mannequin'),
   },
 
   'casual-streetwear': {
@@ -113,7 +113,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Print compatibility', body: 'Surface and fibre decide which print methods are viable.' },
     ],
     recommendedFabrics: ['knitted', 'denim', 'cotton'],
-    image: img('casual-streetwear', 'Jersey and loopback fabrics stacked showing brushed and looped backs'),
+    image: img('casual-streetwear', 'Casual garments hanging on rails in a boutique interior'),
   },
 
   workwear: {
@@ -140,7 +140,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Finish type', body: 'A repellent finish wears; a coating is built in. They are not interchangeable.' },
     ],
     recommendedFabrics: ['performance-technical', 'cotton', 'polyester', 'denim'],
-    image: img('workwear', 'Heavy cotton drill and canvas in utility tones with reinforced weave detail'),
+    image: img('workwear', 'A factory supervisor in workwear and a hard hat on the production floor'),
   },
 
   uniforms: {
@@ -167,7 +167,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Care requirements', body: 'Domestic or industrial laundering changes the specification entirely.' },
     ],
     recommendedFabrics: ['tailoring', 'shirting', 'polyester', 'performance-technical'],
-    image: img('uniforms', 'Corporate uniform cloths in navy and grey with a smooth twill surface'),
+    image: img('uniforms', 'A rail of uniform shirts and trousers in black and white'),
   },
 
   hospitality: {
@@ -194,7 +194,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Regulatory requirements', body: 'Flame retardancy is confirmed per article and per venue, never assumed.' },
     ],
     recommendedFabrics: ['shirting', 'tailoring', 'interior', 'performance-technical'],
-    image: img('hospitality', 'Hospitality textiles combining crisp shirting and heavier furnishing cloth'),
+    image: img('hospitality', 'A restaurant table laid with white linen, glassware and silverware'),
   },
 
   'interior-upholstery': {
@@ -221,6 +221,6 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Nap direction', body: 'Pile fabrics must be cut in one direction across the whole piece.' },
     ],
     recommendedFabrics: ['interior', 'fashion', 'cotton'],
-    image: img('interior-upholstery', 'Upholstery and curtain fabrics layered to show jacquard and velvet surfaces'),
+    image: img('interior-upholstery', 'Close-up of an upholstered armchair arm showing the covering fabric'),
   },
 }

@@ -1,10 +1,10 @@
 import type { IndustryContent } from '../schema'
 
 const img = (slug: string, alt: string) => ({
-  src: `/images/industries/${slug}.svg`,
+  src: `/images/industries/${slug}.webp`,
   alt,
-  width: 1600,
-  height: 1067,
+  width: 1280,
+  height: 960,
 })
 
 export const industries: Record<string, IndustryContent> = {
@@ -32,7 +32,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Tekrarlanabilirlik', body: 'Devam eden bir ürün gelecek sezon muadilini değil aynı kumaşı ister.' },
     ],
     recommendedFabrics: ['linen', 'cotton', 'viscose', 'fashion', 'knitted'],
-    image: img('fashion-apparel', 'Koleksiyon değerlendirmesi için sezon tonlarında dizilmiş moda kumaşları'),
+    image: img('fashion-apparel', 'Stüdyoda manken üzerinde desenli bir cekete ölçü alan tasarımcı'),
   },
 
   shirting: {
@@ -59,7 +59,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Desen raporu', body: 'Çizgi ve ekose tüketimi artırır; payı teklifte yer almalıdır.' },
     ],
     recommendedFabrics: ['shirting', 'cotton', 'linen'],
-    image: img('shirting', 'Poplin, oxford ve dimi yüzeylerini gösterecek şekilde katlanmış gömleklik kumaşlar'),
+    image: img('shirting', 'Endüstriyel dikiş makinesinde bir giysi diken makineci'),
   },
 
   tailoring: {
@@ -86,7 +86,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Parça bazında gramaj', body: 'Pantolon kumaşı çoğu zaman eşleşen ceket kumaşından daha ağır belirlenir.' },
     ],
     recommendedFabrics: ['tailoring', 'wool', 'polyester'],
-    image: img('tailoring', 'Kat çizgisi boyunca ütü kenarı görünen yün takım elbiselik kumaşlar'),
+    image: img('tailoring', 'Manken üzerinde ısmarlama bir cekete ölçü alan terzi'),
   },
 
   'casual-streetwear': {
@@ -113,7 +113,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Baskı uyumu', body: 'Yüzey ve lif, hangi baskı yöntemlerinin uygulanabilir olduğunu belirler.' },
     ],
     recommendedFabrics: ['knitted', 'denim', 'cotton'],
-    image: img('casual-streetwear', 'Şardonlu ve ilmekli arkaları gösteren süprem ve iki iplik kumaş istifi'),
+    image: img('casual-streetwear', 'Butik mekânında askılarda asılı günlük giysiler'),
   },
 
   workwear: {
@@ -140,7 +140,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Apre tipi', body: 'İtici apre zamanla azalır, kaplama kumaşın içindedir. Birbirinin yerine geçmez.' },
     ],
     recommendedFabrics: ['performance-technical', 'cotton', 'polyester', 'denim'],
-    image: img('workwear', 'Takviyeli dokuma detayıyla kullanım tonlarında ağır pamuklu drill ve kanvas'),
+    image: img('workwear', 'Üretim alanında iş kıyafeti ve baretle duran fabrika sorumlusu'),
   },
 
   uniforms: {
@@ -167,7 +167,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Bakım gereksinimleri', body: 'Evde mi endüstriyel mi yıkanacağı spesifikasyonu tümüyle değiştirir.' },
     ],
     recommendedFabrics: ['tailoring', 'shirting', 'polyester', 'performance-technical'],
-    image: img('uniforms', 'Lacivert ve gri tonlarda düz dimi yüzeyli kurumsal üniforma kumaşları'),
+    image: img('uniforms', 'Askıda duran siyah beyaz üniforma gömlek ve pantolonları'),
   },
 
   hospitality: {
@@ -194,7 +194,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Mevzuat gereksinimleri', body: 'Yanmazlık ürün ve mekân bazında teyit edilir, asla varsayılmaz.' },
     ],
     recommendedFabrics: ['shirting', 'tailoring', 'interior', 'performance-technical'],
-    image: img('hospitality', 'Gevrek gömleklik ve daha ağır döşemelik kumaşı bir arada gösteren hospitality tekstilleri'),
+    image: img('hospitality', 'Beyaz keten, bardak ve çatal bıçak takımıyla kurulmuş restoran masası'),
   },
 
   'interior-upholstery': {
@@ -221,6 +221,6 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Hav yönü', body: 'Havlı kumaşlar tüm parçada tek yönde kesilmelidir.' },
     ],
     recommendedFabrics: ['interior', 'fashion', 'cotton'],
-    image: img('interior-upholstery', 'Jakar ve kadife yüzeylerini gösterecek şekilde katmanlanmış döşemelik ve perdelik kumaşlar'),
+    image: img('interior-upholstery', 'Kaplama kumaşını gösteren döşemeli koltuk kolunun yakın çekimi'),
   },
 }

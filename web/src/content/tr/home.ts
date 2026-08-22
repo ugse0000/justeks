@@ -19,10 +19,10 @@ export const home: HomeContent = {
       { label: 'Teklif Alın', href: '/contact?topic=SALES' },
     ],
     image: {
-      src: '/images/hero.svg',
-      alt: 'Çözgü ve atkının birbirine geçtiği dokuma kumaşın makro detayı',
-      width: 2400,
-      height: 1350,
+      src: '/images/hero.webp',
+      alt: 'Çalışır hâldeki endüstriyel dokuma tezgâhı; çözgü iplikleri tarağın içinden geçiyor',
+      width: 2000,
+      height: 1125,
     },
   },
 

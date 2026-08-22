@@ -17,10 +17,10 @@ export const home: HomeContent = {
       { label: 'Request a Quote', href: '/contact?topic=SALES' },
     ],
     image: {
-      src: '/images/hero.svg',
-      alt: 'Macro detail of woven fabric showing the interlacing of warp and weft',
-      width: 2400,
-      height: 1350,
+      src: '/images/hero.webp',
+      alt: 'An industrial weaving loom in operation, warp threads running through the reed',
+      width: 2000,
+      height: 1125,
     },
   },
 

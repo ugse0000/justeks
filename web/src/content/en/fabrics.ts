@@ -1,10 +1,10 @@
 import type { FabricCategoryContent } from '../schema'
 
 const img = (slug: string, alt: string) => ({
-  src: `/images/fabrics/${slug}.svg`,
+  src: `/images/fabrics/${slug}.webp`,
   alt,
-  width: 1600,
-  height: 1067,
+  width: 1280,
+  height: 960,
 })
 
 export const fabrics: Record<string, FabricCategoryContent> = {
@@ -45,7 +45,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Lower-GSM linens fray readily; overlocking or French seams protect the garment through washing.',
     ],
     relatedCollections: ['linen', 'natural', 'shirting'],
-    image: img('linen', 'Close-up of natural linen weave showing the characteristic slub of flax yarn'),
+    image: img('linen', 'Beige linen surface showing the slub character of flax yarn'),
   },
 
   cotton: {
@@ -86,7 +86,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Stretch cotton relaxes after pressing — build the allowance into the pattern, not the fabric spec.',
     ],
     relatedCollections: ['essential', 'natural', 'shirting'],
-    image: img('cotton', 'Macro detail of cotton poplin showing a fine, tightly woven plain-weave surface'),
+    image: img('cotton', 'Close-up of a white cotton weave showing the fine grain of the surface'),
   },
 
   viscose: {
@@ -125,7 +125,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Fine crepes are prone to seam slippage; confirm seam construction on the production sample.',
     ],
     relatedCollections: ['essential', 'natural'],
-    image: img('viscose', 'Draped viscose fabric falling in soft vertical folds against a neutral background'),
+    image: img('viscose', 'Viscose satin catching the light across a soft fold'),
   },
 
   polyester: {
@@ -165,7 +165,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Recycled content should only be claimed where certification exists for that article.',
     ],
     relatedCollections: ['essential', 'performance', 'workwear'],
-    image: img('polyester', 'Fine polyester crepe surface showing a matte, evenly textured weave'),
+    image: img('polyester', 'Magnified view of a synthetic weave showing individual filaments'),
   },
 
   wool: {
@@ -204,7 +204,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Moth and storage protection matters for stock held over a season.',
     ],
     relatedCollections: ['tailoring', 'natural'],
-    image: img('wool', 'Detail of wool suiting cloth showing a fine worsted twill line'),
+    image: img('wool', 'Grey wool cloth photographed close enough to show its milled surface'),
   },
 
   denim: {
@@ -243,7 +243,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Heavy denim needs the right needle and thread; skipped stitches on 14 oz are a machine setup issue, not a fabric fault.',
     ],
     relatedCollections: ['essential', 'workwear'],
-    image: img('denim', 'Close-up of indigo denim twill showing the diagonal weave and white weft'),
+    image: img('denim', 'Dark indigo denim showing the diagonal twill line of the weave'),
   },
 
   knitted: {
@@ -282,7 +282,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Use ballpoint needles and stretch stitching; a straight lockstitch on jersey will snap in wear.',
     ],
     relatedCollections: ['essential', 'performance'],
-    image: img('knitted', 'Macro view of single jersey knit showing the interlocking loop structure'),
+    image: img('knitted', 'White knitted fabric showing the loop structure of the stitch'),
   },
 
   shirting: {
@@ -321,7 +321,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Pattern-matched stripes and checks increase consumption; confirm the allowance in the quotation.',
     ],
     relatedCollections: ['shirting', 'essential'],
-    image: img('shirting', 'Detail of fine cotton shirting fabric with a crisp poplin surface'),
+    image: img('shirting', 'Blue and white striped shirting falling in soft folds'),
   },
 
   tailoring: {
@@ -360,7 +360,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Stretch suiting relaxes under heat — allow recovery time between pressing and measurement.',
     ],
     relatedCollections: ['tailoring', 'performance'],
-    image: img('tailoring', 'Close-up of wool suiting cloth folded to show a pressed edge'),
+    image: img('tailoring', 'Dark suiting cloth with a fine pinstripe running through the weave'),
   },
 
   fashion: {
@@ -399,7 +399,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Test pressing on a cutting of every satin — iron marks on satin are permanent.',
     ],
     relatedCollections: ['essential', 'natural'],
-    image: img('fashion', 'Satin fabric catching light across soft folds beside a matte crepe swatch'),
+    image: img('fashion', 'A stack of fashion fabrics in varied colours and weights'),
   },
 
   'performance-technical': {
@@ -438,7 +438,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'For industrially laundered garments, confirm wash cycle and temperature before selecting cloth.',
     ],
     relatedCollections: ['performance', 'workwear'],
-    image: img('performance-technical', 'Water beading on the surface of a technical repellent-finished fabric'),
+    image: img('performance-technical', 'Water beading on the surface of a technical woven fabric'),
   },
 
   interior: {
@@ -477,6 +477,6 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Flame-retardancy requirements must be confirmed per article and per venue regulation.',
     ],
     relatedCollections: ['interior', 'natural'],
-    image: img('interior', 'Folded upholstery fabric showing a dense woven jacquard surface'),
+    image: img('interior', 'Woven brown furnishing fabric with a pronounced textured surface'),
   },
 }

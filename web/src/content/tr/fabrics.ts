@@ -1,10 +1,10 @@
 import type { FabricCategoryContent } from '../schema'
 
 const img = (slug: string, alt: string) => ({
-  src: `/images/fabrics/${slug}.svg`,
+  src: `/images/fabrics/${slug}.webp`,
   alt,
-  width: 1600,
-  height: 1067,
+  width: 1280,
+  height: 960,
 })
 
 // Alt tür adları (types) sektörde İngilizce ticari adlarıyla kullanıldığı için
@@ -47,7 +47,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Düşük gramajlı ketenler kolay saçaklanır; overlok veya fransız dikiş ürünü yıkamada korur.',
     ],
     relatedCollections: ['linen', 'natural', 'shirting'],
-    image: img('linen', 'Keten dokumanın yakın çekimi, keten ipliğinin karakteristik slub yapısı görünüyor'),
+    image: img('linen', 'Keten ipliğinin düğümlü karakterini gösteren bej keten yüzey'),
   },
 
   cotton: {
@@ -88,7 +88,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Likralı pamuk ütüden sonra gevşer — payı kumaş spesifikasyonuna değil kalıba yazın.',
     ],
     relatedCollections: ['essential', 'natural', 'shirting'],
-    image: img('cotton', 'Pamuklu poplin makro detayı, ince ve sık dokunmuş bezayağı yüzey'),
+    image: img('cotton', 'Yüzeyin ince dokusunu gösteren beyaz pamuklu örgünün yakın çekimi'),
   },
 
   viscose: {
@@ -127,7 +127,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'İnce kreplerde dikiş kayması görülür; üretim numunesinde dikiş yapısını teyit edin.',
     ],
     relatedCollections: ['essential', 'natural'],
-    image: img('viscose', 'Nötr zemin üzerinde yumuşak dikey kıvrımlarla dökülen viskon kumaş'),
+    image: img('viscose', 'Yumuşak bir kıvrım boyunca ışığı yakalayan viskon saten'),
   },
 
   polyester: {
@@ -167,7 +167,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Geri dönüştürülmüş içerik yalnızca o ürüne ait sertifika varsa beyan edilmelidir.',
     ],
     relatedCollections: ['essential', 'performance', 'workwear'],
-    image: img('polyester', 'İnce polyester krep yüzeyi, mat ve düzgün dokulu bir dokuma gösteriyor'),
+    image: img('polyester', 'Tek tek filamentleri gösteren, büyütülmüş sentetik dokuma görüntüsü'),
   },
 
   wool: {
@@ -206,7 +206,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Sezon aşırı stoklanan yünde güve ve depolama koruması önemlidir.',
     ],
     relatedCollections: ['tailoring', 'natural'],
-    image: img('wool', 'Takım elbiselik yün kumaş detayı, ince kamgarn dimi çizgisi görünüyor'),
+    image: img('wool', 'Dinklenmiş yüzeyi görünecek kadar yakından çekilmiş gri yün kumaş'),
   },
 
   denim: {
@@ -245,7 +245,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Ağır denimde doğru iğne ve iplik şarttır; 14 oz kumaşta atlayan dikiş kumaş kusuru değil makine ayarı sorunudur.',
     ],
     relatedCollections: ['essential', 'workwear'],
-    image: img('denim', 'İndigo denim diminin yakın çekimi, çapraz dokuma ve beyaz atkı görünüyor'),
+    image: img('denim', 'Dokumanın çapraz dimi çizgisini gösteren koyu çivit rengi denim'),
   },
 
   knitted: {
@@ -284,7 +284,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Yuvarlak uçlu iğne ve esnek dikiş kullanın; süpremde düz dikiş kullanımda kopar.',
     ],
     relatedCollections: ['essential', 'performance'],
-    image: img('knitted', 'Süprem örgünün makro görüntüsü, birbirine kenetlenen ilmek yapısı görünüyor'),
+    image: img('knitted', 'İlmek yapısını gösteren beyaz örme kumaş'),
   },
 
   shirting: {
@@ -323,7 +323,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Rapor tutturulan çizgi ve ekoselerde tüketim artar; payı teklifte teyit edin.',
     ],
     relatedCollections: ['shirting', 'essential'],
-    image: img('shirting', 'İnce pamuklu gömleklik kumaş detayı, gevrek poplin yüzeyi'),
+    image: img('shirting', 'Yumuşak kıvrımlar hâlinde dökülen mavi beyaz çizgili gömleklik'),
   },
 
   tailoring: {
@@ -362,7 +362,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Likralı takım elbiselik ısı altında gevşer — ütü ile ölçüm arasında dinlenme süresi bırakın.',
     ],
     relatedCollections: ['tailoring', 'performance'],
-    image: img('tailoring', 'Ütü kenarını gösterecek şekilde katlanmış yün takım elbiselik kumaş yakın çekimi'),
+    image: img('tailoring', 'Dokusunda ince bir tebeşir çizgisi bulunan koyu takım elbiselik kumaş'),
   },
 
   fashion: {
@@ -401,7 +401,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Her satenin bir parçasında ütü denemesi yapın — satendeki ütü izi kalıcıdır.',
     ],
     relatedCollections: ['essential', 'natural'],
-    image: img('fashion', 'Yumuşak kıvrımlarda ışığı yakalayan saten kumaş ve yanında mat krep parçası'),
+    image: img('fashion', 'Farklı renk ve gramajlarda moda kumaşlarından oluşan bir yığın'),
   },
 
   'performance-technical': {
@@ -440,7 +440,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Endüstriyel yıkanan ürünlerde kumaş seçmeden önce yıkama programı ve sıcaklığını teyit edin.',
     ],
     relatedCollections: ['performance', 'workwear'],
-    image: img('performance-technical', 'Su itici apreli teknik kumaş yüzeyinde boncuklanan su damlaları'),
+    image: img('performance-technical', 'Teknik dokuma kumaşın yüzeyinde boncuklanan su damlaları'),
   },
 
   interior: {
@@ -479,6 +479,6 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Yanmazlık gereksinimleri ürün ve mekân mevzuatı bazında teyit edilmelidir.',
     ],
     relatedCollections: ['interior', 'natural'],
-    image: img('interior', 'Katlanmış döşemelik kumaş, yoğun dokunmuş jakar yüzeyi gösteriyor'),
+    image: img('interior', 'Belirgin dokulu yüzeye sahip kahverengi dokuma döşemelik kumaş'),
   },
 }
