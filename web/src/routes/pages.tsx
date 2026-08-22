@@ -13,6 +13,7 @@ import { Collections } from './Collections'
 import { Collection } from './Collection'
 import { Industries } from './Industries'
 import { Industry } from './Industry'
+import { ContactDetails } from '../components/sections/ContactDetails'
 import { GenericPage } from './GenericPage'
 import { GlobalSupply } from './GlobalSupply'
 import { Insights } from './Insights'
@@ -63,7 +64,6 @@ const GENERIC_PAGES: [routeKey: string, contentKey: string, path: string][] = [
   ['sampleService',    'sampleService',    '/sample-service'],
   ['tradeAccount',     'tradeAccount',     '/trade-account'],
   ['resources',        'resources',        '/resources'],
-  ['contact',          'contact',          '/contact'],
   ['privacy',          'privacy',          '/privacy'],
   ['cookies',          'cookies',          '/cookies'],
   ['terms',            'terms',            '/terms'],
@@ -74,6 +74,14 @@ for (const [routeKey, contentKey, path] of GENERIC_PAGES) {
     <GenericPage pageKey={contentKey} path={path} locale={locale} />
   ))
 }
+
+// Contact uses the same shell but carries the office and registration
+// details, so it is registered on its own rather than in the table above.
+registerPage('contact', ({ locale }) => (
+  <GenericPage pageKey="contact" path="/contact" locale={locale}>
+    <ContactDetails locale={locale} />
+  </GenericPage>
+))
 
 registerPage('globalSupply', GlobalSupply)
 registerPage('insights', Insights)

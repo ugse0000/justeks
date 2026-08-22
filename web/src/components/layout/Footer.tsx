@@ -3,6 +3,7 @@ import type { Locale } from '../../content/schema'
 import { getContent } from '../../content'
 import { toLocalePath } from '../../lib/i18n'
 import { Container } from '../primitives'
+import { CONTACT } from '../../../site.config'
 import './Footer.css'
 
 interface FooterProps {
@@ -60,6 +61,21 @@ export function Footer({ locale }: FooterProps) {
           <p className="footer__copyright t-small" data-testid="footer-copyright">
             © {new Date().getFullYear()} {footer.copyright}
           </p>
+
+          {/* Direct contact in the footer means a visitor never has to reach
+              the contact page to find a way through. */}
+          <ul role="list" className="footer__contact" data-testid="footer-contact">
+            <li>
+              <a className="footer__link t-small" href={`mailto:${CONTACT.email}`}>
+                {CONTACT.email}
+              </a>
+            </li>
+            <li>
+              <a className="footer__link t-small" href={`tel:${CONTACT.phoneHref}`}>
+                {CONTACT.phone}
+              </a>
+            </li>
+          </ul>
           <ul role="list" className="footer__legal">
             {footer.legal.map((link) => (
               <li key={link.href}>

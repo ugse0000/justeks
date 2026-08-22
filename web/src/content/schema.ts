@@ -1,3 +1,5 @@
+import type { OfficeKey } from '../../site.config'
+
 /**
  * Content schema.
  *
@@ -238,6 +240,29 @@ export interface FormContent {
      insights -> task 12     forms -> task 19
 */
 
+/**
+ * Labels for the contact page's office and registration details.
+ *
+ * The addresses themselves are data and live in site.config.ts; only the words
+ * around them are translated, so an office cannot drift between languages.
+ */
+export interface ContactContent {
+  officesHeading: string
+  /** Heading per office, keyed to OFFICES in site.config.ts. */
+  officeLabels: Record<OfficeKey, string>
+  /** Shown against an office whose address is not yet confirmed. */
+  provisionalNote: string
+  emailLabel: string
+  phoneLabel: string
+  registration: {
+    heading: string
+    entityLabel: string
+    taxOfficeLabel: string
+    taxNumberLabel: string
+    mersisLabel: string
+  }
+}
+
 export interface SiteContent {
   nav: NavContent
   footer: FooterContent
@@ -248,4 +273,5 @@ export interface SiteContent {
   home: HomeContent
   pages: Record<string, GenericPageContent>
   insights: Record<string, ArticleContent>
+  contact: ContactContent
 }

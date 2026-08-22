@@ -2,8 +2,8 @@
  * Corporate constants — the single source for anything that appears in more
  * than one place (footer, contact page, Organization JSON-LD, legal pages).
  *
- * PLACEHOLDER_* values are not real yet. Replace them here and every page
- * updates; do not copy these strings into components or content files.
+ * Data only. Anything a reader sees as a sentence — office labels, notes —
+ * lives in src/content so it exists in both languages.
  */
 
 export const SITE_URL = 'https://justeks.com'
@@ -13,17 +13,79 @@ export const POSITIONING = 'BRITISH ORIGIN. GLOBAL REACH.'
 export const SINCE_LINE = 'Textile Expertise Since 2004.'
 export const FOUNDED_YEAR = 2004
 
-export const PLACEHOLDER_LEGAL_NAME = 'JUSTEKS [Legal entity name to be confirmed]'
-export const PLACEHOLDER_EMAIL = 'info@justeks.com'
-export const PLACEHOLDER_SALES_EMAIL = 'sales@justeks.com'
-export const PLACEHOLDER_PHONE = '+44 [phone to be confirmed]'
-export const PLACEHOLDER_ADDRESS = {
-  street: '[Street address to be confirmed]',
-  city: '[City]',
-  postalCode: '[Postcode]',
-  country: 'United Kingdom',
-  countryCode: 'GB',
+/**
+ * The operating company behind the JUSTEKS brand.
+ *
+ * JUSTEKS is a trading name; the contracting entity is the Turkish company
+ * below, with a US affiliate. Registration details are Turkish statutory
+ * disclosure requirements and belong on the legal pages.
+ */
+export const LEGAL_ENTITY = {
+  name: 'Afinitem Medikal ve Yazılım Hizmetleri San. ve Tic. Ltd. Şti.',
+  taxOffice: 'Halkalı Vergi Dairesi',
+  taxNumber: '0091688057',
+  mersis: '0009168805700001',
 }
+
+export const CONTACT = {
+  email: 'info@afinitem.com',
+  /** Display form; tel: links use the E.164 value. */
+  phone: '0850 888 26 53',
+  phoneHref: '+908508882653',
+}
+
+export type OfficeKey = 'uk' | 'tr' | 'us'
+
+export interface Office {
+  key: OfficeKey
+  lines: string[]
+  city: string
+  postalCode: string
+  country: string
+  /** ISO 3166-1 alpha-2, used by schema.org PostalAddress. */
+  countryCode: string
+  phone?: string
+  phoneHref?: string
+  /**
+   * Placeholder pending a confirmed address. Provisional offices are labelled
+   * as such on the page and are kept out of structured data — publishing an
+   * address we cannot stand behind as machine-readable fact is worse than
+   * publishing none.
+   */
+  provisional?: boolean
+}
+
+export const OFFICES: Office[] = [
+  {
+    key: 'uk',
+    lines: ['Example House, 1 Fabric Street'],
+    city: 'London',
+    postalCode: 'EC1A 1AA',
+    country: 'United Kingdom',
+    countryCode: 'GB',
+    provisional: true,
+  },
+  {
+    key: 'tr',
+    lines: ['Halkalı Merkez Mah. Halkalı Cad.', 'No: 281/24 İç Kapı No: 50', 'Küçükçekmece'],
+    city: 'İstanbul',
+    postalCode: '34303',
+    country: 'Türkiye',
+    countryCode: 'TR',
+    phone: '0850 888 26 53',
+    phoneHref: '+908508882653',
+  },
+  {
+    key: 'us',
+    lines: ['Afinitem LLC', '7901 4th St N # 14848'],
+    city: 'St. Petersburg, FL',
+    postalCode: '33702',
+    country: 'United States',
+    countryCode: 'US',
+    phone: '+1 (850) 312-1839',
+    phoneHref: '+18503121839',
+  },
+]
 
 /** Supply regions — fixed order, used by the map and the footer. */
 export const SUPPLY_REGIONS = [
@@ -36,23 +98,31 @@ export const TRUST_MARKS = [
 
 /** schema.org Organization, emitted once on the home page. */
 export function organizationJsonLd() {
+  // The registered office is the address Google should treat as the company's
+  // own. Provisional entries are excluded, so this stays empty rather than
+  // wrong if the confirmed office has not been filled in yet.
+  const registered = OFFICES.find((o) => !o.provisional)
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: SITE_NAME,
-    legalName: PLACEHOLDER_LEGAL_NAME,
+    legalName: LEGAL_ENTITY.name,
     url: SITE_URL,
     slogan: TAGLINE,
     foundingDate: String(FOUNDED_YEAR),
-    email: PLACEHOLDER_EMAIL,
-    telephone: PLACEHOLDER_PHONE,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: PLACEHOLDER_ADDRESS.street,
-      addressLocality: PLACEHOLDER_ADDRESS.city,
-      postalCode: PLACEHOLDER_ADDRESS.postalCode,
-      addressCountry: PLACEHOLDER_ADDRESS.countryCode,
-    },
+    email: CONTACT.email,
+    telephone: CONTACT.phoneHref,
+    taxID: LEGAL_ENTITY.taxNumber,
+    ...(registered && {
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: registered.lines.join(', '),
+        addressLocality: registered.city,
+        postalCode: registered.postalCode,
+        addressCountry: registered.countryCode,
+      },
+    }),
     areaServed: [...SUPPLY_REGIONS],
     knowsAbout: [
       'Wholesale fabric supply', 'UK-origin textiles', 'Linen fabrics',

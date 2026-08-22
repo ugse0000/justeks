@@ -1,9 +1,10 @@
-import { screen } from '@testing-library/react'
+import { screen, within } from '@testing-library/react'
 import { renderAtRoute } from '../../test/render'
 import { Footer } from './Footer'
 import { getContent } from '../../content'
 import { ROUTES } from '../../content/routes'
 import { LOCALES } from '../../lib/i18n'
+import { CONTACT } from '../../../site.config'
 
 const KNOWN = new Set(ROUTES.map((r) => r.path))
 
@@ -62,4 +63,13 @@ test('telif satırı içinde bulunulan yılı gösterir', () => {
   renderAtRoute(<Footer locale="en" />)
   const year = new Date().getFullYear().toString()
   expect(screen.getByTestId('footer-copyright').textContent).toContain(year)
+})
+
+test('altbilgi doğrudan iletişim bağlantıları taşır', () => {
+  renderAtRoute(<Footer locale="en" />, '/')
+  const contact = screen.getByTestId('footer-contact')
+  expect(within(contact).getByRole('link', { name: CONTACT.email }))
+    .toHaveAttribute('href', `mailto:${CONTACT.email}`)
+  expect(within(contact).getByRole('link', { name: CONTACT.phone }))
+    .toHaveAttribute('href', `tel:${CONTACT.phoneHref}`)
 })
