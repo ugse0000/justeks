@@ -1,0 +1,154 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-6);
+  flex: 1;
+}
+
+/* ---- Desktop ----------------------------------------------------------- */
+
+.nav__primary {
+  display: none;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.nav__link {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  color: currentColor;
+  padding-block: var(--space-2);
+  white-space: nowrap;
+  opacity: 0.75;
+  transition: opacity 180ms var(--ease);
+}
+
+.nav__link:hover { opacity: 1; }
+
+.nav__link.is-active { opacity: 1; }
+
+/* The one place gold carries meaning rather than decoration. */
+.nav__link.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--jt-gold);
+}
+
+.nav__actions {
+  display: none;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.nav__search {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: currentColor;
+  opacity: 0.75;
+}
+
+.nav__search:hover { opacity: 1; }
+
+.nav__quote {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.3rem;
+  border: 1px solid currentColor;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: currentColor;
+  transition: background-color 200ms var(--ease), color 200ms var(--ease);
+}
+
+.nav__quote:hover {
+  background: var(--jt-ink);
+  color: var(--jt-warm-white);
+}
+
+.on-dark .nav__quote:hover,
+.header--dark .nav__quote:hover {
+  background: var(--jt-warm-white);
+  color: var(--jt-black);
+}
+
+/* ---- Mobile toggle ----------------------------------------------------- */
+
+.nav__toggle {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0 10px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.nav__toggle-bar {
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+}
+
+.nav__panel {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-menu);
+  background: var(--jt-black);
+  color: var(--jt-warm-white);
+  padding: calc(var(--space-10) + var(--space-4)) var(--gutter) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+}
+
+.nav__panel-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.nav__panel-links .nav__link {
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  opacity: 1;
+  padding-block: var(--space-3);
+  border-bottom: 1px solid rgb(255 255 255 / 0.1);
+}
+
+.nav__panel-links .nav__link.is-active::after { display: none; }
+.nav__panel-links .nav__link.is-active { color: var(--jt-gold); }
+
+.nav__panel-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-top: var(--space-8);
+}
+
+@media (min-width: 1100px) {
+  .nav__primary, .nav__actions { display: flex; }
+  .nav__toggle { display: none; }
+}

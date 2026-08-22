@@ -1,0 +1,35 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background: var(--jt-warm-white);
+  color: var(--jt-ink);
+  border-bottom: 1px solid transparent;
+  transition: border-color 250ms var(--ease), background-color 250ms var(--ease);
+}
+
+.header--compact {
+  border-bottom-color: var(--jt-cream);
+  background: rgb(250 248 244 / 0.92);
+  backdrop-filter: blur(8px);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  min-height: 76px;
+  transition: min-height 250ms var(--ease);
+}
+
+.header--compact .header__inner { min-height: 62px; }
+
+.header__brand {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.3em;
+  text-decoration: none;
+  color: currentColor;
+  white-space: nowrap;
+}

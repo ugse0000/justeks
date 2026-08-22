@@ -1,0 +1,72 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.9rem 1.7rem;
+  border: 1px solid transparent;
+  background: none;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 200ms var(--ease), color 200ms var(--ease),
+              border-color 200ms var(--ease);
+}
+
+.button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---- Light surfaces ---------------------------------------------------- */
+
+.button--solid {
+  background: var(--jt-black);
+  color: var(--jt-warm-white);
+  border-color: var(--jt-black);
+}
+
+.button--solid:hover:not(:disabled) { background: var(--jt-ink); }
+
+.button--outline {
+  border-color: var(--jt-ink);
+  color: var(--jt-ink);
+}
+
+.button--outline:hover:not(:disabled) {
+  background: var(--jt-ink);
+  color: var(--jt-warm-white);
+}
+
+.button--ghost {
+  color: var(--jt-ink);
+  padding-inline: 0;
+  border-bottom: 1px solid var(--jt-gold);
+  border-radius: 0;
+}
+
+.button--ghost:hover:not(:disabled) { color: var(--jt-muted); }
+
+/* ---- Dark surfaces ----------------------------------------------------- */
+
+.on-dark .button--solid {
+  background: var(--jt-warm-white);
+  color: var(--jt-black);
+  border-color: var(--jt-warm-white);
+}
+
+.on-dark .button--solid:hover:not(:disabled) { background: #fff; }
+
+.on-dark .button--outline {
+  border-color: rgb(255 255 255 / 0.35);
+  color: var(--jt-warm-white);
+}
+
+.on-dark .button--outline:hover:not(:disabled) {
+  background: var(--jt-warm-white);
+  color: var(--jt-black);
+  border-color: var(--jt-warm-white);
+}
+
+.on-dark .button--ghost { color: var(--jt-warm-white); }

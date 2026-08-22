@@ -1,0 +1,21 @@
+.section {
+  padding-block: var(--space-10);
+}
+
+@media (min-width: 768px) {
+  .section { padding-block: var(--space-11); }
+}
+
+.section--flush { padding-block: 0; }
+
+.section--light { background: var(--jt-warm-white); color: var(--jt-ink); }
+.section--ivory { background: var(--jt-ivory);      color: var(--jt-ink); }
+.section--cream { background: var(--jt-cream);      color: var(--jt-ink); }
+
+.section--dark {
+  background: var(--jt-black);
+  color: var(--jt-warm-white);
+}
+
+.section--dark .t-lead,
+.section--dark .t-muted { color: var(--jt-muted-on-dark); }

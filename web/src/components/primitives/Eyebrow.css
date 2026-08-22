@@ -1,0 +1,6 @@
+.eyebrow { margin-bottom: var(--space-5); }
+
+.eyebrow__index {
+  margin-right: 0.4em;
+  opacity: 0.7;
+}

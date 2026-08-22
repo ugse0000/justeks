@@ -1,0 +1,26 @@
+.lang {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+}
+
+.lang__item { display: inline-flex; align-items: center; }
+
+.lang__sep {
+  margin-inline: var(--space-2);
+  opacity: 0.35;
+}
+
+.lang__current { color: currentColor; }
+
+.lang__link {
+  color: currentColor;
+  opacity: 0.55;
+  text-decoration: none;
+  transition: opacity 180ms var(--ease);
+}
+
+.lang__link:hover { opacity: 1; }
