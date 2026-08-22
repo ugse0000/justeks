@@ -1,7 +1,7 @@
 import type { FabricCategoryContent } from '../schema'
 
 const img = (slug: string, alt: string) => ({
-  src: `/images/fabrics/${slug}.jpg`,
+  src: `/images/fabrics/${slug}.svg`,
   alt,
   width: 1600,
   height: 1067,
