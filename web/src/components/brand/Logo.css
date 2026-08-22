@@ -1,0 +1,19 @@
+/* The mark scales with font-size so a placement can size it in one property. */
+.logo {
+  display: block;
+  height: 1em;
+  /* fit-content, not auto: an SVG with only a viewBox stretches to fill its
+     containing block in normal flow, which made the footer mark 1299px wide.
+     fit-content makes it take its own aspect ratio instead. */
+  width: fit-content;
+  /* Gold hairline in the lockup; a placement can set this to currentColor for
+     single-ink reproduction. */
+  --logo-rule: var(--jt-gold);
+}
+
+.logo__rule { fill: var(--logo-rule); }
+
+/* Explicit grounds. Without a tone the mark inherits `color`, which is what
+   the header and footer rely on. */
+.logo--light { color: var(--jt-black); }
+.logo--dark  { color: var(--jt-warm-white); }

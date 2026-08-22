@@ -12,11 +12,10 @@
   border-bottom: 1px solid rgb(255 255 255 / 0.12);
 }
 
-.footer__wordmark {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 1.05rem;
-  letter-spacing: 0.3em;
+.footer__logo { font-size: 30px; }
+
+@media (min-width: 48rem) {
+  .footer__logo { font-size: 36px; }
 }
 
 .footer__tagline { color: var(--jt-warm-white); }

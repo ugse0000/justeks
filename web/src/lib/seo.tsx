@@ -1,6 +1,6 @@
 import type { Locale, SeoMeta } from '../content/schema'
 import { LOCALES, LOCALE_TAGS, DEFAULT_LOCALE, toLocalePath } from './i18n'
-import { SITE_NAME, SITE_URL } from '../../site.config'
+import { OG_IMAGE, SITE_NAME, SITE_URL } from '../../site.config'
 
 interface SeoProps {
   /** Canonical, English-rooted path (e.g. "/fabrics/linen"). */
@@ -62,7 +62,15 @@ export function Seo({ path, locale, meta, jsonLd, noIndex, ogType = 'website' }:
       <meta property="og:type" content={ogType} />
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:locale" content={ogLocale(locale)} />
+      {/* Every page falls back to the brand card. Pages with their own
+          artwork can override this later by passing an image through. */}
+      <meta property="og:image" content={OG_IMAGE.url} />
+      <meta property="og:image:width" content={String(OG_IMAGE.width)} />
+      <meta property="og:image:height" content={String(OG_IMAGE.height)} />
+      <meta property="og:image:alt" content={OG_IMAGE.alt} />
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:image" content={OG_IMAGE.url} />
+      <meta name="twitter:image:alt" content={OG_IMAGE.alt} />
 
       {noIndex && <meta name="robots" content="noindex, nofollow" />}
 

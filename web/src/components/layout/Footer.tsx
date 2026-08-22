@@ -2,6 +2,7 @@ import { Link } from 'react-router'
 import type { Locale } from '../../content/schema'
 import { getContent } from '../../content'
 import { toLocalePath } from '../../lib/i18n'
+import { Logo } from '../brand'
 import { Container } from '../primitives'
 import { CONTACT } from '../../../site.config'
 import './Footer.css'
@@ -24,7 +25,9 @@ export function Footer({ locale }: FooterProps) {
     <footer className="footer on-dark">
       <Container width="wide">
         <div className="footer__brand">
-          <span className="footer__wordmark">{footer.brand}</span>
+          {/* Reversed lockup: the footer sets colour: warm white and the
+              mark draws in currentColor. */}
+          <Logo variant="lockup" className="footer__logo" title={footer.brand} />
           <span className="footer__tagline t-h3">{footer.tagline}</span>
           <span className="footer__since t-small">{footer.since}</span>
         </div>

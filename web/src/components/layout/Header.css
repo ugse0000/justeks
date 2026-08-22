@@ -25,11 +25,24 @@
 .header--compact .header__inner { min-height: 62px; }
 
 .header__brand {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 1.05rem;
-  letter-spacing: 0.3em;
+  display: flex;
+  align-items: center;
   text-decoration: none;
   color: currentColor;
-  white-space: nowrap;
+}
+
+/* The mark is sized in one place; .logo is height: 1em. It shrinks with the
+   header when the page scrolls, in step with the existing min-height change. */
+.header__logo { font-size: 26px; transition: font-size 250ms var(--ease); }
+.header--compact .header__logo { font-size: 22px; }
+
+/* Below the nav breakpoint the full lockup would crowd the menu button, so
+   the monogram stands in. display:none keeps the hidden one out of the
+   accessibility tree as well as out of view. */
+.header__logo--full { display: none; }
+.header__logo--compact { display: block; }
+
+@media (min-width: 30rem) {
+  .header__logo--full { display: block; }
+  .header__logo--compact { display: none; }
 }
