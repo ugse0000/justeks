@@ -1,0 +1,39 @@
+# dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# build output
+dist/
+dist-ssr/
+build/
+target/
+*.class
+
+# env & secrets
+.env
+.env.local
+.env.*.local
+
+# uploads (runtime data)
+api/uploads/
+
+# test artifacts
+web/test-results/
+web/playwright-report/
+web/blob-report/
+web/.vitest/
+coverage/
+
+# editor / os
+.idea/
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
+*.swp
+
+# logs
+*.log
+npm-debug.log*
+yarn-error.log*
