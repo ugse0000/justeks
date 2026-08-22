@@ -73,6 +73,31 @@ mvn test               # Testcontainers kullanır, Docker gerekir
 
 ---
 
+## Yayın
+
+Site GitHub Pages üzerinde barınır. `main` dalına her push
+`.github/workflows/deploy.yml` iş akışını çalıştırır: `web/` içinde derler,
+ardından testleri koşar (bu sırayla — prerender testleri `dist/` çıktısını
+okur ve derleme olmadan kendilerini atlarlar), sonra sonucu yayınlar.
+
+- Depo: <https://github.com/ugse0000/justeks>
+- Alan adı: `justeks.com` (`web/public/CNAME` dosyasından gelir)
+
+Alan adının DNS kayıtları GitHub'a yönlendirilmelidir. Apex (`justeks.com`)
+için A ve AAAA kayıtları:
+
+```
+A     185.199.108.153     AAAA  2606:50c0:8000::153
+A     185.199.109.153     AAAA  2606:50c0:8001::153
+A     185.199.110.153     AAAA  2606:50c0:8002::153
+A     185.199.111.153     AAAA  2606:50c0:8003::153
+```
+
+`www` için: `CNAME  www  ugse0000.github.io`
+
+DNS yayıldıktan sonra GitHub sertifikayı kendisi alır ve HTTPS zorlaması
+etkinleşir; bu birkaç saat sürebilir.
+
 ## Yapı
 
 ```
