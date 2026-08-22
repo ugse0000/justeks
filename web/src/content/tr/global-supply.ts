@@ -4,7 +4,7 @@ import type { GlobalSupplyContent } from '../schema'
 // korunur; açıklamalar Türkçedir.
 export const globalSupply: GlobalSupplyContent = {
   seo: {
-    title: 'Global Tedarik — Dünya Geneline Birleşik Krallık Menşeli Kumaş — JUSTEKS',
+    title: 'Global Tedarik — Dünya Geneline Kumaş Tedariki — JUSTEKS',
     description:
       'JUSTEKS; Avrupa, Türkiye, Orta Doğu, Kuzey Afrika, Amerika ve Asya genelindeki üreticilere, markalara, toptancılara ve profesyonel alıcılara Birleşik Krallık menşeli kumaş tedarik eder.',
   },

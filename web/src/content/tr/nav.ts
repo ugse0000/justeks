@@ -3,7 +3,6 @@ import type { NavContent } from '../schema'
 export const nav: NavContent = {
   brand: 'JUSTEKS',
   primary: [
-    { label: 'Ana Sayfa',       href: '/' },
     { label: 'Kumaşlar',        href: '/fabrics' },
     { label: 'Koleksiyonlar',   href: '/collections' },
     { label: 'Sektörler',       href: '/industries' },

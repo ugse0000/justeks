@@ -47,7 +47,7 @@ export const insights: Record<string, ArticleContent> = {
     slug: 'why-fabric-gsm-matters',
     title: 'Kumaş GSM Değeri Neden Önemlidir?',
     seo: {
-      title: 'Kumaş GSM Değeri Neden Önemlidir — ve Nerede Yanıltır — JUSTEKS',
+      title: 'Kumaş GSM Değeri Neden Önemlidir? — JUSTEKS',
       description:
         'Üretim alıcıları için GSM: metrekare başına gramın ne anlattığı, neyi gizlediği ve en ile iplik numarasının neden aynı cümlede yer alması gerektiği.',
     },
@@ -173,7 +173,7 @@ export const insights: Record<string, ArticleContent> = {
     slug: 'what-is-twill-fabric',
     title: 'Twill (Dimi) Kumaş Nedir?',
     seo: {
-      title: 'Twill Kumaş Nedir? Örgü, Gramaj ve Kullanım Alanları — JUSTEKS',
+      title: 'Twill Kumaş Nedir? Örgü ve Gramaj — JUSTEKS',
       description:
         'Dimi açıklaması: çapraz örgünün nasıl kurulduğu, neden bezayağından farklı döküldüğü ve aşındığı, denim, gabardin ve drill’in nerede durduğu.',
     },

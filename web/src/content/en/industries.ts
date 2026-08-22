@@ -120,7 +120,7 @@ export const industries: Record<string, IndustryContent> = {
     slug: 'workwear',
     name: 'Workwear',
     seo: {
-      title: 'Workwear Fabrics — Durable Cloth for Professional Garments — JUSTEKS',
+      title: 'Workwear Fabrics — Durable Professional Cloth — JUSTEKS',
       description:
         'Durable fabrics for workwear production: cotton drill and canvas, polyester cotton blends, and technical qualities built for industrial laundering.',
     },
@@ -147,7 +147,7 @@ export const industries: Record<string, IndustryContent> = {
     slug: 'uniforms',
     name: 'Uniforms',
     seo: {
-      title: 'Uniform Fabrics for Corporate and Institutional Programmes — JUSTEKS',
+      title: 'Uniform Fabrics for Corporate Programmes — JUSTEKS',
       description:
         'Fabric supply for corporate and institutional uniform programmes: polyester viscose suiting, shirting, and durable easy-care qualities.',
     },
@@ -201,7 +201,7 @@ export const industries: Record<string, IndustryContent> = {
     slug: 'interior-upholstery',
     name: 'Interior & Upholstery',
     seo: {
-      title: 'Upholstery and Interior Fabrics for Contract Projects — JUSTEKS',
+      title: 'Upholstery Fabrics for Contract Projects — JUSTEKS',
       description:
         'Upholstery, curtain and decorative fabrics for interior and contract projects, specified by abrasion rating, light behaviour and width.',
     },

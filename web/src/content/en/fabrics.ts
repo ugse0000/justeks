@@ -52,7 +52,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'cotton',
     name: 'Cotton',
     seo: {
-      title: 'Cotton Fabrics — Wholesale Poplin, Twill, Canvas and Jersey',
+      title: 'Cotton Fabrics — Poplin, Twill, Canvas, Jersey',
       description:
         'UK-origin cotton fabrics in poplin, twill, canvas, voile, satin, drill and jersey constructions. Organic and stretch cotton options for apparel production.',
     },
@@ -93,7 +93,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'viscose',
     name: 'Viscose',
     seo: {
-      title: 'Viscose Fabrics — Wholesale Crepe, Twill, Satin and Printed Viscose',
+      title: 'Viscose Fabrics — Crepe, Twill, Satin and Print',
       description:
         'UK-origin viscose fabrics with fluid drape for dresses, blouses and linings. Crepe, twill, satin, printed and jersey viscose, plus viscose linen blends.',
     },
@@ -132,7 +132,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'polyester',
     name: 'Polyester',
     seo: {
-      title: 'Polyester Fabrics — Wholesale Woven, Crepe, Satin and Jersey',
+      title: 'Polyester Fabrics — Woven, Crepe, Satin, Jersey',
       description:
         'Polyester fabrics for volume apparel production: woven, crepe, satin, twill, chiffon and jersey constructions, including stretch and recycled polyester options.',
     },
@@ -172,7 +172,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'wool',
     name: 'Wool',
     seo: {
-      title: 'Wool Fabrics — Wholesale Suiting, Coating and Wool Blends',
+      title: 'Wool Fabrics — Suiting, Coating and Blends',
       description:
         'UK-origin wool fabrics for tailoring and outerwear: suiting wool, coating wool, lightweight and brushed wool, wool blends and wool cashmere blends.',
     },
@@ -211,7 +211,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'denim',
     name: 'Denim',
     seo: {
-      title: 'Denim Fabrics — Wholesale Raw, Washed and Stretch Denim',
+      title: 'Denim Fabrics — Raw, Washed and Stretch',
       description:
         'Denim fabrics from lightweight shirting weights to heavy 14 oz constructions: cotton denim, stretch denim, raw and washed denim for apparel production.',
     },
@@ -250,7 +250,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'knitted',
     name: 'Knitted Fabrics',
     seo: {
-      title: 'Knitted Fabrics — Wholesale Jersey, Interlock, Rib and French Terry',
+      title: 'Knitted Fabrics — Jersey, Interlock, Rib, Terry',
       description:
         'Knitted fabrics for casual and streetwear production: single jersey, interlock, rib, punto roma, french terry, sweatshirt, fleece, lycra jersey and pique.',
     },
@@ -289,7 +289,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'shirting',
     name: 'Shirting',
     seo: {
-      title: 'Shirting Fabrics — Wholesale Poplin, Oxford and Twill Shirting',
+      title: 'Shirting Fabrics — Poplin, Oxford and Twill',
       description:
         'Shirting fabrics for professional shirt production: poplin, oxford, twill, linen and cotton shirting, stretch and printed shirting in premium qualities.',
     },
@@ -328,7 +328,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'tailoring',
     name: 'Tailoring',
     seo: {
-      title: 'Tailoring Fabrics — Wholesale Suiting, Trouser and Blazer Cloth',
+      title: 'Tailoring Fabrics — Suiting, Trouser, Blazer',
       description:
         'Tailoring fabrics for suits, blazers and trousers: wool suiting, polyester viscose, stretch suiting, gabardine and premium suiting cloths.',
     },
@@ -367,7 +367,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'fashion',
     name: 'Fashion Fabrics',
     seo: {
-      title: 'Fashion Fabrics — Wholesale Crepe, Satin, Chiffon, Velvet and Jacquard',
+      title: 'Fashion Fabrics — Crepe, Satin, Chiffon, Velvet',
       description:
         'Fashion fabrics for collections and occasion wear: crepe, satin, chiffon, organza, taffeta, velvet, jacquard, lace and printed fabrics.',
     },
@@ -406,7 +406,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'performance-technical',
     name: 'Performance & Technical',
     seo: {
-      title: 'Performance and Technical Fabrics — Water-Repellent, Workwear, Outdoor',
+      title: 'Performance Fabrics — Water-Repellent, Outdoor',
       description:
         'Performance and technical fabrics: water-repellent, wind-resistant, coated, stretch performance and durable fabrics for workwear and outdoor production.',
     },
@@ -445,7 +445,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'interior',
     name: 'Interior',
     seo: {
-      title: 'Interior Fabrics — Wholesale Upholstery, Curtain and Decorative Fabrics',
+      title: 'Interior Fabrics — Upholstery and Curtain Cloth',
       description:
         'Interior textiles for contract and residential projects: upholstery, curtain fabrics, decorative fabrics, canvas, velvet and jacquard.',
     },

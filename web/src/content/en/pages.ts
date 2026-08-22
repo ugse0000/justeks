@@ -143,7 +143,7 @@ export const pages: Record<string, GenericPageContent> = {
 
   quality: {
     seo: {
-      title: 'Quality & Traceability — Every Fabric Has an Identity — JUSTEKS',
+      title: 'Quality & Traceability — Fabric Identity — JUSTEKS',
       description:
         'Article number, origin, composition, construction, batch reference and colour reference: the record that keeps a fabric identifiable from quotation to delivery.',
     },
@@ -181,7 +181,7 @@ export const pages: Record<string, GenericPageContent> = {
 
   responsible: {
     seo: {
-      title: 'Responsible Textiles — Verifiable Product Information — JUSTEKS',
+      title: 'Responsible Textiles — Verifiable Information — JUSTEKS',
       description:
         'Organic and recycled fibres, certified materials and traceable articles — stated per article where they genuinely apply, never as a general claim.',
     },
@@ -218,7 +218,7 @@ export const pages: Record<string, GenericPageContent> = {
 
   tradeLogistics: {
     seo: {
-      title: 'Trade & Logistics — From Fabric Selection to Final Destination — JUSTEKS',
+      title: 'Trade & Logistics — Selection to Destination — JUSTEKS',
       description:
         'International freight coordination, export and origin documentation, and delivery to factory, warehouse or a nominated commercial address.',
     },
@@ -296,7 +296,7 @@ export const pages: Record<string, GenericPageContent> = {
 
   sourcing: {
     seo: {
-      title: 'Sourcing Desk — Can’t Find What You’re Looking For? — JUSTEKS',
+      title: 'Sourcing Desk — Can’t Find Your Fabric? — JUSTEKS',
       description:
         'Send us your fabric specification and reference material. You define the requirement, we help find the fabric.',
     },

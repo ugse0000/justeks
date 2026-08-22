@@ -14,7 +14,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'linen',
     name: 'Keten',
     seo: {
-      title: 'Keten Kumaşlar — Toptan Birleşik Krallık Menşeli Keten',
+      title: 'Keten Kumaşlar — Toptan Keten Kumaş',
       description:
         'Gömleklik, elbiselik ve premium hazır giyim için Birleşik Krallık menşeli keten kumaşlar. %100 keten, keten pamuk ve keten viskon karışımları.',
     },
@@ -54,7 +54,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'cotton',
     name: 'Pamuk',
     seo: {
-      title: 'Pamuklu Kumaşlar — Toptan Poplin, Dimi, Kanvas ve Süprem',
+      title: 'Pamuklu Kumaşlar — Poplin, Dimi, Kanvas, Süprem',
       description:
         'Poplin, dimi, kanvas, vual, saten, drill ve süprem konstrüksiyonlarda Birleşik Krallık menşeli pamuklu kumaşlar. Organik ve likralı pamuk seçenekleri.',
     },
@@ -95,7 +95,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'viscose',
     name: 'Viskon',
     seo: {
-      title: 'Viskon Kumaşlar — Toptan Krep, Dimi, Saten ve Baskılı Viskon',
+      title: 'Viskon Kumaşlar — Krep, Dimi, Saten, Baskılı',
       description:
         'Elbise, bluz ve astar için akıcı dökümlü viskon kumaşlar. Krep, dimi, saten, baskılı ve süprem viskon ile viskon keten karışımları.',
     },
@@ -134,7 +134,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'polyester',
     name: 'Polyester',
     seo: {
-      title: 'Polyester Kumaşlar — Toptan Dokuma, Krep, Saten ve Süprem',
+      title: 'Polyester Kumaşlar — Dokuma, Krep, Saten',
       description:
         'Yüksek adetli hazır giyim üretimi için polyester kumaşlar: dokuma, krep, saten, dimi, şifon ve süprem konstrüksiyonlar, likralı ve geri dönüştürülmüş seçenekler.',
     },
@@ -174,7 +174,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'wool',
     name: 'Yün',
     seo: {
-      title: 'Yünlü Kumaşlar — Toptan Takım Elbiselik, Kabanlık ve Yün Karışımları',
+      title: 'Yünlü Kumaşlar — Takım Elbiselik ve Kabanlık',
       description:
         'Takım elbise ve dış giyim için Birleşik Krallık menşeli yünlü kumaşlar: takım elbiselik yün, kabanlık yün, hafif ve şardonlu yün, yün kaşmir karışımları.',
     },
@@ -213,7 +213,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'denim',
     name: 'Denim',
     seo: {
-      title: 'Denim Kumaşlar — Toptan Ham, Yıkamalı ve Likralı Denim',
+      title: 'Denim Kumaşlar — Ham, Yıkamalı ve Likralı',
       description:
         'Hafif gömleklik gramajlardan 14 oz ağır konstrüksiyonlara denim kumaşlar: pamuklu denim, likralı denim, ham ve yıkamalı denim.',
     },
@@ -252,7 +252,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'knitted',
     name: 'Örme Kumaşlar',
     seo: {
-      title: 'Örme Kumaşlar — Toptan Süprem, Interlock, Ribana ve İki İplik',
+      title: 'Örme Kumaşlar — Süprem, Interlock, Ribana',
       description:
         'Günlük giyim ve streetwear üretimi için örme kumaşlar: süprem, interlock, ribana, punto roma, iki iplik, üç iplik, polar, likralı süprem ve pike.',
     },
@@ -291,7 +291,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'shirting',
     name: 'Gömleklik',
     seo: {
-      title: 'Gömleklik Kumaşlar — Toptan Poplin, Oxford ve Dimi Gömleklik',
+      title: 'Gömleklik Kumaşlar — Poplin, Oxford ve Dimi',
       description:
         'Profesyonel gömlek üretimi için gömleklik kumaşlar: poplin, oxford, dimi, keten ve pamuklu gömleklik, likralı ve baskılı gömleklik kaliteleri.',
     },
@@ -330,7 +330,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'tailoring',
     name: 'Takım Elbiselik',
     seo: {
-      title: 'Takım Elbiselik Kumaşlar — Toptan Takım, Pantolon ve Blazer Kumaşı',
+      title: 'Takım Elbiselik Kumaşlar — Takım ve Pantolon',
       description:
         'Takım elbise, blazer ve pantolon için terzilik kumaşları: yün takım elbiselik, polyester viskon, likralı takım elbiselik, gabardin ve premium kaliteler.',
     },
@@ -369,7 +369,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'fashion',
     name: 'Moda Kumaşları',
     seo: {
-      title: 'Moda Kumaşları — Toptan Krep, Saten, Şifon, Kadife ve Jakar',
+      title: 'Moda Kumaşları — Krep, Saten, Şifon, Kadife',
       description:
         'Koleksiyon ve özel gün giyimi için moda kumaşları: krep, saten, şifon, organze, tafta, kadife, jakar, dantel ve baskılı kumaşlar.',
     },
@@ -408,7 +408,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'performance-technical',
     name: 'Performans ve Teknik',
     seo: {
-      title: 'Performans ve Teknik Kumaşlar — Su İtici, İş Kıyafeti, Outdoor',
+      title: 'Performans Kumaşları — Su İtici ve Teknik',
       description:
         'Performans ve teknik kumaşlar: su itici, rüzgâr geçirmez, kaplamalı, esnek performans ve yüksek dayanımlı kumaşlar; iş kıyafeti ve outdoor üretimi için.',
     },
@@ -447,7 +447,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
     slug: 'interior',
     name: 'İç Mekân',
     seo: {
-      title: 'İç Mekân Kumaşları — Toptan Döşemelik, Perdelik ve Dekoratif Kumaşlar',
+      title: 'İç Mekân Kumaşları — Döşemelik ve Perdelik',
       description:
         'Proje ve konut uygulamaları için ev tekstili: döşemelik, perdelik, dekoratif kumaşlar, kanvas, kadife ve jakar.',
     },

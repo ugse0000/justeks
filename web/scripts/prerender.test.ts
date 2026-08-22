@@ -43,18 +43,16 @@ d('prerendered output', () => {
     expect(doubled).toEqual([])
   })
 
-  test('her sayfanın başlığı dolu ve taşmıyor', () => {
-    // Üst sınır bir SEO hedefi değil, regresyon koruması. Google ~60
-    // karakterden sonrasını kesiyor ve şu an 40 başlık bunu aşıyor; bunları
-    // kısaltmak ayrı bir içerik işi. Buradaki 90, marka son ekinin geri
-    // gelmesi ya da bir başlığın gövde metniyle dolması gibi gerçek
-    // bozulmaları yakalar.
+  test('her sayfa başlığı arama sonucunda tam görünüyor', () => {
+    // Google başlıkların ~60 karakterden sonrasını kesiyor. Marka son eki
+    // " — JUSTEKS" 10 karakter, yani içerik başlığı 50'de kalmalı. Tüm
+    // sayfalar bu sınırın altına çekildi; eşik artık gerçek hedefi koruyor.
     const bad: string[] = []
     for (const locale of LOCALES) {
       for (const route of PUBLIC_ROUTES) {
         const p = toLocalePath(route.path, locale)
         const title = read(p).match(/<title>([^<]*)<\/title>/)?.[1] ?? ''
-        if (title.length < 15 || title.length > 90) bad.push(`${p}: ${title.length} — ${title}`)
+        if (title.length < 15 || title.length > 60) bad.push(`${p}: ${title.length} — ${title}`)
       }
     }
     expect(bad).toEqual([])

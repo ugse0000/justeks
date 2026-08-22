@@ -120,7 +120,7 @@ export const industries: Record<string, IndustryContent> = {
     slug: 'workwear',
     name: 'İş Kıyafeti',
     seo: {
-      title: 'İş Kıyafeti Kumaşları — Profesyonel Giysiler için Dayanıklı Kumaş — JUSTEKS',
+      title: 'İş Kıyafeti Kumaşları — Dayanıklı Kumaş — JUSTEKS',
       description:
         'İş kıyafeti üretimi için dayanıklı kumaşlar: pamuklu drill ve kanvas, polyester pamuk karışımları ve endüstriyel yıkamaya uygun teknik kaliteler.',
     },
@@ -147,7 +147,7 @@ export const industries: Record<string, IndustryContent> = {
     slug: 'uniforms',
     name: 'Üniforma',
     seo: {
-      title: 'Kurumsal ve Kurumsal Ölçekli Üniforma Programları için Kumaşlar — JUSTEKS',
+      title: 'Kurumsal Üniforma Programları için Kumaşlar — JUSTEKS',
       description:
         'Kurumsal üniforma programları için kumaş tedariki: polyester viskon takım elbiselik, gömleklik ve dayanıklı kolay bakım kaliteleri.',
     },

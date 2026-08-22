@@ -173,7 +173,7 @@ export const insights: Record<string, ArticleContent> = {
     slug: 'what-is-twill-fabric',
     title: 'What Is Twill Fabric?',
     seo: {
-      title: 'What Is Twill Fabric? Weave, Weight and Applications — JUSTEKS',
+      title: 'What Is Twill Fabric? Weave, Weight, Use — JUSTEKS',
       description:
         'Twill explained: how the diagonal weave is built, why it drapes and wears differently from plain weave, and where denim, gabardine and drill fit.',
     },

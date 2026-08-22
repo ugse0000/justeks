@@ -2,8 +2,12 @@ import type { NavContent } from '../schema'
 
 export const nav: NavContent = {
   brand: 'JUSTEKS',
+  /*
+   * The brand mark is the route home, so "Home" is not repeated here. Ten
+   * top-level items pushed the desktop bar past the page width; dropping the
+   * one item the logo already covers is the only removal that costs nothing.
+   */
   primary: [
-    { label: 'Home',          href: '/' },
     { label: 'Fabrics',       href: '/fabrics' },
     { label: 'Collections',   href: '/collections' },
     { label: 'Industries',    href: '/industries' },

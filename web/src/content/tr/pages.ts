@@ -143,7 +143,7 @@ export const pages: Record<string, GenericPageContent> = {
 
   quality: {
     seo: {
-      title: 'Kalite ve İzlenebilirlik — Her Kumaşın Bir Kimliği Vardır — JUSTEKS',
+      title: 'Kalite ve İzlenebilirlik — Kumaş Kimliği — JUSTEKS',
       description:
         'Ürün numarası, menşe, kompozisyon, konstrüksiyon, parti referansı ve renk referansı: bir kumaşı tekliften teslimata kadar tanımlanabilir kılan kayıt.',
     },
@@ -218,7 +218,7 @@ export const pages: Record<string, GenericPageContent> = {
 
   tradeLogistics: {
     seo: {
-      title: 'Ticaret ve Lojistik — Kumaş Seçiminden Nihai Teslimata — JUSTEKS',
+      title: 'Ticaret ve Lojistik — Seçimden Teslimata — JUSTEKS',
       description:
         'Uluslararası navlun koordinasyonu, ihracat ve menşe dokümantasyonu; fabrikaya, depoya veya belirlediğiniz ticari adrese teslimat.',
     },

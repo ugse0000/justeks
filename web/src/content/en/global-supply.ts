@@ -2,7 +2,7 @@ import type { GlobalSupplyContent } from '../schema'
 
 export const globalSupply: GlobalSupplyContent = {
   seo: {
-    title: 'Global Supply — UK-Origin Fabrics Supplied Worldwide — JUSTEKS',
+    title: 'Global Supply — UK-Origin Fabric Worldwide — JUSTEKS',
     description:
       'JUSTEKS supplies UK-origin fabrics to manufacturers, brands, wholesalers and professional buyers across Europe, Türkiye, the Middle East, North Africa, the Americas and Asia.',
   },
