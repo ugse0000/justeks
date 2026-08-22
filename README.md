@@ -98,6 +98,28 @@ A     185.199.111.153     AAAA  2606:50c0:8003::153
 DNS yayıldıktan sonra GitHub sertifikayı kendisi alır ve HTTPS zorlaması
 etkinleşir; bu birkaç saat sürebilir.
 
+## Backend (api/)
+
+Spring Boot 4.1 + PostgreSQL 17. Testler Testcontainers ile gerçek bir
+Postgres başlatır, yani Docker çalışıyor olmalı.
+
+```bash
+cd api
+mvn test          # Testcontainers Postgres 17 ayağa kaldırır
+mvn spring-boot:run
+```
+
+**JDK sürümü:** Proje Java 25 hedefler. Bu makinede `JAVA_HOME`
+JDK 17'yi gösteriyor ve Maven onu kullanıyor, bu yüzden derleme
+`release version 25 not supported` ile düşüyor. Maven'i JDK 25 ile
+çalıştırmak gerekiyor:
+
+```bash
+export JAVA_HOME="C:\Program Files\Eclipse Adoptium\jdk-25.0.4.7-hotspot"
+```
+
+Kalıcı çözüm için sistem `JAVA_HOME` değişkenini JDK 25'e almak yeterli.
+
 ## Yapı
 
 ```

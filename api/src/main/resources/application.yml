@@ -1,0 +1,37 @@
+# Every value that differs between machines comes from the environment, so the
+# committed file never carries a credential. See .env.example at the repo root.
+spring:
+  application:
+    name: justeks-api
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/justeks_dev}
+    username: ${DB_USER:justeks}
+    password: ${DB_PASSWORD:justeks}
+  jpa:
+    # Flyway owns the schema; Hibernate must never alter it.
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate.jdbc.time_zone: UTC
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 55MB
+
+justeks:
+  cors:
+    allowed-origins: ${ALLOWED_ORIGINS:http://localhost:5173}
+
+server:
+  port: ${PORT:8080}
+  error:
+    include-message: never
+    include-stacktrace: never
+
+logging:
+  level:
+    org.springframework.jdbc.core: warn
