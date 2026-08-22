@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="85mm" height="55mm" viewBox="0 0 85 55" role="img" aria-labelledby="t"><title id="t">JUSTEKS business card - back</title>
+
+  <rect width="85" height="55" fill="#FAF8F4"/>
+  <g transform="translate(12 9) scale(0.204545) translate(-17 -10)"><path d="M30 15 H42 V39 A10 10 0 0 1 22 39" fill="none" stroke="#0A0A0A" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter"/></g>
+  <text x="12" y="26" font-family="'Instrument Sans', Helvetica, Arial, sans-serif" font-size="3.4" fill="#0A0A0A" font-weight="600">[FULL NAME]</text>
+  <text x="12" y="30.5" font-family="'Instrument Sans', Helvetica, Arial, sans-serif" font-size="2.5" fill="#6B6257">[JOB TITLE]</text>
+  <rect x="12" y="34" width="61" height="0.2" fill="#C8A96A"/>
+  <text x="12" y="39" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="2.5" fill="#0A0A0A">[EMAIL]</text>
+  <text x="12" y="43" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="2.5" fill="#0A0A0A">[PHONE]</text>
+  <text x="12" y="47" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="2.5" fill="#6B6257">[ADDRESS LINE]</text>
+  <text x="73" y="47" font-family="'Instrument Sans', Helvetica, Arial, sans-serif" font-size="2.5" fill="#6B6257" text-anchor="end">justeks.com</text>
+</svg>

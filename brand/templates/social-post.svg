@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080" role="img" aria-labelledby="t"><title id="t">JUSTEKS social post</title>
+
+  <rect width="1080" height="1080" fill="#0A0A0A"/>
+  <g transform="translate(96 96) scale(0.995025) translate(0 13)"><g fill="none" stroke="#FAF8F4" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter"><path d="M30 15 H42 V39 A10 10 0 0 1 22 39" transform="translate(-25.5 -28) scale(1.5)"/></g><rect x="61" y="0" width="1.5" height="40" fill="#C8A96A"/><g fill="none" stroke="#FAF8F4" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter" transform="translate(82.5 0)"><path d="M6 0 H22 V30 A10 10 0 0 1 2 30" transform="translate(-2 0)"/><path d="M0 0 V28 A12 12 0 0 0 24 28 V0" transform="translate(33 0)"/><path d="M20 9.5 C20 4 16 -0.5 11 -0.5 C6 -0.5 2 4 2 9 C2 14 6 17 11 19 C16 21 20 25 20 30 C20 36 16 40.5 11 40.5 C6 40.5 2 36 2 30" transform="translate(67 0)"/><path d="M0 0 H24 M12 0 V40" transform="translate(96 0)"/><path d="M21 0 H0 V40 H21 M0 20 H16" transform="translate(129 0)"/><path d="M0 0 V40 M20 0 L1 21 M7 15 L22 40" transform="translate(162 0)"/><path d="M20 9.5 C20 4 16 -0.5 11 -0.5 C6 -0.5 2 4 2 9 C2 14 6 17 11 19 C16 21 20 25 20 30 C20 36 16 40.5 11 40.5 C6 40.5 2 36 2 30" transform="translate(193 0)"/></g></g>
+  <rect x="96" y="470" width="120" height="2" fill="#C8A96A"/>
+  <text x="96" y="560" font-family="'Newsreader', Georgia, serif" font-size="62" fill="#FAF8F4">[HEADLINE - one line, factual]</text>
+  <text x="96" y="630" font-family="'Instrument Sans', Helvetica, Arial, sans-serif" font-size="30" fill="#A79E92">[Supporting line: construction, weight, width or use.]</text>
+  <text x="96" y="984" font-family="'Instrument Sans', Helvetica, Arial, sans-serif" font-size="22" fill="#FAF8F4" letter-spacing="4.4">BRITISH ORIGIN. GLOBAL REACH.</text>
+</svg>
