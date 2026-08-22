@@ -138,7 +138,7 @@ export function FabricCategory({ slug, locale }: FabricCategoryProps) {
               {fabric.relatedCollections.map((c) => (
                 <li key={c}>
                   <Link className="tag tag--link t-small" to={L(`/collections/${c}`)}>
-                    {content.fabricCategories[c]?.name ?? c}
+                    {content.collections[c].name}
                   </Link>
                 </li>
               ))}

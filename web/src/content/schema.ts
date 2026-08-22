@@ -242,4 +242,5 @@ export interface SiteContent {
   nav: NavContent
   footer: FooterContent
   fabricCategories: Record<string, FabricCategoryContent>
+  collections: Record<string, CollectionContent>
 }

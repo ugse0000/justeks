@@ -9,9 +9,12 @@ import { footer as footerTr } from './tr/footer'
 import { fabrics as fabricsEn } from './en/fabrics'
 import { fabrics as fabricsTr } from './tr/fabrics'
 
+import { collections as collectionsEn } from './en/collections'
+import { collections as collectionsTr } from './tr/collections'
+
 const CONTENT: Record<Locale, SiteContent> = {
-  en: { nav: navEn, footer: footerEn, fabricCategories: fabricsEn },
-  tr: { nav: navTr, footer: footerTr, fabricCategories: fabricsTr },
+  en: { nav: navEn, footer: footerEn, fabricCategories: fabricsEn, collections: collectionsEn },
+  tr: { nav: navTr, footer: footerTr, fabricCategories: fabricsTr, collections: collectionsTr },
 }
 
 /** All copy for a locale. Components read from here; they never hold strings. */
