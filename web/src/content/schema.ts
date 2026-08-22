@@ -247,4 +247,5 @@ export interface SiteContent {
   globalSupply: GlobalSupplyContent
   home: HomeContent
   pages: Record<string, GenericPageContent>
+  insights: Record<string, ArticleContent>
 }

@@ -15,6 +15,8 @@ import { Industries } from './Industries'
 import { Industry } from './Industry'
 import { GenericPage } from './GenericPage'
 import { GlobalSupply } from './GlobalSupply'
+import { Insights } from './Insights'
+import { InsightArticle } from './InsightArticle'
 
 registerPage('home', Home)
 registerPage('fabrics', Fabrics)
@@ -74,3 +76,7 @@ for (const [routeKey, contentKey, path] of GENERIC_PAGES) {
 }
 
 registerPage('globalSupply', GlobalSupply)
+registerPage('insights', Insights)
+
+registerDetailPages('insights', '/insights',
+  (slug, locale) => <InsightArticle slug={slug} locale={locale} />)
