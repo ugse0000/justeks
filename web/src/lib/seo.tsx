@@ -84,20 +84,3 @@ export function Seo({ path, locale, meta, jsonLd, noIndex, ogType = 'website' }:
     </>
   )
 }
-
-/** BreadcrumbList JSON-LD for sub-pages. */
-export function breadcrumbJsonLd(
-  locale: Locale,
-  trail: { name: string; path: string }[],
-) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: trail.map((item, i) => ({
-      '@type': 'ListItem',
-      position: i + 1,
-      name: item.name,
-      item: absolute(toLocalePath(item.path, locale)),
-    })),
-  }
-}

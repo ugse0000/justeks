@@ -38,3 +38,16 @@ export function stripLocale(pathname: string): string {
 export function otherLocale(locale: Locale): Locale {
   return locale === 'en' ? 'tr' : 'en'
 }
+
+/**
+ * Prefix an internal href for a locale while preserving its query string.
+ *
+ * toLocalePath works on paths; hrefs in content carry things like
+ * "/contact?topic=SALES", and splitting the query off first is what keeps the
+ * prefix from landing in the wrong place.
+ */
+export function localiseHref(href: string, locale: Locale): string {
+  const [path, query] = href.split('?')
+  const localised = toLocalePath(path, locale)
+  return query ? `${localised}?${query}` : localised
+}

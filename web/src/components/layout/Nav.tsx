@@ -21,18 +21,27 @@ export function Nav({ locale }: NavProps) {
   const { pathname } = useLocation()
   const current = stripLocale(pathname)
 
-  const [open, setOpen] = useState(false)
+  /*
+   * The panel is open *for a route*, not open in the abstract.
+   *
+   * Storing the path it was opened on means a navigation closes it by
+   * definition — the stored path stops matching — rather than by an effect
+   * that fires after the new route has already painted.
+   */
+  const [openFor, setOpenFor] = useState<string | null>(null)
+  const open = openFor === pathname
+  const setOpen = (next: boolean) => setOpenFor(next ? pathname : null)
+
   const panelId = useId()
   const toggleRef = useRef<HTMLButtonElement>(null)
-
-  // Close on route change so the panel never survives navigation.
-  useEffect(() => { setOpen(false) }, [pathname])
 
   useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setOpen(false)
+        // setOpenFor is React's own setter and is stable, so the effect does
+        // not need to re-subscribe when the wrapper identity changes.
+        setOpenFor(null)
         toggleRef.current?.focus()
       }
     }
@@ -84,7 +93,7 @@ export function Nav({ locale }: NavProps) {
         aria-expanded={open}
         aria-controls={panelId}
         aria-label={open ? nav.closeLabel : nav.menuLabel}
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => setOpen(!open)}
       >
         <span className="nav__toggle-bar" aria-hidden="true" />
         <span className="nav__toggle-bar" aria-hidden="true" />

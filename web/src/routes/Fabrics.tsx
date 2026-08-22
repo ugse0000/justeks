@@ -23,7 +23,7 @@ const COPY = {
     heading: 'Kumaşlarımızı Keşfedin',
     lead: 'Birleşik Krallık menşeli kumaşlar teknik kategorilere ayrılmıştır. Her kategori konstrüksiyonu, tipik gramajları, kullanım alanlarını ve spesifikasyon sırasında önem taşıyan üretim notlarını içerir.',
     seo: {
-      title: 'Kumaşlar — Birleşik Krallık Menşeli Toptan Kumaş Kategorileri',
+      title: 'Kumaşlar — Toptan Kumaş Kategorileri',
       description: 'JUSTEKS kumaş kategorileri: keten, pamuk, viskon, polyester, yün, denim, örme, gömleklik, takım elbiselik, moda, performans ve iç mekân kumaşları.',
     },
     typesLabel: 'alt tür',

@@ -1,9 +1,10 @@
 import type { Locale } from '../content/schema'
+import { localiseHref } from '../lib/i18n'
 import { getContent } from '../content'
-import { Seo, breadcrumbJsonLd } from '../lib/seo'
+import { Seo } from '../lib/seo'
+import { breadcrumbJsonLd } from '../lib/jsonld'
 import { Section, Container, Eyebrow, Button } from '../components/primitives'
 import { GlobalSupplyMap } from '../components/sections/GlobalSupplyMap'
-import { localiseHref } from '../components/sections/Hero'
 import './GenericPage.css'
 
 export function GlobalSupply({ locale }: { locale: Locale }) {

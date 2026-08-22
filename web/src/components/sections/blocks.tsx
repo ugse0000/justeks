@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react'
+import { localiseHref } from '../../lib/i18n'
 import { Link } from 'react-router'
 import type { CtaRef, FeatureItem, ImageRef, Locale, PageIntro } from '../../content/schema'
 import { Section, Container, Eyebrow, Button } from '../primitives'
 import type { Tone } from '../primitives'
-import { localiseHref } from './Hero'
 import './blocks.css'
 
 /* Shared homepage building blocks. The homepage is long; these keep it from

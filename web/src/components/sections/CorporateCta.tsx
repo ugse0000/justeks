@@ -1,7 +1,7 @@
 import type { Locale } from '../../content/schema'
+import { localiseHref } from '../../lib/i18n'
 import { getContent } from '../../content'
 import { Section, Container, Button } from '../primitives'
-import { localiseHref } from './Hero'
 import './CorporateCta.css'
 
 export function CorporateCta({ locale }: { locale: Locale }) {

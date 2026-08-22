@@ -1,15 +1,8 @@
 import type { Locale } from '../../content/schema'
 import { getContent } from '../../content'
-import { toLocalePath } from '../../lib/i18n'
+import { localiseHref } from '../../lib/i18n'
 import { Container, Button } from '../primitives'
 import './Hero.css'
-
-/** Prefix an internal href while preserving its query string. */
-export function localiseHref(href: string, locale: Locale): string {
-  const [path, query] = href.split('?')
-  const localised = toLocalePath(path, locale)
-  return query ? `${localised}?${query}` : localised
-}
 
 export function Hero({ locale }: { locale: Locale }) {
   const { hero } = getContent(locale).home
