@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** JUSTEKS.com'un kurumsal vitrinini (EN/TR, 68 prerender edilmiş sayfa) ve dört talep formunu Postgres'e yazan Spring Boot API'sini çalışır hâlde teslim etmek.
+**Goal:** JUSTEKS.com'un kurumsal vitrinini (EN/TR, 112 prerender edilmiş sayfa) ve dört talep formunu Postgres'e yazan Spring Boot API'sini çalışır hâlde teslim etmek.
 
 **Architecture:** İki bağımsız deploy edilebilir birim. `web/` Vite + React 19 ile derlenir ve kendi prerender adımımızla her route için gerçek HTML üretir; tüm metin `src/content/{en,tr}` altında tip güvenli nesnelerde durur, JSX içinde sabit metin bulunmaz. `api/` Spring Boot 4.1.1 ile dört talep tipini ortak bir `enquiry` tablosu ve tipe özel detay tablolarına yazar. Web, API'ye yalnızca form gönderiminde bağlanır; API çökse bile site ayakta kalır.
 

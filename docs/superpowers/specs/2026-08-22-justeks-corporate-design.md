@@ -141,7 +141,10 @@ EN kökte, TR `/tr` önekiyle. Her sayfa build anında gerçek HTML üretir.
 | Yasal | `/privacy`, `/cookies`, `/terms` |
 | Admin | `/admin/enquiries` (prerender edilmez, korumalı SPA) |
 
-Toplam yaklaşık 34 EN + 34 TR = **68 statik sayfa**.
+Toplam **56 EN + 56 TR = 112 statik sayfa** (admin hariç). Route tablosu
+sayıldığında ilk tahmin olan 68 rakamı düşük çıktı: 12 kumaş kategorisi,
+8 koleksiyon, 8 sektör ve 6 makale alt sayfası hesaba katılınca gerçek sayı
+112 oldu. Ekstra sayfaların tamamı SEO açısından değerli landing sayfalarıdır.
 
 ---
 
@@ -221,7 +224,7 @@ Harici harita kütüphanesi kullanılmaz. Kendi sadeleştirilmiş SVG dünya har
 
 ### 8.1 İçerik derinliği
 
-Kategori ve sektör sayfaları şablon tekrarı olmayacaktır. Her biri kendi teknik metnine sahip olur (kumaş yapısı, tipik GSM aralığı, kullanım alanları, üretim notları). Aksi hâlde 68 sayfada ince içerik (thin content) SEO cezası riski doğar.
+Kategori ve sektör sayfaları şablon tekrarı olmayacaktır. Her biri kendi teknik metnine sahip olur (kumaş yapısı, tipik GSM aralığı, kullanım alanları, üretim notları). Aksi hâlde 112 sayfada ince içerik (thin content) SEO cezası riski doğar.
 
 ---
 
@@ -317,7 +320,7 @@ enquiry_attachment
 - Durum geçişi domain testleri.
 
 ### Frontend
-- **İçerik bütünlüğü testi (kritik):** her EN içerik anahtarının TR karşılığı var mı, her route'un title/description/hreflang'ı dolu mu, her görselin alt'ı var mı. Bu test 68 sayfada elle kontrolü ortadan kaldırır.
+- **İçerik bütünlüğü testi (kritik):** her EN içerik anahtarının TR karşılığı var mı, her route'un title/description/hreflang'ı dolu mu, her görselin alt'ı var mı. Bu test 112 sayfada elle kontrolü ortadan kaldırır.
 - Bileşen testleri: form doğrulama, dil değiştirici, navigasyon.
 - Prerender çıktısı testi: üretilen HTML'de `h1` ve meta etiketleri gerçekten var mı.
 
@@ -351,7 +354,7 @@ enquiry_attachment
 | # | Risk | Azaltma |
 |---|---|---|
 | 1 | Stock görselle "premium British textile house" hissi zayıf kalabilir | Az sayıda ama büyük görsel; tipografi ve boşluk öne çıkar. Görseller tek klasörde toplanır, gerçek fotoğraf gelince kod değişmeden değişir |
-| 2 | 68 sayfada ince içerik SEO cezası | Kategori/sektör sayfaları şablon değil, her biri kendi teknik metnine sahip (8.1) |
+| 2 | 112 sayfada ince içerik SEO cezası | Kategori/sektör sayfaları şablon değil, her biri kendi teknik metnine sahip (8.1) |
 | 3 | TypeScript 7 yeni derleyici, tooling uyumsuzluğu | Kurulumun ilk adımında doğrulanır; sorun çıkarsa TS 5.9 |
 | 4 | Kendi prerender adımımızın bakım yükü | Kapsamı dar tutulur (route listesi → HTML). Çıktı testle doğrulanır |
 | 5 | Faz 2 katalogu geldiğinde kurumsal yapının yeniden yazılması | İçerik/tasarım/veri katmanları baştan ayrık; ana sayfa 06 ve 07 slotları katalog için ayrılmış |
@@ -361,7 +364,7 @@ enquiry_attachment
 ## 15. Bitti tanımı
 
 - [ ] `docker compose up` ile Postgres ayağa kalkar
-- [ ] `npm run dev` ile site çalışır, `npm run build` 68 statik HTML üretir
+- [ ] `npm run dev` ile site çalışır, `npm run build` 112 statik HTML üretir
 - [ ] Her sayfa EN ve TR'de dolu, hreflang doğru
 - [ ] 4 form gerçekten Postgres'e kayıt yazar, referans numarası döner
 - [ ] Sourcing formunda dosya yüklenir ve admin'den indirilebilir
