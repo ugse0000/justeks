@@ -86,7 +86,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Stretch cotton relaxes after pressing — build the allowance into the pattern, not the fabric spec.',
     ],
     relatedCollections: ['essential', 'natural', 'shirting'],
-    image: img('cotton', 'Close-up of a white cotton weave showing the fine grain of the surface'),
+    image: img('cotton', 'Close-up of a white cotton canvas with a fine, even weave'),
   },
 
   viscose: {
@@ -125,7 +125,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Fine crepes are prone to seam slippage; confirm seam construction on the production sample.',
     ],
     relatedCollections: ['essential', 'natural'],
-    image: img('viscose', 'Viscose satin catching the light across a soft fold'),
+    image: img('viscose', 'Soft folds of a smooth, lustrous fabric catching the light'),
   },
 
   polyester: {
@@ -165,7 +165,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Recycled content should only be claimed where certification exists for that article.',
     ],
     relatedCollections: ['essential', 'performance', 'workwear'],
-    image: img('polyester', 'Magnified view of a synthetic weave showing individual filaments'),
+    image: img('polyester', 'Close-up of a synthetic fabric showing its woven pattern'),
   },
 
   wool: {
@@ -282,7 +282,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Use ballpoint needles and stretch stitching; a straight lockstitch on jersey will snap in wear.',
     ],
     relatedCollections: ['essential', 'performance'],
-    image: img('knitted', 'White knitted fabric showing the loop structure of the stitch'),
+    image: img('knitted', 'Knitted fabric in a natural tone showing the loop structure of the stitch'),
   },
 
   shirting: {
@@ -321,7 +321,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Pattern-matched stripes and checks increase consumption; confirm the allowance in the quotation.',
     ],
     relatedCollections: ['shirting', 'essential'],
-    image: img('shirting', 'Blue and white striped shirting falling in soft folds'),
+    image: img('shirting', 'Pale blue striped shirting cloth folded to show the weave'),
   },
 
   tailoring: {
@@ -399,7 +399,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'Test pressing on a cutting of every satin — iron marks on satin are permanent.',
     ],
     relatedCollections: ['essential', 'natural'],
-    image: img('fashion', 'A stack of fashion fabrics in varied colours and weights'),
+    image: img('fashion', 'Fabric samples hung side by side in a range of tones'),
   },
 
   'performance-technical': {
@@ -438,7 +438,7 @@ export const fabrics: Record<string, FabricCategoryContent> = {
       'For industrially laundered garments, confirm wash cycle and temperature before selecting cloth.',
     ],
     relatedCollections: ['performance', 'workwear'],
-    image: img('performance-technical', 'Water beading on the surface of a technical woven fabric'),
+    image: img('performance-technical', 'Water droplets sitting on the surface of a treated technical fabric'),
   },
 
   interior: {

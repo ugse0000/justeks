@@ -32,7 +32,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Repeatability', body: 'A carry-over piece needs the same cloth next season, not an equivalent.' },
     ],
     recommendedFabrics: ['linen', 'cotton', 'viscose', 'fashion', 'knitted'],
-    image: img('fashion-apparel', 'A designer measuring a patterned jacket on a dress form in a studio'),
+    image: img('fashion-apparel', 'Textile workers sorting finished cloth on a factory floor'),
   },
 
   shirting: {
@@ -59,7 +59,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Pattern repeat', body: 'Stripes and checks increase consumption; the allowance belongs in the quotation.' },
     ],
     recommendedFabrics: ['shirting', 'cotton', 'linen'],
-    image: img('shirting', 'A machinist sewing a garment at an industrial sewing machine'),
+    image: img('shirting', 'Hands guiding grey fabric through a sewing machine'),
   },
 
   tailoring: {
@@ -86,7 +86,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Weight by component', body: 'Trouser cloth is often specified heavier than the matching jacket cloth.' },
     ],
     recommendedFabrics: ['tailoring', 'wool', 'polyester'],
-    image: img('tailoring', 'A tailor measuring a bespoke jacket on a mannequin'),
+    image: img('tailoring', 'A tailor at work behind a mannequin in a shop window'),
   },
 
   'casual-streetwear': {
@@ -140,7 +140,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Finish type', body: 'A repellent finish wears; a coating is built in. They are not interchangeable.' },
     ],
     recommendedFabrics: ['performance-technical', 'cotton', 'polyester', 'denim'],
-    image: img('workwear', 'A factory supervisor in workwear and a hard hat on the production floor'),
+    image: img('workwear', 'Two workers in high-visibility jackets on site'),
   },
 
   uniforms: {
@@ -167,7 +167,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Care requirements', body: 'Domestic or industrial laundering changes the specification entirely.' },
     ],
     recommendedFabrics: ['tailoring', 'shirting', 'polyester', 'performance-technical'],
-    image: img('uniforms', 'A rail of uniform shirts and trousers in black and white'),
+    image: img('uniforms', 'A stack of folded uniform shirts in black and white'),
   },
 
   hospitality: {
@@ -221,6 +221,6 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Nap direction', body: 'Pile fabrics must be cut in one direction across the whole piece.' },
     ],
     recommendedFabrics: ['interior', 'fashion', 'cotton'],
-    image: img('interior-upholstery', 'Close-up of an upholstered armchair arm showing the covering fabric'),
+    image: img('interior-upholstery', 'Close-up of a textured armchair covering in raking light'),
   },
 }

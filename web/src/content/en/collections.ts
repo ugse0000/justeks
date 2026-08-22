@@ -159,7 +159,7 @@ export const collections: Record<string, CollectionContent> = {
     ],
     includes: ['Cotton', 'Denim', 'Performance & Technical', 'Polyester'],
     relatedCategories: ['cotton', 'denim', 'performance-technical', 'polyester'],
-    image: img('workwear', 'Heavy dark-dyed workwear cloth filling the frame'),
+    image: img('workwear', 'Close-up of a heavy brown canvas with a tight weave'),
   },
 
   interior: {

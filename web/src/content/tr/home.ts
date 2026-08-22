@@ -20,7 +20,7 @@ export const home: HomeContent = {
     ],
     image: {
       src: '/images/hero.webp',
-      alt: 'Çalışır hâldeki endüstriyel dokuma tezgâhı; çözgü iplikleri tarağın içinden geçiyor',
+      alt: 'Bir tekstil fabrikasında sıra hâlinde çalışan iplik makineleri',
       width: 2000,
       height: 1125,
     },

@@ -18,7 +18,7 @@ export const home: HomeContent = {
     ],
     image: {
       src: '/images/hero.webp',
-      alt: 'An industrial weaving loom in operation, warp threads running through the reed',
+      alt: 'A row of spinning machines running in a textile mill',
       width: 2000,
       height: 1125,
     },

@@ -32,7 +32,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Tekrarlanabilirlik', body: 'Devam eden bir ürün gelecek sezon muadilini değil aynı kumaşı ister.' },
     ],
     recommendedFabrics: ['linen', 'cotton', 'viscose', 'fashion', 'knitted'],
-    image: img('fashion-apparel', 'Stüdyoda manken üzerinde desenli bir cekete ölçü alan tasarımcı'),
+    image: img('fashion-apparel', 'Fabrika zemininde biten kumaşı ayıran tekstil işçileri'),
   },
 
   shirting: {
@@ -59,7 +59,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Desen raporu', body: 'Çizgi ve ekose tüketimi artırır; payı teklifte yer almalıdır.' },
     ],
     recommendedFabrics: ['shirting', 'cotton', 'linen'],
-    image: img('shirting', 'Endüstriyel dikiş makinesinde bir giysi diken makineci'),
+    image: img('shirting', 'Gri kumaşı dikiş makinesinden geçiren eller'),
   },
 
   tailoring: {
@@ -86,7 +86,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Parça bazında gramaj', body: 'Pantolon kumaşı çoğu zaman eşleşen ceket kumaşından daha ağır belirlenir.' },
     ],
     recommendedFabrics: ['tailoring', 'wool', 'polyester'],
-    image: img('tailoring', 'Manken üzerinde ısmarlama bir cekete ölçü alan terzi'),
+    image: img('tailoring', 'Vitrindeki mankenin arkasında çalışan bir terzi'),
   },
 
   'casual-streetwear': {
@@ -140,7 +140,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Apre tipi', body: 'İtici apre zamanla azalır, kaplama kumaşın içindedir. Birbirinin yerine geçmez.' },
     ],
     recommendedFabrics: ['performance-technical', 'cotton', 'polyester', 'denim'],
-    image: img('workwear', 'Üretim alanında iş kıyafeti ve baretle duran fabrika sorumlusu'),
+    image: img('workwear', 'Sahada, yüksek görünürlüklü ceket giyen iki işçi'),
   },
 
   uniforms: {
@@ -167,7 +167,7 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Bakım gereksinimleri', body: 'Evde mi endüstriyel mi yıkanacağı spesifikasyonu tümüyle değiştirir.' },
     ],
     recommendedFabrics: ['tailoring', 'shirting', 'polyester', 'performance-technical'],
-    image: img('uniforms', 'Askıda duran siyah beyaz üniforma gömlek ve pantolonları'),
+    image: img('uniforms', 'Siyah beyaz, katlanmış üniforma gömleklerinden oluşan bir yığın'),
   },
 
   hospitality: {
@@ -221,6 +221,6 @@ export const industries: Record<string, IndustryContent> = {
       { title: 'Hav yönü', body: 'Havlı kumaşlar tüm parçada tek yönde kesilmelidir.' },
     ],
     recommendedFabrics: ['interior', 'fashion', 'cotton'],
-    image: img('interior-upholstery', 'Kaplama kumaşını gösteren döşemeli koltuk kolunun yakın çekimi'),
+    image: img('interior-upholstery', 'Yandan gelen ışıkta, dokulu koltuk kaplamasının yakın çekimi'),
   },
 }

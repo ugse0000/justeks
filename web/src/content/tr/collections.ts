@@ -160,7 +160,7 @@ export const collections: Record<string, CollectionContent> = {
     ],
     includes: ['Pamuk', 'Denim', 'Performans ve Teknik', 'Polyester'],
     relatedCategories: ['cotton', 'denim', 'performance-technical', 'polyester'],
-    image: img('workwear', 'Kareyi dolduran ağır, koyu boyalı iş giysisi kumaşı'),
+    image: img('workwear', 'Sık dokulu ağır kahverengi kanvasın yakın çekimi'),
   },
 
   interior: {
