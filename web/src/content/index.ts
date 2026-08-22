@@ -21,9 +21,12 @@ import { globalSupply as globalSupplyTr } from './tr/global-supply'
 import { home as homeEn } from './en/home'
 import { home as homeTr } from './tr/home'
 
+import { pages as pagesEn } from './en/pages'
+import { pages as pagesTr } from './tr/pages'
+
 const CONTENT: Record<Locale, SiteContent> = {
-  en: { nav: navEn, footer: footerEn, fabricCategories: fabricsEn, collections: collectionsEn, industries: industriesEn, globalSupply: globalSupplyEn, home: homeEn },
-  tr: { nav: navTr, footer: footerTr, fabricCategories: fabricsTr, collections: collectionsTr, industries: industriesTr, globalSupply: globalSupplyTr, home: homeTr },
+  en: { nav: navEn, footer: footerEn, fabricCategories: fabricsEn, collections: collectionsEn, industries: industriesEn, globalSupply: globalSupplyEn, home: homeEn, pages: pagesEn },
+  tr: { nav: navTr, footer: footerTr, fabricCategories: fabricsTr, collections: collectionsTr, industries: industriesTr, globalSupply: globalSupplyTr, home: homeTr, pages: pagesTr },
 }
 
 /** All copy for a locale. Components read from here; they never hold strings. */

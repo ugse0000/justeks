@@ -246,4 +246,5 @@ export interface SiteContent {
   industries: Record<string, IndustryContent>
   globalSupply: GlobalSupplyContent
   home: HomeContent
+  pages: Record<string, GenericPageContent>
 }

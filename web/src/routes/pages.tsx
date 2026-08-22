@@ -13,6 +13,8 @@ import { Collections } from './Collections'
 import { Collection } from './Collection'
 import { Industries } from './Industries'
 import { Industry } from './Industry'
+import { GenericPage } from './GenericPage'
+import { GlobalSupply } from './GlobalSupply'
 
 registerPage('home', Home)
 registerPage('fabrics', Fabrics)
@@ -40,3 +42,35 @@ registerDetailPages('collections', '/collections',
 
 registerDetailPages('industries', '/industries',
   (slug, locale) => <Industry slug={slug} locale={locale} />)
+
+/**
+ * Corporate, service and legal pages all render from the same shell; only the
+ * content key and the canonical path differ. Keeping the mapping here means
+ * adding a page is a content file plus one line.
+ */
+const GENERIC_PAGES: [routeKey: string, contentKey: string, path: string][] = [
+  ['about',            'about',            '/about'],
+  ['heritage',         'heritage',         '/heritage'],
+  ['ukOrigin',         'ukOrigin',         '/uk-origin'],
+  ['textileExpertise', 'textileExpertise', '/textile-expertise'],
+  ['quality',          'quality',          '/quality-traceability'],
+  ['responsible',      'responsible',      '/responsible-textiles'],
+  ['tradeLogistics',   'tradeLogistics',   '/trade-logistics'],
+  ['bulkOrders',       'bulkOrders',       '/bulk-orders'],
+  ['sourcing',         'sourcing',         '/sourcing'],
+  ['sampleService',    'sampleService',    '/sample-service'],
+  ['tradeAccount',     'tradeAccount',     '/trade-account'],
+  ['resources',        'resources',        '/resources'],
+  ['contact',          'contact',          '/contact'],
+  ['privacy',          'privacy',          '/privacy'],
+  ['cookies',          'cookies',          '/cookies'],
+  ['terms',            'terms',            '/terms'],
+]
+
+for (const [routeKey, contentKey, path] of GENERIC_PAGES) {
+  registerPage(routeKey, ({ locale }) => (
+    <GenericPage pageKey={contentKey} path={path} locale={locale} />
+  ))
+}
+
+registerPage('globalSupply', GlobalSupply)
