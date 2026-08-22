@@ -92,6 +92,22 @@ ${urls}
 `,
 )
 
+/* ---- 404.html --------------------------------------------------------- */
+
+/**
+ * Static hosts serve this one file for every unmatched path, so it is written
+ * at the root rather than under a route directory. Any URL the router does not
+ * know renders the catch-all page, which is what we capture here.
+ */
+const notFound = render('/__prerender_unmatched__', LOCALE_TAGS[LOCALES[0]])
+writeFileSync(
+  join(dist, '404.html'),
+  template
+    .replace('<html lang="en">', `<html lang="${LOCALE_TAGS[LOCALES[0]]}">`)
+    .replace('<!--app-head-->', notFound.head)
+    .replace('<!--app-html-->', notFound.html),
+)
+
 /* ---- robots.txt ------------------------------------------------------- */
 
 writeFileSync(
@@ -105,4 +121,4 @@ Sitemap: ${SITE_URL}/sitemap.xml
 )
 
 console.log(`prerendered ${written} pages (${PUBLIC_ROUTES.length} routes × ${LOCALES.length} locales)`)
-console.log('wrote sitemap.xml and robots.txt')
+console.log('wrote sitemap.xml, robots.txt and 404.html')

@@ -28,6 +28,46 @@ d('prerendered output', () => {
     expect(PUBLIC_ROUTES.length * LOCALES.length).toBe(112)
   })
 
+  test('hiçbir başlık marka adını iki kez taşımaz', () => {
+    // withBrand önce yalnızca başlangıca bakıyordu; "The Linen Collection —
+    // JUSTEKS" gibi zaten markayla biten başlıklara bir kez daha eklediği
+    // için 112 sayfanın 84'ü "— JUSTEKS — JUSTEKS" ile çıkıyordu.
+    const doubled: string[] = []
+    for (const locale of LOCALES) {
+      for (const route of PUBLIC_ROUTES) {
+        const p = toLocalePath(route.path, locale)
+        const title = read(p).match(/<title>([^<]*)<\/title>/)?.[1] ?? ''
+        if (title.split('JUSTEKS').length - 1 > 1) doubled.push(`${p}: ${title}`)
+      }
+    }
+    expect(doubled).toEqual([])
+  })
+
+  test('her sayfanın başlığı dolu ve taşmıyor', () => {
+    // Üst sınır bir SEO hedefi değil, regresyon koruması. Google ~60
+    // karakterden sonrasını kesiyor ve şu an 40 başlık bunu aşıyor; bunları
+    // kısaltmak ayrı bir içerik işi. Buradaki 90, marka son ekinin geri
+    // gelmesi ya da bir başlığın gövde metniyle dolması gibi gerçek
+    // bozulmaları yakalar.
+    const bad: string[] = []
+    for (const locale of LOCALES) {
+      for (const route of PUBLIC_ROUTES) {
+        const p = toLocalePath(route.path, locale)
+        const title = read(p).match(/<title>([^<]*)<\/title>/)?.[1] ?? ''
+        if (title.length < 15 || title.length > 90) bad.push(`${p}: ${title.length} — ${title}`)
+      }
+    }
+    expect(bad).toEqual([])
+  })
+
+  test('404.html üretildi, indekslenmiyor ve ana sayfaya dönüş sunuyor', () => {
+    // Statik barındırma eşleşmeyen her yol için bu tek dosyayı sunar.
+    expect(existsSync('dist/404.html')).toBe(true)
+    const html = readFileSync('dist/404.html', 'utf8')
+    expect(html).toMatch(/name="robots" content="noindex/)
+    expect(html).toMatch(/<a[^>]+href="\/"/)
+  })
+
   test('ana sayfa gerçek içerik ve metadata taşır', () => {
     const html = read('/')
     expect(html).toMatch(/<h1[^>]*>/)

@@ -18,8 +18,17 @@ const absolute = (path: string) => `${SITE_URL}${path}`
 
 const ogLocale = (locale: Locale) => LOCALE_TAGS[locale].replace('-', '_')
 
+/**
+ * Append the brand unless the title already carries it.
+ *
+ * Content titles are inconsistent by nature: some end with the brand ("The
+ * Linen Collection — JUSTEKS"), some use it mid-sentence ("About JUSTEKS —
+ * Textile Expertise Since 2004"), most omit it. Testing for the name anywhere
+ * covers all three; matching only the start left the brand duplicated on 84
+ * of the 112 pages.
+ */
 function withBrand(title: string): string {
-  return title.startsWith(SITE_NAME) ? title : `${title} — ${SITE_NAME}`
+  return title.includes(SITE_NAME) ? title : `${title} — ${SITE_NAME}`
 }
 
 /**
