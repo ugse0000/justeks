@@ -67,7 +67,7 @@ Katalog fazında her iki bölüm kendi yerine oturur; ana sayfa bölüm sırası
 | Katman | Seçim | Sürüm | Gerekçe |
 |---|---|---|---|
 | Build | Vite | 8.2.2 | Kullanıcı tercihi; hızlı, sade |
-| UI | React + TypeScript | 19.2.8 / 7.0.2 | React 19 native `<title>`/`<meta>` head hoisting → prerender'ı basitleştirir |
+| UI | React + TypeScript | 19.2.8 / 6.0.2 | React 19 native `<title>`/`<meta>` head hoisting → prerender'ı basitleştirir |
 | Router | React Router | 8.3.0 | Güncel; sade route ağacı yeterli |
 | Prerender | Kendi build adımımız | — | `vite-react-ssg` React Router 6'ya bağlı. Site tamamen statik içerikten üretildiği için `react-dom/server` tabanlı kendi adımımız daha az risk taşır |
 | Test (web) | Vitest + Playwright | 4.1.11 | İçerik bütünlüğü + smoke |
@@ -77,7 +77,7 @@ Katalog fazında her iki bölüm kendi yerine oturur; ana sayfa bölüm sırası
 | DB test | Testcontainers | güncel | Gerçek Postgres üstünde entegrasyon testi |
 | Migration | Flyway | güncel | Versiyonlu şema |
 
-> **Not:** TypeScript 7 yeni native derleyicidir. Tooling'de sorun çıkarsa TS 5.9'a düşülecek; bu karar kurulumun ilk adımında gerçek derleme çıktısıyla teyit edilir.
+> **Not (çözüldü):** TypeScript sürümü **6.0.2**'dir. Vite şablonunun seçtiği sürüm budur; 7.0.2 zorlanmadı. `tsc --noEmit` temiz geçiyor.
 
 ---
 
