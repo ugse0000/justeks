@@ -1,0 +1,23 @@
+.trust {
+  background: var(--jt-black);
+  color: var(--jt-warm-white);
+  border-top: 1px solid rgb(255 255 255 / 0.12);
+  padding-block: var(--space-5);
+}
+
+.trust__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-4) var(--space-7);
+  margin: 0;
+}
+
+.trust__item {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--jt-muted-on-dark);
+}

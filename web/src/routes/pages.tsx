@@ -6,6 +6,7 @@
  */
 import { registerPage } from './registry'
 import { ROUTES } from '../content/routes'
+import { Home } from './Home'
 import { Fabrics } from './Fabrics'
 import { FabricCategory } from './FabricCategory'
 import { Collections } from './Collections'
@@ -13,6 +14,7 @@ import { Collection } from './Collection'
 import { Industries } from './Industries'
 import { Industry } from './Industry'
 
+registerPage('home', Home)
 registerPage('fabrics', Fabrics)
 registerPage('collections', Collections)
 registerPage('industries', Industries)

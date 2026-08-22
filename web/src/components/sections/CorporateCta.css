@@ -1,0 +1,16 @@
+.cta-band { max-width: 62ch; }
+
+.cta-band__body { margin-top: var(--space-5); color: var(--jt-muted-on-dark); }
+
+.cta-band__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-7);
+}
+
+.cta-band__footnote {
+  margin-top: var(--space-7);
+  color: var(--jt-gold);
+  letter-spacing: 0.06em;
+}
