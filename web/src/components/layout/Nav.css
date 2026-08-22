@@ -11,7 +11,9 @@
 .nav__primary {
   display: none;
   align-items: center;
-  gap: var(--space-5);
+  /* Tightened from --space-5 so the full bar clears its breakpoint with
+     room to spare rather than by a few pixels. */
+  gap: var(--space-4);
 }
 
 .nav__link {
@@ -64,6 +66,10 @@
 .nav__quote {
   display: inline-flex;
   align-items: center;
+  /* The button is a fixed piece of furniture in the bar; letting it wrap to
+     two lines makes the whole header grow when the brand mark takes its
+     space back. */
+  white-space: nowrap;
   padding: 0.7rem 1.3rem;
   border: 1px solid currentColor;
   font-size: 0.6875rem;
@@ -148,7 +154,16 @@
   margin-top: var(--space-8);
 }
 
-@media (min-width: 1100px) {
+/*
+ * The desktop bar needs the room it actually needs.
+ *
+ * Ten top-level links plus search, the quote button and the language switch
+ * measure ~1150px; with the brand mark and the page gutters that wants a
+ * ~1430px viewport. The old 1100px threshold turned the full bar on ~330px
+ * early, so it overflowed the page and forced a horizontal scrollbar. Below
+ * this width the menu button takes over, which leaves the mark plenty of room.
+ */
+@media (min-width: 1440px) {
   .nav__primary, .nav__actions { display: flex; }
   .nav__toggle { display: none; }
 }
