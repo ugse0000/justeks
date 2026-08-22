@@ -241,4 +241,5 @@ export interface FormContent {
 export interface SiteContent {
   nav: NavContent
   footer: FooterContent
+  fabricCategories: Record<string, FabricCategoryContent>
 }

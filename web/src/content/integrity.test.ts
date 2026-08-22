@@ -47,11 +47,25 @@ test('her görselin alt metni dolu', () => {
   }
 })
 
+// Bazı değerler iki dilde kasten aynıdır ve çeviri beklenmez:
+// - image.src: her iki dil aynı görsel dosyasını gösterir
+// - href: slug'lar iki dilde ortaktır (tekil URL yapısı)
+// - types[]: kumaş alt tür adları sektörde İngilizce ticari adlarıyla anılır
+const SHARED_BY_DESIGN = (key: string, value: string) =>
+  key.endsWith('.src') ||
+  key.endsWith('.href') ||
+  /.types.d+$/.test(key) ||
+  value.startsWith('/')
+
 test('uzun TR metinleri EN ile birebir aynı değil', () => {
   const en = new Map(trees.en)
   const tr = new Map(trees.tr)
   const untranslated = [...en.entries()]
-    .filter(([k, v]) => typeof v === 'string' && v.length > 40 && tr.get(k) === v)
+    .filter(([k, v]) =>
+      typeof v === 'string' &&
+      v.length > 40 &&
+      tr.get(k) === v &&
+      !SHARED_BY_DESIGN(k, v))
     .map(([k]) => k)
   expect(untranslated).toEqual([])
 })
