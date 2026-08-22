@@ -31,6 +31,10 @@ Trade Account hesap ekranları sonraki fazlara aittir.
 
 PostgreSQL'i lokale kurmanız gerekmez; Docker ile gelir.
 
+> TypeScript sürümü **6.0.2**'dir (Vite şablonunun seçtiği sürüm). Tasarım
+> dokümanında 7.0.2 öngörülmüştü; ekosistem uyumu için şablon varsayılanında
+> kalındı ve  temiz geçmektedir.
+
 ---
 
 ## Kurulum
