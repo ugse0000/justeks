@@ -243,4 +243,5 @@ export interface SiteContent {
   footer: FooterContent
   fabricCategories: Record<string, FabricCategoryContent>
   collections: Record<string, CollectionContent>
+  industries: Record<string, IndustryContent>
 }

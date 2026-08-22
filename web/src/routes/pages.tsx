@@ -10,9 +10,12 @@ import { Fabrics } from './Fabrics'
 import { FabricCategory } from './FabricCategory'
 import { Collections } from './Collections'
 import { Collection } from './Collection'
+import { Industries } from './Industries'
+import { Industry } from './Industry'
 
 registerPage('fabrics', Fabrics)
 registerPage('collections', Collections)
+registerPage('industries', Industries)
 
 /** Register the detail pages that a group owns, keyed by trailing slug. */
 function registerDetailPages(
@@ -32,3 +35,6 @@ registerDetailPages('fabrics', '/fabrics',
 
 registerDetailPages('collections', '/collections',
   (slug, locale) => <Collection slug={slug} locale={locale} />)
+
+registerDetailPages('industries', '/industries',
+  (slug, locale) => <Industry slug={slug} locale={locale} />)
