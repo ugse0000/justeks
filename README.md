@@ -75,28 +75,30 @@ mvn test               # Testcontainers kullanır, Docker gerekir
 
 ## Yayın
 
-Site GitHub Pages üzerinde barınır. `main` dalına her push
-`.github/workflows/deploy.yml` iş akışını çalıştırır: `web/` içinde derler,
-ardından testleri koşar (bu sırayla — prerender testleri `dist/` çıktısını
-okur ve derleme olmadan kendilerini atlarlar), sonra sonucu yayınlar.
+Site kendi sunucumuzda, nginx altında statik olarak duruyor.
 
-- Depo: <https://github.com/ugse0000/justeks>
-- Alan adı: `justeks.com` (`web/public/CNAME` dosyasından gelir)
+- Adres: <https://justeks.com> (www da aynı yere gider)
+- Sunucu: `isg-sunucu` (`~/.ssh/config` içinde tanımlı)
+- Kök dizin: `/var/www/justeks`
+- nginx tanımı: `infra/nginx/justeks.conf`
+- Sertifika: Let's Encrypt, certbot otomatik yeniliyor
 
-Alan adının DNS kayıtları GitHub'a yönlendirilmelidir. Apex (`justeks.com`)
-için A ve AAAA kayıtları:
+Yayınlamak için (repo kökünden):
 
-```
-A     185.199.108.153     AAAA  2606:50c0:8000::153
-A     185.199.109.153     AAAA  2606:50c0:8001::153
-A     185.199.110.153     AAAA  2606:50c0:8002::153
-A     185.199.111.153     AAAA  2606:50c0:8003::153
+```powershell
+pwsh scripts/deploy-web.ps1
 ```
 
-`www` için: `CNAME  www  ugse0000.github.io`
+Betik önce derler ve testleri koşar; testler düşerse gönderim yapmaz. Yeni
+sürümü sunucuda yanına açıp sonra takas eder, böylece site hiçbir an yarım
+dosya setiyle servis edilmez.
 
-DNS yayıldıktan sonra GitHub sertifikayı kendisi alır ve HTTPS zorlaması
-etkinleşir; bu birkaç saat sürebilir.
+**Bu sunucuda başka siteler de yayında.** nginx yapılandırmasına dokunurken
+yalnızca `justeks` tanımı değiştirilmeli; `sites-enabled` altındaki diğer
+dosyalara ve varsayılan sunucuya dokunulmamalı.
+
+GitHub Actions artık yayın yapmıyor, yalnızca derleme ve testleri doğruluyor
+(`.github/workflows/ci.yml`).
 
 ## Backend (api/)
 
