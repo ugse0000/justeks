@@ -31,7 +31,10 @@ export function LanguageSwitch() {
               to={toLocalePath(canonical, locale)}
               lang={locale}
               hrefLang={locale}
-              aria-label={FULL_NAME[locale]}
+              // WCAG 2.5.3: the accessible name has to contain the visible
+              // text, so someone using voice control can say what they see.
+              // "Türkçe" alone did not match the visible "TR".
+              aria-label={`${LOCALE_LABELS[locale]} — ${FULL_NAME[locale]}`}
             >
               {LOCALE_LABELS[locale]}
             </Link>

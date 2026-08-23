@@ -65,3 +65,12 @@ test('kısa hex biçimi desteklenir', () => {
 test('geçersiz renk hata fırlatır', () => {
   expect(() => contrastRatio('not-a-colour', '#fff')).toThrow()
 })
+
+test('ikincil metin rengi her açık zeminde AA geçer', () => {
+  // Bu renkler 11px gibi küçük boyutlarda kullanılıyor, yani AA eşiği 4.5.
+  // Daha önce opacity ile soldurulduklarında 2.89-3.99 arasına düşüyorlardı;
+  // Lighthouse bunu yakaladı. Palet renginin kendisi güvenli.
+  for (const ground of [WARM_WHITE, IVORY, CREAM]) {
+    expect(contrastRatio(MUTED, ground)).toBeGreaterThanOrEqual(AA)
+  }
+})

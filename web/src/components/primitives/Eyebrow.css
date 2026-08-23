@@ -2,5 +2,7 @@
 
 .eyebrow__index {
   margin-right: 0.4em;
-  opacity: 0.7;
+  /* No opacity: it faded the inherited muted colour to 3.01:1. The index is
+     aria-hidden, but hiding it from screen readers does not make it readable
+     for someone with low vision. */
 }

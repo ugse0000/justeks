@@ -11,16 +11,19 @@
 
 .lang__sep {
   margin-inline: var(--space-2);
-  opacity: 0.35;
+  color: var(--jt-cream);
 }
 
 .lang__current { color: currentColor; }
 
+/* Palette colour, not opacity: fading currentColor put the inactive language
+   at 3.99:1 on warm white, under the 4.5:1 AA needs at 11px. */
 .lang__link {
-  color: currentColor;
-  opacity: 0.55;
+  color: var(--jt-muted);
   text-decoration: none;
-  transition: opacity 180ms var(--ease);
+  transition: color 180ms var(--ease);
 }
 
-.lang__link:hover { opacity: 1; }
+.on-dark .lang__link { color: var(--jt-muted-on-dark); }
+
+.lang__link:hover { color: currentColor; }
