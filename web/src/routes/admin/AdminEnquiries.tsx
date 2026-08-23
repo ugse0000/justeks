@@ -27,28 +27,39 @@ const STATUSES = ['NEW', 'UNDER_REVIEW', 'QUOTED', 'NEGOTIATION', 'CONFIRMED', '
  */
 export function AdminEnquiries({ locale }: { locale: Locale }) {
   const api = useAdminApi()
-  const [rows, setRows] = useState<Row[]>([])
+  // null means "not loaded yet", which is also what shows the loading line.
+  // A separate `busy` flag would have to be set synchronously at the top of
+  // the effect, and starting a second render from inside one is what the
+  // set-state-in-effect rule is warning about.
+  const [rows, setRows] = useState<Row[] | null>(null)
   const [status, setStatus] = useState('')
   const [error, setError] = useState<string | null>(null)
-  const [busy, setBusy] = useState(false)
 
   const load = useCallback(async () => {
-    setBusy(true)
-    setError(null)
     try {
       const query = status ? `?status=${status}` : ''
       const page = await api.request(`/api/v1/admin/enquiries${query}`)
       setRows(page?.content ?? [])
+      setError(null)
     } catch (e) {
+      setRows([])
       setError(e instanceof Error ? e.message : 'Request failed')
-    } finally {
-      setBusy(false)
     }
   }, [api, status])
 
   useEffect(() => {
+    // Fetching on sign-in is exactly what an effect is for: synchronising with
+    // an external system. The rule flags load() because it can see setState
+    // inside it, but every one of those runs after an await, so nothing sets
+    // state synchronously during this render.
+    // eslint-disable-next-line react/set-state-in-effect
     if (api.signedIn) load()
   }, [api.signedIn, load])
+
+  function reload() {
+    setRows(null)
+    load()
+  }
 
   async function advance(reference: string, next: string) {
     try {
@@ -57,7 +68,7 @@ export function AdminEnquiries({ locale }: { locale: Locale }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: next }),
       })
-      load()
+      reload()
     } catch {
       setError(`Could not move ${reference} to ${next}`)
     }
@@ -85,7 +96,8 @@ export function AdminEnquiries({ locale }: { locale: Locale }) {
               <div className="admin__toolbar">
                 <label className="t-small" htmlFor="status-filter">Status</label>
                 <select id="status-filter" className="admin__select"
-                        value={status} onChange={(e) => setStatus(e.target.value)}>
+                        value={status}
+                        onChange={(e) => { setRows(null); setStatus(e.target.value) }}>
                   <option value="">All</option>
                   {STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
                 </select>
@@ -93,7 +105,7 @@ export function AdminEnquiries({ locale }: { locale: Locale }) {
               </div>
 
               {error && <p className="admin__error t-body" role="alert">{error}</p>}
-              {busy && <p className="t-small">Loading…</p>}
+              {rows === null && <p className="t-small">Loading…</p>}
 
               <table className="admin__table">
                 <caption className="t-small">Newest first</caption>
@@ -109,7 +121,7 @@ export function AdminEnquiries({ locale }: { locale: Locale }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {rows.map((row) => (
+                  {(rows ?? []).map((row) => (
                     <tr key={row.referenceNo}>
                       <td className="t-mono">{row.referenceNo}</td>
                       <td>{row.type}</td>
@@ -129,7 +141,7 @@ export function AdminEnquiries({ locale }: { locale: Locale }) {
                       </td>
                     </tr>
                   ))}
-                  {!busy && rows.length === 0 && (
+                  {rows?.length === 0 && (
                     <tr><td colSpan={7}>No enquiries.</td></tr>
                   )}
                 </tbody>
