@@ -1,10 +1,9 @@
-/* Fonts are loaded from index.html (preconnect + stylesheet) so the browser
-   starts fetching them before the CSS bundle parses. */
+/* The faces themselves are declared in design/fonts.css. */
 
 :root {
-  --font-head: "Newsreader", Georgia, "Times New Roman", serif;
-  --font-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Consolas, monospace;
+  --font-head: "Playfair Display Variable", "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-body: "Montserrat Variable", Montserrat, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
 }
 
 /* ---- Display / headings ------------------------------------------------
@@ -17,7 +16,6 @@
   font-size: clamp(2.6rem, 6.5vw, 5.4rem);
   line-height: 0.95;
   letter-spacing: -0.02em;
-  font-variation-settings: "opsz" 72;
 }
 
 .t-h1 {
@@ -26,7 +24,6 @@
   font-size: clamp(2.1rem, 4.6vw, 3.6rem);
   line-height: 1.06;
   letter-spacing: -0.018em;
-  font-variation-settings: "opsz" 48;
 }
 
 .t-h2 {
@@ -35,7 +32,6 @@
   font-size: clamp(1.7rem, 3.4vw, 2.7rem);
   line-height: 1.12;
   letter-spacing: -0.015em;
-  font-variation-settings: "opsz" 36;
 }
 
 .t-h3 {
@@ -101,6 +97,31 @@
 .on-dark .t-eyebrow::before {
   background: currentColor;
   opacity: 0.6;
+}
+
+/* ---- Tagline -----------------------------------------------------------
+   The mark's own tagline setting, in text: Montserrat opened right up, in
+   gold, under the lockup's hairline. Gold is 8.48:1 on ink and 2.02:1 on
+   ivory, so this belongs on dark ground only — design/contrast.test.ts pins
+   both figures. */
+
+.t-tagline {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--jt-gold);
+}
+
+.t-tagline::before {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 1px;
+  background: var(--jt-gold);
+  margin-bottom: var(--space-3);
 }
 
 /* ---- Technical data ----------------------------------------------------

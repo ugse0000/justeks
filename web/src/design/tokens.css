@@ -1,13 +1,19 @@
 :root {
   /* ---- Colour ---------------------------------------------------------
-     Gold is a hairline accent only: rules, eyebrows, active nav underline.
-     Never a fill, gradient or glow. Keep it under ~1% of page surface. */
-  --jt-black:        #0A0A0A;
-  --jt-ink:          #141414;
-  --jt-warm-white:   #FAF8F4;
-  --jt-ivory:        #F4EFE6;
-  --jt-cream:        #EDE6D9;
-  --jt-gold:         #C8A96A;
+     Three brand colours, exactly as the identity defines them: ink, ivory
+     and gold. Gold is a hairline accent only — rules, eyebrows on dark
+     ground, the active nav underline. Never a fill, gradient or glow, and
+     never text on a light surface, where it measures 2.02:1. Keep it under
+     ~1% of page surface.
+
+     Cream and the two muted greys are working neutrals derived from the
+     three, not additional brand colours: cream separates panels from the
+     page, and the greys carry secondary text. Every pairing they are used in
+     is pinned by design/contrast.test.ts. */
+  --jt-ink:          #0F0F0F;
+  --jt-ivory:        #F5F2ED;
+  --jt-gold:         #C6A96B;
+  --jt-cream:        #EAE5DB;
   --jt-muted:        #6B6257;
   --jt-muted-on-dark:#A79E92;
 

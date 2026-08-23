@@ -1,0 +1,14 @@
+/* Brand typefaces, self-hosted.
+   Playfair Display sets the name and the headings; Montserrat sets the
+   tagline and everything read at length. Both are the variable faces, so one
+   file per subset covers every weight the site uses.
+
+   Served from our own origin rather than a font CDN: it removes a
+   third-party connection from the critical path, and it keeps visitor IP
+   addresses from reaching another host on every page view.
+
+   Technical data stays on the system monospace stack. The identity is two
+   typefaces, and a third download to set article numbers is not worth it. */
+
+@import '@fontsource-variable/playfair-display/wght.css';
+@import '@fontsource-variable/montserrat/wght.css';

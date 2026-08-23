@@ -27,7 +27,7 @@
   font-family: var(--font-body);
   font-size: 1rem;
   color: var(--jt-ink);
-  background: var(--jt-warm-white);
+  background: var(--jt-ivory);
   border: 1px solid var(--jt-cream);
   border-radius: 0;
   transition: border-color 200ms var(--ease);

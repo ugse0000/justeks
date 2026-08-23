@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router'
 
+import './design/fonts.css'
 import './design/tokens.css'
 import './design/typography.css'
 import './design/base.css'

@@ -22,9 +22,9 @@
 /* ---- Light surfaces ---------------------------------------------------- */
 
 .button--solid {
-  background: var(--jt-black);
-  color: var(--jt-warm-white);
-  border-color: var(--jt-black);
+  background: var(--jt-ink);
+  color: var(--jt-ivory);
+  border-color: var(--jt-ink);
 }
 
 .button--solid:hover:not(:disabled) { background: var(--jt-ink); }
@@ -36,7 +36,7 @@
 
 .button--outline:hover:not(:disabled) {
   background: var(--jt-ink);
-  color: var(--jt-warm-white);
+  color: var(--jt-ivory);
 }
 
 .button--ghost {
@@ -51,22 +51,22 @@
 /* ---- Dark surfaces ----------------------------------------------------- */
 
 .on-dark .button--solid {
-  background: var(--jt-warm-white);
-  color: var(--jt-black);
-  border-color: var(--jt-warm-white);
+  background: var(--jt-ivory);
+  color: var(--jt-ink);
+  border-color: var(--jt-ivory);
 }
 
 .on-dark .button--solid:hover:not(:disabled) { background: #fff; }
 
 .on-dark .button--outline {
   border-color: rgb(255 255 255 / 0.35);
-  color: var(--jt-warm-white);
+  color: var(--jt-ivory);
 }
 
 .on-dark .button--outline:hover:not(:disabled) {
-  background: var(--jt-warm-white);
-  color: var(--jt-black);
-  border-color: var(--jt-warm-white);
+  background: var(--jt-ivory);
+  color: var(--jt-ink);
+  border-color: var(--jt-ivory);
 }
 
-.on-dark .button--ghost { color: var(--jt-warm-white); }
+.on-dark .button--ghost { color: var(--jt-ivory); }

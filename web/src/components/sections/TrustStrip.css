@@ -1,6 +1,6 @@
 .trust {
-  background: var(--jt-black);
-  color: var(--jt-warm-white);
+  background: var(--jt-ink);
+  color: var(--jt-ivory);
   border-top: 1px solid rgb(255 255 255 / 0.12);
   padding-block: var(--space-5);
 }

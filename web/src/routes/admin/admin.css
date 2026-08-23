@@ -21,7 +21,7 @@
   padding: var(--space-2) var(--space-3);
   font-family: var(--font-body);
   border: 1px solid var(--jt-cream);
-  background: var(--jt-warm-white);
+  background: var(--jt-ivory);
 }
 
 .admin__error { color: #A33A2A; margin-top: var(--space-4); }

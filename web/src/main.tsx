@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router'
 
+import './design/fonts.css'
 import './design/tokens.css'
 import './design/typography.css'
 import './design/base.css'

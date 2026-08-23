@@ -69,11 +69,11 @@
   align-items: center;
   padding: 0.45rem 0.85rem;
   border: 1px solid var(--jt-cream);
-  background: var(--jt-warm-white);
+  background: var(--jt-ivory);
   color: var(--jt-ink);
 }
 
-.section--ivory .tag { background: var(--jt-warm-white); }
+.section--ivory .tag { background: var(--jt-ivory); }
 
 .tag--link {
   text-decoration: none;

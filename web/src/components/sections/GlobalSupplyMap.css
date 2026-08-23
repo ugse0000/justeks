@@ -61,7 +61,7 @@
 /* ---- Nodes ------------------------------------------------------------- */
 
 .supply__node {
-  fill: var(--jt-warm-white);
+  fill: var(--jt-ivory);
   opacity: 0;
   transition: r 200ms var(--ease), opacity 400ms var(--ease);
 }
@@ -103,7 +103,7 @@
 .supply__region {
   border: 1px solid rgb(255 255 255 / 0.22);
   background: none;
-  color: var(--jt-warm-white);
+  color: var(--jt-ivory);
   padding: 0.6rem 1.1rem;
   font-family: var(--font-body);
   font-size: 0.6875rem;

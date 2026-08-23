@@ -8,13 +8,13 @@
 
 .section--flush { padding-block: 0; }
 
-.section--light { background: var(--jt-warm-white); color: var(--jt-ink); }
-.section--ivory { background: var(--jt-ivory);      color: var(--jt-ink); }
+.section--light { background: var(--jt-ivory); color: var(--jt-ink); }
+.section--ivory { background: var(--jt-cream);      color: var(--jt-ink); }
 .section--cream { background: var(--jt-cream);      color: var(--jt-ink); }
 
 .section--dark {
-  background: var(--jt-black);
-  color: var(--jt-warm-white);
+  background: var(--jt-ink);
+  color: var(--jt-ivory);
 }
 
 .section--dark .t-lead,

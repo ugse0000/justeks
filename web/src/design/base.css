@@ -8,7 +8,7 @@ html {
 }
 
 body {
-  background: var(--jt-warm-white);
+  background: var(--jt-ivory);
   color: var(--jt-ink);
   font-family: var(--font-body);
   font-size: 1rem;
@@ -48,7 +48,7 @@ ul[role="list"], ol[role="list"] {
 /* On dark surfaces gold on black is low contrast for a focus ring,
    so we widen it and add a light halo. */
 .on-dark :focus-visible {
-  outline: 2px solid var(--jt-warm-white);
+  outline: 2px solid var(--jt-ivory);
   outline-offset: 2px;
 }
 
@@ -59,8 +59,8 @@ ul[role="list"], ol[role="list"] {
   top: var(--space-4);
   z-index: var(--z-skiplink);
   padding: var(--space-3) var(--space-5);
-  background: var(--jt-black);
-  color: var(--jt-warm-white);
+  background: var(--jt-ink);
+  color: var(--jt-ivory);
   text-decoration: none;
   transform: translateY(-200%);
   transition: transform 150ms var(--ease);

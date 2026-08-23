@@ -20,10 +20,14 @@ const REQUIRED = [
   'justeks-lockup-reverse.svg',
   'justeks-lockup-black.svg',
   'justeks-lockup-white.svg',
+  'justeks-stack.svg',
+  'justeks-stack-reverse.svg',
   'justeks-monogram.svg',
   'justeks-monogram-reverse.svg',
   'justeks-wordmark.svg',
   'justeks-wordmark-reverse.svg',
+  'justeks-icon.svg',
+  'justeks-icon-reverse.svg',
   'social-profile-dark.svg',
   'social-profile-light.svg',
   'favicon-32.png',
@@ -86,24 +90,47 @@ test('web app manifest ürettiğimiz ikonlara işaret ediyor', () => {
   expect(missing).toEqual([])
 })
 
-test('altın yalnızca hairline olarak geçiyor', () => {
-  // Altın kuralı: ince vurgu, dolgu değil. Kilitte tek bir 1.5 birimlik
-  // çizgi olarak görünür; monogram ve wordmark hiç altın taşımaz.
-  const lockup = readFileSync(join(BRAND, 'justeks-lockup.svg'), 'utf8')
-  const goldUses = lockup.match(/#C8A96A/gi) ?? []
-  expect(goldUses).toHaveLength(1)
-  expect(lockup).toMatch(/<rect[^>]*width="1\.5"[^>]*fill="#C8A96A"/)
+const INK = '#0F0F0F'
+const IVORY = '#F5F2ED'
+const GOLD = '#C6A96B'
 
-  for (const name of ['justeks-monogram.svg', 'justeks-wordmark.svg']) {
-    expect(readFileSync(join(BRAND, name), 'utf8')).not.toContain('#C8A96A')
+/** Every hex colour a file mentions, uppercased and deduplicated. */
+function colours(svg: string): string[] {
+  return [...new Set((svg.match(/#[0-9A-Fa-f]{6}/g) ?? []).map((c) => c.toUpperCase()))].sort()
+}
+
+test('altın yalnızca çizgi ve slogan olarak geçiyor', () => {
+  // Altın kuralı: ince vurgu, dolgu değil. Kilitte hairline ve slogan
+  // altındır; adın harfleri hiçbir zaman altın basılmaz.
+  const lockup = readFileSync(join(BRAND, 'justeks-lockup.svg'), 'utf8')
+  // Çizgi tek bir dikdörtgendir ve altındır.
+  expect(lockup).toContain(`height="2.2" fill="${GOLD}"`)
+  // Adın yedi harfi mürekkep rengindedir.
+  expect(lockup.split(`fill="${INK}"`).length - 1).toBe(7)
+
+  for (const name of ['justeks-monogram.svg', 'justeks-wordmark.svg', 'justeks-icon.svg']) {
+    expect(readFileSync(join(BRAND, name), 'utf8'), name).not.toContain(GOLD)
   }
 })
 
 test('tek mürekkep sürümlerinde ikinci renk yok', () => {
   for (const name of ['justeks-lockup-black.svg', 'justeks-lockup-white.svg']) {
     const svg = readFileSync(join(BRAND, name), 'utf8')
-    expect(svg, name).not.toContain('#C8A96A')
-    const colours = new Set(svg.match(/#[0-9A-Fa-f]{6}/g) ?? [])
-    expect(colours.size, `${name} tek renk taşımalı`).toBe(1)
+    expect(svg, name).not.toContain(GOLD)
+    expect(colours(svg), `${name} tek renk taşımalı`).toHaveLength(1)
   }
+})
+
+for (const name of svgFiles) test(`${name} paletin dışına çıkmıyor`, () => {
+  // Kimlik üç renktir. Dördüncü bir renk buraya sızarsa marka kayar.
+  const allowed = [INK, IVORY, GOLD]
+  for (const colour of colours(readFileSync(join(BRAND, name), 'utf8'))) {
+    expect(allowed, `${name} içinde palet dışı renk: ${colour}`).toContain(colour)
+  }
+})
+
+test('manifest paletle aynı renkleri bildiriyor', () => {
+  const manifest = JSON.parse(readFileSync(join(PUBLIC, 'site.webmanifest'), 'utf8'))
+  expect(manifest.background_color).toBe(IVORY)
+  expect(manifest.theme_color).toBe(IVORY)
 })

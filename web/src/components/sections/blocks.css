@@ -22,7 +22,7 @@
   text-transform: uppercase;
 }
 
-.section--dark .block__badge { color: var(--jt-warm-white); }
+.section--dark .block__badge { color: var(--jt-ivory); }
 
 .block__split {
   display: grid;

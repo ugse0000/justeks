@@ -1,8 +1,11 @@
 import { render, screen } from '@testing-library/react'
-import { Logo } from './Logo'
+import { Logo, type LogoVariant } from './Logo'
 import {
-  LOCKUP_VIEWBOX, MONOGRAM_TIGHT_VIEWBOX, WORDMARK_PATHS, WORDMARK_VIEWBOX,
+  ICON_VIEWBOX, LOCKUP_VIEWBOX, MONOGRAM_PARTS, MONOGRAM_VIEWBOX,
+  STACK_VIEWBOX, TAGLINE_PARTS, WORDMARK_PARTS, WORDMARK_VIEWBOX,
 } from './paths'
+
+const VARIANTS: readonly LogoVariant[] = ['lockup', 'stack', 'wordmark', 'monogram', 'icon']
 
 test('anlamlı kullanımda erişilebilir ad taşır', () => {
   render(<Logo title="JUSTEKS" />)
@@ -23,8 +26,10 @@ test('dekoratif kullanımda erişilebilirlik ağacından çıkarılır', () => {
 
 test.each([
   ['lockup', LOCKUP_VIEWBOX],
-  ['monogram', MONOGRAM_TIGHT_VIEWBOX],
+  ['stack', STACK_VIEWBOX],
   ['wordmark', WORDMARK_VIEWBOX],
+  ['monogram', MONOGRAM_VIEWBOX],
+  ['icon', ICON_VIEWBOX],
 ] as const)('%s varyantı kendi sıkı viewBox değerini kullanır', (variant, viewBox) => {
   const { container } = render(<Logo variant={variant} />)
   expect(container.querySelector('svg')).toHaveAttribute('viewBox', viewBox)
@@ -32,21 +37,41 @@ test.each([
 
 test('wordmark yedi harfi de çizer', () => {
   const { container } = render(<Logo variant="wordmark" />)
-  expect(container.querySelectorAll('path')).toHaveLength(WORDMARK_PATHS.length)
-  expect(WORDMARK_PATHS).toHaveLength(7)
+  expect(WORDMARK_PARTS).toHaveLength(7)
+  expect(container.querySelectorAll('path')).toHaveLength(WORDMARK_PARTS.length)
 })
 
-test('kilit, monogram ve wordmark arasına altın çizgiyi koyar', () => {
+test('monogram J ve T harflerinden oluşur', () => {
+  const { container } = render(<Logo variant="monogram" />)
+  expect(MONOGRAM_PARTS).toHaveLength(2)
+  expect(container.querySelectorAll('path')).toHaveLength(2)
+})
+
+test('kilit; kelime markası, altın çizgi ve sloganı birlikte taşır', () => {
   const { container } = render(<Logo variant="lockup" />)
-  expect(container.querySelector('rect.logo__rule')).toBeInTheDocument()
-  // Monogram tek path, wordmark yedi path.
-  expect(container.querySelectorAll('path')).toHaveLength(1 + WORDMARK_PATHS.length)
+  expect(container.querySelector('rect.logo__accent')).toBeInTheDocument()
+  expect(container.querySelectorAll('path'))
+    .toHaveLength(WORDMARK_PARTS.length + TAGLINE_PARTS.length)
 })
 
-test('monogram ve wordmark tek başlarına çizgi taşımaz', () => {
-  for (const variant of ['monogram', 'wordmark'] as const) {
+test('dikey kilit, kilidin üstüne monogramı ekler', () => {
+  const { container } = render(<Logo variant="stack" />)
+  expect(container.querySelectorAll('path')).toHaveLength(
+    WORDMARK_PARTS.length + TAGLINE_PARTS.length + MONOGRAM_PARTS.length)
+})
+
+test('ikon, monogramı halkanın içine alır', () => {
+  const { container } = render(<Logo variant="icon" />)
+  expect(container.querySelector('circle')).toHaveAttribute('stroke', 'currentColor')
+  expect(container.querySelectorAll('path')).toHaveLength(MONOGRAM_PARTS.length)
+})
+
+test('tek başına kullanılan varyantlar altın taşımaz', () => {
+  // Altın yalnızca kilitteki çizgi ve slogandır. Monogram, kelime markası ve
+  // ikon tek mürekkeple basılır.
+  for (const variant of ['wordmark', 'monogram', 'icon'] as const) {
     const { container } = render(<Logo variant={variant} />)
-    expect(container.querySelector('rect.logo__rule')).toBeNull()
+    expect(container.querySelector('.logo__accent')).toBeNull()
   }
 })
 
@@ -63,22 +88,25 @@ test('ton verilmezse renk devralınır', () => {
   const { container } = render(<Logo variant="monogram" />)
   const svg = container.querySelector('svg')!
   expect(svg.className.baseVal).not.toMatch(/logo--(light|dark)/)
-  expect(svg.querySelector('path')).toHaveAttribute('stroke', 'currentColor')
+  expect(svg.querySelector('g')).toHaveAttribute('fill', 'currentColor')
 })
 
-test('kilitte de her çizim currentColor kullanır', () => {
-  const { container } = render(<Logo variant="lockup" />)
-  const strokes = [...container.querySelectorAll('[stroke]')]
-  expect(strokes.length).toBeGreaterThan(0)
-  for (const el of strokes) expect(el).toHaveAttribute('stroke', 'currentColor')
+test('harfler her varyantta currentColor ile boyanır', () => {
+  for (const variant of VARIANTS) {
+    const { container } = render(<Logo variant={variant} />)
+    const letters = container.querySelector('g[fill]')!
+    expect(letters, variant).toHaveAttribute('fill', 'currentColor')
+  }
 })
 
 test('işaret tek mürekkeple basılabilir kalır', () => {
   // Marka kuralı: gradient, filtre, maske veya gömülü raster yok. Bunlar
   // logoyu tek renkli baskıda ve küçük boyutta bozar.
-  const { container } = render(<Logo variant="lockup" title="JUSTEKS" />)
-  const markup = container.innerHTML
-  for (const banned of ['gradient', 'filter', 'mask', 'clipPath', 'image', 'style=']) {
-    expect(markup, `yasak: ${banned}`).not.toContain(banned)
+  for (const variant of VARIANTS) {
+    const { container } = render(<Logo variant={variant} title="JUSTEKS" />)
+    const markup = container.innerHTML
+    for (const banned of ['gradient', 'filter', 'mask', 'clipPath', 'image', 'style=']) {
+      expect(markup, `${variant} icinde yasak: ${banned}`).not.toContain(banned)
+    }
   }
 })
