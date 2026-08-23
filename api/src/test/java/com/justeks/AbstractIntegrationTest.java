@@ -22,8 +22,17 @@ import org.testcontainers.containers.PostgreSQLContainer;
 // The rate limiter is exercised directly in RateLimitFilterTest. Here it would
 // only make later tests in a class fail for reasons unrelated to what they
 // assert, since they all post from the same loopback address.
-@TestPropertySource(properties = "justeks.rate-limit.max-requests=10000")
+@TestPropertySource(properties = {
+    "justeks.rate-limit.max-requests=10000",
+    // The app refuses to start without an admin password; tests supply one
+    // rather than the config defaulting to something guessable.
+    "justeks.admin.username=" + AbstractIntegrationTest.ADMIN_USER,
+    "justeks.admin.password=" + AbstractIntegrationTest.ADMIN_PASSWORD,
+})
 public abstract class AbstractIntegrationTest {
+
+    public static final String ADMIN_USER = "test-admin";
+    public static final String ADMIN_PASSWORD = "test-admin-password";
 
     @ServiceConnection
     static final PostgreSQLContainer<?> POSTGRES =

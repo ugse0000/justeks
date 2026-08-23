@@ -25,6 +25,16 @@ spring:
 justeks:
   cors:
     allowed-origins: ${ALLOWED_ORIGINS:http://localhost:5173}
+  admin:
+    username: ${ADMIN_USERNAME:admin}
+    # No default: the app refuses to start without one rather than accepting
+    # a guessable password on an endpoint that exposes every enquiry.
+    password: ${ADMIN_PASSWORD:}
+  upload:
+    dir: ${UPLOAD_DIR:./uploads}
+  rate-limit:
+    max-requests: ${RATE_LIMIT_MAX:10}
+    window-minutes: ${RATE_LIMIT_WINDOW_MINUTES:10}
 
 server:
   port: ${PORT:8080}

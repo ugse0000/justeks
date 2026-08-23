@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -43,6 +44,18 @@ public class ApiExceptionHandler {
     @ExceptionHandler(InvalidUploadException.class)
     public ResponseEntity<Map<String, Object>> invalidUpload(InvalidUploadException ex) {
         return ResponseEntity.badRequest().body(Map.of("errors", Map.of("files", ex.getMessage())));
+    }
+
+    /**
+     * Statuses a controller chose deliberately, such as 404 for an unknown
+     * reference. Without this the catch-all below would turn every one of them
+     * into a 500 - the handler is registered for Exception, and
+     * ResponseStatusException is one.
+     */
+    @ExceptionHandler(ResponseStatusException.class)
+    public ResponseEntity<Map<String, Object>> deliberate(ResponseStatusException ex) {
+        return ResponseEntity.status(ex.getStatusCode())
+            .body(Map.of("errors", Map.of("form", ex.getReason() == null ? "" : ex.getReason())));
     }
 
     @ExceptionHandler(Exception.class)
