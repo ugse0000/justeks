@@ -12,6 +12,8 @@
 
 $ErrorActionPreference = 'Stop'
 
+. (Join-Path $PSScriptRoot 'lib' 'transfer.ps1')
+
 $Server  = 'isg-sunucu'          # ~/.ssh/config icindeki tanim
 $Target  = '/var/www/justeks'
 $Archive = Join-Path $env:TEMP 'justeks-dist.tar.gz'
@@ -26,6 +28,15 @@ try {
     npm test
     if ($LASTEXITCODE -ne 0) { throw 'Testler basarisiz - gonderim iptal' }
 
+    # Canli sitede aranacak imza: bu derlemenin kendi paket adi. Yalnizca
+    # 200 kontrolu, gonderim yarida kalip eski surum servis edilmeye devam
+    # ettiginde de gecer - nitekim bir kez oyle oldu.
+    $index = Get-Content -Raw (Join-Path 'dist' 'index.html')
+    if ($index -notmatch '(/assets/index-[A-Za-z0-9_-]+\.js)') {
+        throw 'Derleme ciktisinda paket adi bulunamadi'
+    }
+    $script:Bundle = $Matches[1]
+
     Write-Host '==> Paketleniyor'
     if (Test-Path $Archive) { Remove-Item $Archive -Force }
     tar -czf $Archive -C dist .
@@ -33,7 +44,7 @@ try {
 finally { Pop-Location }
 
 Write-Host '==> Gonderiliyor'
-scp -q $Archive "${Server}:/tmp/justeks-dist.tar.gz"
+Send-VerifiedFile -Server $Server -Path $Archive -Destination '/tmp/justeks-dist.tar.gz'
 
 # Once yeni surumu yanina acip sonra takas ediyoruz: site hicbir an yarim
 # dosya setiyle servis edilmesin.
@@ -53,6 +64,15 @@ echo "yayinlandi: $(find /var/www/justeks -type f | wc -l) dosya"
 $remote | ssh $Server 'bash -s'
 
 Write-Host '==> Dogrulama'
-$code = (curl.exe -s -o NUL -w '%{http_code}' --max-time 20 https://justeks.com/)
+$code = (curl.exe -s -o NUL -w '%{http_code}' --max-time 25 https://justeks.com/)
 Write-Host "https://justeks.com -> $code"
 if ($code -ne '200') { throw "Site beklenen yaniti vermedi: $code" }
+
+# -join sart: curl.exe ciktisi satir dizisi doner ve bir dizi uzerinde
+# -notmatch boolean degil, eslesmeyen satirlarin listesini verir - yani
+# kosul her zaman dogru cikar ve basarili bir yayin hatali gorunur.
+$live = (curl.exe -s --max-time 25 https://justeks.com/) -join "`n"
+if ($live -notmatch [regex]::Escape($script:Bundle)) {
+    throw "Canli site bu derlemeyi servis etmiyor - $($script:Bundle) bulunamadi"
+}
+Write-Host "yayindaki paket: $($script:Bundle)"

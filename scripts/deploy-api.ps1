@@ -11,6 +11,8 @@
 
 $ErrorActionPreference = 'Stop'
 
+. (Join-Path $PSScriptRoot 'lib' 'transfer.ps1')
+
 $Server = 'isg-sunucu'
 $Jdk25  = 'C:\Program Files\Eclipse Adoptium\jdk-25.0.4.7-hotspot'
 
@@ -32,8 +34,8 @@ $jar = Join-Path $PSScriptRoot '..' 'api' 'target' 'justeks-api-0.0.1-SNAPSHOT.j
 $size = (Get-Item $jar).Length
 
 Write-Host "==> Gonderiliyor ($([math]::Round($size/1MB)) MB)"
-# 56 MB'lik jar tek seferde kopabiliyor; sikistirma ve dogrulama ile.
-scp -C -o ServerAliveInterval=15 $jar "${Server}:/opt/justeks-api/justeks-api.jar.new"
+# 56 MB'lik jar tek seferde kopabiliyor; borulanip sha256 ile dogrulaniyor.
+Send-VerifiedFile -Server $Server -Path $jar -Destination '/opt/justeks-api/justeks-api.jar.new'
 
 $remote = @'
 set -e
