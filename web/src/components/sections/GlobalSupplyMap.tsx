@@ -106,7 +106,11 @@ export function GlobalSupplyMap({ locale }: Props) {
           </p>
         </div>
 
-        <ul role="list" className="supply__regions">
+        {/* Region names stay English in both locales - GlobalSupplyMap.test
+            pins that. Saying so here is what stops CSS uppercasing from
+            applying the Turkish i rule and rendering MIDDLE as MİDDLE on
+            /tr. Drop the attribute if the names are ever translated. */}
+        <ul role="list" className="supply__regions" lang="en">
           {globalSupply.regions.map((region) => (
             <li key={region.key}>
               <button
@@ -129,7 +133,7 @@ export function GlobalSupplyMap({ locale }: Props) {
         {activeRegion && (
           <div className="supply__detail" role="region" aria-label={activeRegion.name}>
             <p className="t-body t-measure">
-              <span className="supply__detail-name">{activeRegion.name}</span>
+              <span className="supply__detail-name" lang="en">{activeRegion.name}</span>
               {' — '}
               {activeRegion.body}
             </p>

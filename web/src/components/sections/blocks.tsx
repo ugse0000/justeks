@@ -180,7 +180,11 @@ export function CalloutBlock({
     <Section tone={tone} dataSection={id}>
       <Container>
         <SectionHead intro={intro} index={index} />
-        {badge && <p className="block__badge t-mono">{badge}</p>}
+        {/* English labels kept in both locales. Marking them as English is what
+              stops CSS uppercasing from applying the Turkish i rule and
+              rendering ORIGIN as ORİGİN on /tr. Drop the attribute if the
+              copy is ever translated. */}
+        {badge && <p className="block__badge t-mono" lang="en">{badge}</p>}
         {body.map((p) => <p key={p.slice(0, 24)} className="t-body t-measure block__para">{p}</p>)}
         <div className="block__actions">
           <Button href={localiseHref(cta.href, locale)} variant="outline">{cta.label}</Button>

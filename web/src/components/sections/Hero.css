@@ -4,8 +4,8 @@
   min-height: min(88svh, 900px);
   display: flex;
   align-items: flex-end;
-  background: var(--jt-black);
-  color: var(--jt-warm-white);
+  background: var(--jt-ink);
+  color: var(--jt-ivory);
   padding-block: var(--space-10) var(--space-9);
   overflow: hidden;
 }
@@ -34,10 +34,7 @@
 .hero__title { display: flex; flex-direction: column; }
 .hero__title-line { display: block; }
 
-.hero__tagline {
-  margin-top: var(--space-5);
-  color: var(--jt-muted-on-dark);
-}
+.hero__tagline { margin-top: var(--space-6); }
 
 .hero__lead {
   margin-top: var(--space-5);

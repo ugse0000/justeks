@@ -28,7 +28,7 @@ export function Hero({ locale }: { locale: Locale }) {
           ))}
         </h1>
 
-        <p className="hero__tagline t-h3">{hero.tagline}</p>
+        <p className="hero__tagline t-tagline" lang="en">{hero.tagline}</p>
         <p className="t-lead t-measure hero__lead">{hero.lead}</p>
 
         <div className="hero__actions">

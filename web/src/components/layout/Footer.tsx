@@ -25,10 +25,13 @@ export function Footer({ locale }: FooterProps) {
     <footer className="footer on-dark">
       <Container width="wide">
         <div className="footer__brand">
-          {/* Reversed lockup: the footer sets colour: warm white and the
-              mark draws in currentColor. */}
-          <Logo variant="lockup" className="footer__logo" title={footer.brand} />
-          <span className="footer__tagline t-h3">{footer.tagline}</span>
+          {/* The footer reproduces the primary lockup — wordmark, gold
+              hairline, tagline — but builds the tagline from real text
+              rather than outlines, so it stays selectable and readable to
+              assistive technology. The mark draws in currentColor, which the
+              footer sets to ivory. */}
+          <Logo variant="wordmark" className="footer__logo" title={footer.brand} />
+          <span className="footer__tagline t-tagline" lang="en">{footer.tagline}</span>
           <span className="footer__since t-small">{footer.since}</span>
         </div>
 
@@ -54,7 +57,11 @@ export function Footer({ locale }: FooterProps) {
             <h2 className="footer__heading t-eyebrow" data-testid="footer-heading">
               {footer.regionsHeading}
             </h2>
-            <p className="footer__regions t-small" data-testid="footer-regions">
+            {/* English labels kept in both locales. Marking them as English is what
+              stops CSS uppercasing from applying the Turkish i rule and
+              rendering ORIGIN as ORİGİN on /tr. Drop the attribute if the
+              copy is ever translated. */}
+            <p className="footer__regions t-small" data-testid="footer-regions" lang="en">
               {footer.regions.join(' • ')}
             </p>
           </div>

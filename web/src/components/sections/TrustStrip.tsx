@@ -8,7 +8,11 @@ export function TrustStrip({ locale }: { locale: Locale }) {
   return (
     <section className="trust on-dark" data-section="trust">
       <Container width="wide">
-        <ul role="list" className="trust__list" data-testid="trust-strip">
+        {/* English labels kept in both locales. Marking them as English is what
+              stops CSS uppercasing from applying the Turkish i rule and
+              rendering ORIGIN as ORİGİN on /tr. Drop the attribute if the
+              copy is ever translated. */}
+        <ul role="list" className="trust__list" data-testid="trust-strip" lang="en">
           {trust.map((item) => (
             <li key={item} className="trust__item">{item}</li>
           ))}
