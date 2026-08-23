@@ -30,9 +30,12 @@ import { insights as insightsTr } from './tr/insights'
 import { contact as contactEn } from './en/contact'
 import { contact as contactTr } from './tr/contact'
 
+import { forms as formsEn } from './en/forms'
+import { forms as formsTr } from './tr/forms'
+
 const CONTENT: Record<Locale, SiteContent> = {
-  en: { nav: navEn, footer: footerEn, fabricCategories: fabricsEn, collections: collectionsEn, industries: industriesEn, globalSupply: globalSupplyEn, home: homeEn, pages: pagesEn, insights: insightsEn, contact: contactEn },
-  tr: { nav: navTr, footer: footerTr, fabricCategories: fabricsTr, collections: collectionsTr, industries: industriesTr, globalSupply: globalSupplyTr, home: homeTr, pages: pagesTr, insights: insightsTr, contact: contactTr },
+  en: { nav: navEn, footer: footerEn, fabricCategories: fabricsEn, collections: collectionsEn, industries: industriesEn, globalSupply: globalSupplyEn, home: homeEn, pages: pagesEn, insights: insightsEn, contact: contactEn, forms: formsEn },
+  tr: { nav: navTr, footer: footerTr, fabricCategories: fabricsTr, collections: collectionsTr, industries: industriesTr, globalSupply: globalSupplyTr, home: homeTr, pages: pagesTr, insights: insightsTr, contact: contactTr, forms: formsTr },
 }
 
 /** All copy for a locale. Components read from here; they never hold strings. */

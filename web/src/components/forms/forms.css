@@ -1,0 +1,75 @@
+.form { margin-top: var(--space-9); max-width: 46rem; }
+.form__lead { color: var(--jt-muted); margin-top: var(--space-3); }
+
+.form__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+@media (min-width: 40rem) {
+  .form__row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.field { margin-top: var(--space-5); }
+
+.field__label {
+  display: block;
+  color: var(--jt-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.field__input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--jt-ink);
+  background: var(--jt-warm-white);
+  border: 1px solid var(--jt-cream);
+  border-radius: 0;
+  transition: border-color 200ms var(--ease);
+}
+
+.field__input:focus-visible {
+  outline: 2px solid var(--jt-gold);
+  outline-offset: 2px;
+  border-color: var(--jt-gold);
+}
+
+.field--error .field__input { border-color: #A33A2A; }
+
+.field__hint { color: var(--jt-muted); margin-top: var(--space-2); }
+
+/* Not gold: an error has to read as an error, and gold is the accent for
+   everything else on the page. This red holds 4.5:1 on warm white. */
+.field__error { color: #A33A2A; margin-top: var(--space-2); }
+
+.field__input--file { padding: var(--space-3); background: transparent; }
+
+/* Off-screen rather than display:none — some bots skip hidden inputs but fill
+   anything positioned. Not reachable by keyboard or screen reader. */
+.field__honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form__outcome:empty { display: none; }
+
+.form__success,
+.form__error-summary {
+  margin-top: var(--space-7);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--jt-gold);
+}
+
+.form__error-summary { border-top-color: #A33A2A; }
+.form__success p + p,
+.form__error-summary p + p { margin-top: var(--space-3); }
+
+.form__actions { margin-top: var(--space-7); }

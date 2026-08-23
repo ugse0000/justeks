@@ -274,4 +274,5 @@ export interface SiteContent {
   pages: Record<string, GenericPageContent>
   insights: Record<string, ArticleContent>
   contact: ContactContent
+  forms: Record<string, FormContent>
 }

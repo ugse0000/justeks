@@ -13,6 +13,10 @@ import { Collections } from './Collections'
 import { Collection } from './Collection'
 import { Industries } from './Industries'
 import { Industry } from './Industry'
+import { BulkForm } from '../components/forms/BulkForm'
+import { EnquiryForm } from '../components/forms/EnquiryForm'
+import { SourcingForm } from '../components/forms/SourcingForm'
+import { TradeAccountForm } from '../components/forms/TradeAccountForm'
 import { ContactDetails } from '../components/sections/ContactDetails'
 import { GenericPage } from './GenericPage'
 import { GlobalSupply } from './GlobalSupply'
@@ -59,10 +63,7 @@ const GENERIC_PAGES: [routeKey: string, contentKey: string, path: string][] = [
   ['quality',          'quality',          '/quality-traceability'],
   ['responsible',      'responsible',      '/responsible-textiles'],
   ['tradeLogistics',   'tradeLogistics',   '/trade-logistics'],
-  ['bulkOrders',       'bulkOrders',       '/bulk-orders'],
-  ['sourcing',         'sourcing',         '/sourcing'],
   ['sampleService',    'sampleService',    '/sample-service'],
-  ['tradeAccount',     'tradeAccount',     '/trade-account'],
   ['resources',        'resources',        '/resources'],
   ['privacy',          'privacy',          '/privacy'],
   ['cookies',          'cookies',          '/cookies'],
@@ -77,8 +78,27 @@ for (const [routeKey, contentKey, path] of GENERIC_PAGES) {
 
 // Contact uses the same shell but carries the office and registration
 // details, so it is registered on its own rather than in the table above.
+registerPage('sourcing', ({ locale }) => (
+  <GenericPage pageKey="sourcing" path="/sourcing" locale={locale}>
+    <SourcingForm locale={locale} />
+  </GenericPage>
+))
+
+registerPage('bulkOrders', ({ locale }) => (
+  <GenericPage pageKey="bulkOrders" path="/bulk-orders" locale={locale}>
+    <BulkForm locale={locale} />
+  </GenericPage>
+))
+
+registerPage('tradeAccount', ({ locale }) => (
+  <GenericPage pageKey="tradeAccount" path="/trade-account" locale={locale}>
+    <TradeAccountForm locale={locale} />
+  </GenericPage>
+))
+
 registerPage('contact', ({ locale }) => (
   <GenericPage pageKey="contact" path="/contact" locale={locale}>
+    <EnquiryForm locale={locale} />
     <ContactDetails locale={locale} />
   </GenericPage>
 ))
