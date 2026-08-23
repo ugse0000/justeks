@@ -83,13 +83,13 @@
 
 .nav__quote:hover {
   background: var(--jt-ink);
-  color: var(--jt-warm-white);
+  color: var(--jt-ivory);
 }
 
 .on-dark .nav__quote:hover,
 .header--dark .nav__quote:hover {
-  background: var(--jt-warm-white);
-  color: var(--jt-black);
+  background: var(--jt-ivory);
+  color: var(--jt-ink);
 }
 
 /* ---- Mobile toggle ----------------------------------------------------- */
@@ -118,8 +118,8 @@
   position: fixed;
   inset: 0;
   z-index: var(--z-menu);
-  background: var(--jt-black);
-  color: var(--jt-warm-white);
+  background: var(--jt-ink);
+  color: var(--jt-ivory);
   padding: calc(var(--space-10) + var(--space-4)) var(--gutter) var(--space-8);
   display: flex;
   flex-direction: column;
@@ -158,12 +158,15 @@
  * The desktop bar opens where it actually fits.
  *
  * Nine top-level links plus search, the quote button and the language switch
- * measure ~1000px; with the brand mark and the page gutters that needs a
- * ~1305px viewport. The original 1100px threshold turned the bar on some
- * 200px early, so it overflowed the page and forced a horizontal scrollbar.
+ * measure ~1076px. With the wordmark (148px), the row gap and the page
+ * gutters, the bar needs a ~1400px viewport. Earlier thresholds were set
+ * from estimates rather than measurement and turned the bar on too early:
+ * at 1320px the row was over-subscribed by about 45px, and because the
+ * brand was the only item that could give way, the logo quietly shrank to
+ * half its size instead of the menu button appearing.
  * Below this width the menu button takes over.
  */
-@media (min-width: 1320px) {
+@media (min-width: 1400px) {
   .nav__primary, .nav__actions { display: flex; }
   .nav__toggle { display: none; }
 }

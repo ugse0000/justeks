@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   z-index: var(--z-header);
-  background: var(--jt-warm-white);
+  background: var(--jt-ivory);
   color: var(--jt-ink);
   border-bottom: 1px solid transparent;
   transition: border-color 250ms var(--ease), background-color 250ms var(--ease);
@@ -29,12 +29,22 @@
   align-items: center;
   text-decoration: none;
   color: currentColor;
+  /* Never let the flex row take its space out of the mark. Without this the
+     brand is the item that gives way when the nav runs long, and the logo
+     silently shrinks instead of the layout admitting it does not fit. */
+  flex: none;
 }
 
 /* The mark is sized in one place; .logo is height: 1em. It shrinks with the
    header when the page scrolls, in step with the existing min-height change. */
-.header__logo { font-size: 26px; transition: font-size 250ms var(--ease); }
-.header--compact .header__logo { font-size: 22px; }
+/* The wordmark is letterspaced, so it runs much wider than it is tall: it
+   is sized to sit within the room the nav leaves, not by cap height alone.
+   The monogram is squarer and can be set larger for the same footprint. */
+.header__logo { transition: font-size 250ms var(--ease); }
+.header__logo--full { font-size: 23px; }
+.header__logo--compact { font-size: 30px; }
+.header--compact .header__logo--full { font-size: 20px; }
+.header--compact .header__logo--compact { font-size: 26px; }
 
 /* Below the nav breakpoint the full lockup would crowd the menu button, so
    the monogram stands in. display:none keeps the hidden one out of the

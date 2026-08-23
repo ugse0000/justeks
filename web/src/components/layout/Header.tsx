@@ -34,7 +34,7 @@ export function Header({ locale }: HeaderProps) {
             to={toLocalePath('/', locale)}
             aria-label={nav.brand}
           >
-            <Logo variant="lockup" className="header__logo header__logo--full" />
+            <Logo variant="wordmark" className="header__logo header__logo--full" />
             <Logo variant="monogram" className="header__logo header__logo--compact" />
           </Link>
           <Nav locale={locale} />
