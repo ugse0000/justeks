@@ -47,8 +47,5 @@ public record CreateEnquiryRequest(
 
     /** Honeypot. Must stay empty. */
     String website
-) {
-    public boolean looksAutomated() {
-        return website != null && !website.isBlank();
-    }
+) implements EnquiryFields {
 }

@@ -1,6 +1,7 @@
 package com.justeks;
 
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.testcontainers.containers.PostgreSQLContainer;
 
@@ -18,6 +19,10 @@ import org.testcontainers.containers.PostgreSQLContainer;
  * migrations rather than a schema Hibernate guessed.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+// The rate limiter is exercised directly in RateLimitFilterTest. Here it would
+// only make later tests in a class fail for reasons unrelated to what they
+// assert, since they all post from the same loopback address.
+@TestPropertySource(properties = "justeks.rate-limit.max-requests=10000")
 public abstract class AbstractIntegrationTest {
 
     @ServiceConnection

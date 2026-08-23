@@ -1,6 +1,5 @@
 package com.justeks.enquiry;
 
-import com.justeks.common.ReferenceNumberGenerator;
 import com.justeks.enquiry.EnquiryService.RequestContext;
 import com.justeks.notification.NotificationService;
 import com.justeks.storage.StorageService;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.time.Year;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,20 +20,20 @@ public class SourcingService {
     private final EnquiryRepository enquiries;
     private final SourcingRequestDetailRepository details;
     private final EnquiryAttachmentRepository attachments;
-    private final ReferenceNumberGenerator references;
+    private final EnquiryFactory factory;
     private final StorageService storage;
     private final NotificationService notifications;
 
     public SourcingService(EnquiryRepository enquiries,
                            SourcingRequestDetailRepository details,
                            EnquiryAttachmentRepository attachments,
-                           ReferenceNumberGenerator references,
+                           EnquiryFactory factory,
                            StorageService storage,
                            NotificationService notifications) {
         this.enquiries = enquiries;
         this.details = details;
         this.attachments = attachments;
-        this.references = references;
+        this.factory = factory;
         this.storage = storage;
         this.notifications = notifications;
     }
@@ -59,20 +57,8 @@ public class SourcingService {
 
         var stored = storage.storeAll(files);
         try {
-            var enquiry = new Enquiry(
-                references.next(EnquiryType.SOURCING, Year.now().getValue()),
-                EnquiryType.SOURCING,
-                request.contactName(), request.email(), request.country());
-
-            enquiry.setCompanyName(request.companyName());
-            enquiry.setPhone(request.phone());
-            enquiry.setCity(request.city());
-            enquiry.setMessage(request.message());
-            enquiry.setLocale(request.locale());
-            enquiry.setSourceIp(context.sourceIp());
-            enquiry.setUserAgent(context.userAgent());
-
-            var saved = enquiries.save(enquiry);
+            var saved = enquiries.save(
+                factory.create(request, EnquiryType.SOURCING, context));
 
             var detail = new SourcingRequestDetail(saved.getId());
             detail.setFabricType(request.fabricType());
