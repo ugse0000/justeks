@@ -41,36 +41,41 @@ The identity has to look like it belongs to a supplier that ships on time.
 
 ### The idea
 
-The monogram is a **J** built from three parts: a short top serif, a straight
-stem, and a true semicircular bowl.
+The identity is **typographic**. There is no drawn symbol, because a fabric
+house is judged on the quality of its finish, and nothing shows finish like a
+high-contrast serif set with room to breathe.
 
-- **The stem** reads as the warp — straight, tensioned, structural.
-- **The bowl** is the turn of a finished fabric edge, a **selvedge**. It is a
-  real half-circle, not a calligraphic sweep, because a selvedge is a
-  controlled, machine-made edge, not a flourish.
-- **The serif** is what stops the mark reading as a hook or a U at small sizes,
-  and gives the letter a settled, established stance.
+- **The name** is set in Playfair Display capitals, tracked open to better than
+  half the cap height. The spacing is the mark. At normal setting "JUSTEKS" is
+  a word on a page; opened up, the eye takes the letters one at a time and the
+  shape holds at the width of a selvedge or a shopfront.
+- **The J** keeps its descending tail. It is the one letter that breaks the
+  baseline, and it is what stops the name sitting as a flat block.
+- **The thick-and-thin** of Playfair does the work a drawn symbol would do
+  elsewhere: it reads as woven contrast, warp against weft.
 
-The mark is drawn monoline: one stroke weight, butt caps, mitre joins. No
-tapering, no optical thick-and-thin. This is a supplier's mark, not a fashion
-house's signature.
+### The monogram
 
-The wordmark is drawn from the same alphabet, so the J in JUSTEKS repeats the
-monogram's serif exactly. The two are visibly the same letterform.
+The monogram is a **JT** — the two capitals the name opens with — set to
+interlock. The T is pulled back until its arm crosses the J's stem, so the pair
+merges into one figure rather than reading as two initials side by side. It
+takes the same descending J as the wordmark, which is what ties the two marks
+together.
+
+Inside a hairline ring it becomes the icon: the avatar, app icon and stamp form.
 
 ### The lockup and its hairline
 
-In the horizontal lockup the monogram is set **1.5×** the wordmark's cap height
-and separated by a single gold hairline.
+The primary lockup is **wordmark, gold hairline, tagline**. The rule is centred
+under the name, the width of a woven selvedge stripe, and the tagline sits
+below it in Montserrat, tracked wider still.
 
-This is not decoration. At equal size the monogram and the wordmark read as
-"J JUSTEKS", because the mark is the same letter the word starts with. The size
-step plus the rule separate the emblem from the name. The hairline is also the
-one place gold earns its keep in the logo system — the width of a single
-selvedge thread.
+The hairline is the one place gold earns its keep in the logo system. It is
+also the only element carrying a second colour, so the lockup reproduces intact
+in one ink by drawing the rule in the same colour as the letters.
 
-**The lockup is complete without it.** Single-ink versions set the rule in the
-same colour as the mark.
+**The lockup is complete without gold.** Single-ink versions set both the rule
+and the tagline in the mark's own colour.
 
 ---
 
@@ -82,19 +87,25 @@ same colour as the mark.
 | `justeks-lockup-reverse.svg` | Primary lockup, dark grounds |
 | `justeks-lockup-black.svg` | All black — one ink, embossing, fax-grade repro |
 | `justeks-lockup-white.svg` | All white — one ink on dark |
-| `justeks-monogram.svg` | Emblem alone, pale grounds |
-| `justeks-monogram-reverse.svg` | Emblem alone, dark grounds |
-| `justeks-wordmark.svg` | Name alone, pale grounds |
-| `justeks-wordmark-reverse.svg` | Name alone, dark grounds |
+| `justeks-stack.svg` / `-reverse.svg` | Full signature: monogram over the lockup |
+| `justeks-wordmark.svg` / `-reverse.svg` | Name alone |
+| `justeks-monogram.svg` / `-reverse.svg` | JT alone |
+| `justeks-icon.svg` / `-reverse.svg` | JT in its ring |
 | `social-profile-dark.svg` / `-light.svg` | Square avatars |
 
 **Choosing one:**
 
-- **Lockup** is the default. Use it wherever the brand is being introduced.
-- **Monogram** where the name already appears in the surrounding text, or where
-  the space is square or very small: favicons, avatars, labels, stamps.
-- **Wordmark** where an emblem would compete with other marks, such as a partner
-  or supplier lineup.
+- **Wordmark** is the workhorse. Use it wherever the mark has to be small or
+  sit in a row with other things: site header, business card, label, letterhead.
+- **Lockup** wherever the brand is introduced at size and the tagline can
+  actually be read — a cover, a stand, a social post. See the minimum widths
+  below; under them the tagline is a smudge and the wordmark is the honest
+  choice.
+- **Stack** is the formal signature: a presentation cover, a plaque, a stamp on
+  a dark ground.
+- **Monogram** where the name already appears in the surrounding text, or the
+  space is square and small: favicons, labels, seals.
+- **Icon** for avatars and app icons, where a container is expected anyway.
 
 ---
 
@@ -102,35 +113,44 @@ same colour as the mark.
 
 ### Clear space
 
-The measure is **the stroke weight of the monogram's stem** — call it `x`.
-In the lockup, `x` is one sixth of the monogram's height.
+The measure is **the cap height of the wordmark** — call it `x`. Every mark in
+the system is built against it.
 
 Keep at least **1×** clear on every side. Nothing enters that band: no type, no
-rules, no image edges, no other logos.
+rules, no image edges, no other logos. The letterspacing already gives the mark
+its air; crowding it takes that away and the name stops reading as a mark.
 
 ```
-┌─────────────────────────────┐
-│         1x clear            │
-│   ┌─────────────────────┐   │
-│1x │   J │ JUSTEKS       │1x │
-│   └─────────────────────┘   │
-│         1x clear            │
-└─────────────────────────────┘
++-----------------------------------+
+|             1x clear              |
+|   +---------------------------+   |
+|1x |  J U S T E K S            |1x |
+|   |         --------          |   |
+|   |    FABRIC, PERFECTED.     |   |
+|   +---------------------------+   |
+|             1x clear              |
++-----------------------------------+
 ```
 
 ### Minimum sizes
 
-Below these the wordmark's counters close up and the mark stops being legible.
-
 | Mark | Screen | Print |
 | --- | --- | --- |
-| Lockup | 90 px wide | 24 mm wide |
-| Wordmark | 70 px wide | 20 mm wide |
-| Monogram | 16 px tall | 5 mm tall |
+| Lockup / stack | 320 px wide | 64 mm wide |
+| Wordmark | 120 px wide | 32 mm wide |
+| Monogram | 20 px tall | 6 mm tall |
+| Icon | 32 px | 10 mm |
 
-The monogram was drawn to survive 16 px: at that size its stroke is still 2.5 px
-and the serif still registers. This is why the monogram, not the lockup, is the
-favicon and the mobile header mark.
+The lockup's floor is set by its tagline, not by the name. The tagline sets at
+15.5% of the cap height, so a 64 mm lockup gives it a 1.21 mm cap — about
+3.4 pt, and as small as a press will hold it. At 40 mm it would be 0.75 mm and
+would print as a grey smudge. **This is why the corporate templates carry the
+wordmark rather than the lockup**: a business card is not big enough for the
+tagline.
+
+Playfair is a high-contrast face, and its thin strokes are the first thing to
+go at small sizes. The monogram holds down to about 20 px. It is still
+recognisable at 16 px in a favicon, but it is soft there; below that, use text.
 
 ---
 
@@ -163,16 +183,20 @@ Gold is a **hairline accent only** — rules, eyebrows, the active nav underline
 the lockup's separator. Never a fill, never a gradient, never a glow. Keep it
 under roughly **1%** of any page or page-equivalent surface.
 
+The identity is **three colours**. Everything below them is a working neutral
+derived from the three, not a brand colour in its own right.
+
 | Name | HEX | RGB | CMYK (approx.) | Role |
 | --- | --- | --- | --- | --- |
-| Near black | `#0A0A0A` | 10, 10, 10 | 0 / 0 / 0 / 96 | Primary ink, dark grounds |
-| Ink | `#141414` | 20, 20, 20 | 0 / 0 / 0 / 92 | Body text on pale grounds |
-| Warm ivory | `#FAF8F4` | 250, 248, 244 | 0 / 1 / 2 / 2 | Primary page ground |
-| Ivory | `#F4EFE6` | 244, 239, 230 | 0 / 2 / 6 / 4 | Alternate section ground |
-| Cream | `#EDE6D9` | 237, 230, 217 | 0 / 3 / 8 / 7 | Hairline rules, dividers |
-| Muted gold | `#C8A96A` | 200, 169, 106 | 0 / 16 / 47 / 22 | Accent only |
-| Muted | `#6B6257` | 107, 98, 87 | 0 / 8 / 19 / 58 | Secondary text, pale grounds |
-| Muted on dark | `#A79E92` | 167, 158, 146 | 0 / 5 / 13 / 35 | Secondary text, dark grounds |
+| Ink | `#0F0F0F` | 15, 15, 15 | 0 / 0 / 0 / 94 | Primary ink, dark grounds |
+| Ivory | `#F5F2ED` | 245, 242, 237 | 0 / 1 / 3 / 4 | Primary page ground |
+| Gold | `#C6A96B` | 198, 169, 107 | 0 / 15 / 46 / 22 | Accent only |
+
+| Working neutral | HEX | RGB | Role |
+| --- | --- | --- | --- |
+| Cream | `#EAE5DB` | 234, 229, 219 | Panels, hairline rules, dividers |
+| Muted | `#6B6257` | 107, 98, 87 | Secondary text, pale grounds |
+| Muted on dark | `#A79E92` | 167, 158, 146 | Secondary text, dark grounds |
 
 **CMYK values are conversions, not press-matched.** Have them proofed before a
 production run. For large solid blacks, ask the printer for a rich black build
@@ -180,8 +204,8 @@ rather than 0/0/0/96.
 
 ### Gold never carries text on a pale ground
 
-Muted gold on warm ivory measures **1.98:1** — far below the WCAG AA minimum of
-4.5:1. On near black it measures 8.4:1 and is fine.
+Gold on ivory measures **2.02:1** — far below the WCAG AA minimum of 4.5:1.
+On ink it measures **8.48:1** and is fine.
 
 So: gold text only on dark grounds. On pale grounds, an eyebrow is set in
 `--jt-muted` with a gold hairline beside it. This rule is pinned by a test in
@@ -193,9 +217,15 @@ the web project (`src/design/contrast.test.ts`).
 
 | Role | Typeface | Notes |
 | --- | --- | --- |
-| Headings | **Newsreader** | Light to medium weights only |
-| Body | **Instrument Sans** | 400 / 500 / 600 |
-| Technical data | **IBM Plex Mono** | Counts, GSM, widths, article numbers |
+| Name and headings | **Playfair Display** | Regular to medium weights only |
+| Tagline, body, labels | **Montserrat** | 400 / 500 / 600 |
+| Technical data | System monospace | Counts, GSM, widths, article numbers |
+
+Both faces are SIL OFL and are **self-hosted** from our own origin: no font CDN
+sits in the critical path, and no third party sees a visitor's address on every
+page view. Technical data uses the system monospace stack deliberately — the
+identity is two typefaces, and a third download to set article numbers is not
+worth the weight.
 
 Rules:
 
@@ -324,20 +354,20 @@ would fill in is left as a bracketed placeholder such as `[LEGAL NAME]`,
 | `quotation-cover.svg` | A4 | Dark cover, reference and validity block |
 | `woven-label.svg` | 60 × 30 mm | **Single ink** — rule set in the mark's colour |
 | `shipping-document-header.svg` | 210 × 45 mm | Consignee and Incoterm fields |
-| `social-profile.svg` | 1000 × 1000 | Monogram, dark ground |
+| `social-profile.svg` | 1000 × 1000 | Ring icon, dark ground |
 | `social-post.svg` | 1080 × 1080 | Lockup, headline and supporting line |
 | `email-signature.html` | — | Table-based, inline styles, Outlook-safe |
 
 ### Social
 
-- **Avatar:** monogram on near black. The lockup is unreadable at avatar size.
-- **Posts:** lockup top-left, headline in Newsreader, supporting line factual.
+- **Avatar:** the ring icon on ink. The lockup is unreadable at avatar size.
+- **Posts:** lockup top-left, headline in Playfair Display, supporting line factual.
 - Positioning line at the foot, letterspaced, never inside the logo file.
 - One idea per post. No collages, no stickers, no emoji in brand voice.
 
 ### Documents
 
-- Lockup top-left, at consistent size across a document family
+- Wordmark top-left, at consistent size across a document family
 - One gold hairline per page at most
 - Statutory details (legal name, registered address, tax and MERSIS numbers)
   belong in the footer, set small in muted
@@ -351,16 +381,26 @@ All artwork is generated from one geometry module, so the marks cannot drift
 apart:
 
 ```
-brand/tools/geometry.mjs        # the numbers — every shape derives from these
+brand/fonts/                    # the two OFL faces the outlines come from
+brand/tools/extract-glyphs.mjs  # pulls the letterforms out, writes glyphs.mjs
+brand/tools/glyphs.mjs          # generated outlines, cap height = 100
+brand/tools/geometry.mjs        # the numbers — every mark derives from these
 brand/tools/svg.mjs             # SVG emitters
 brand/tools/build-brand.mjs     # writes web/public/brand/* and the React paths
 brand/tools/build-templates.mjs # writes brand/templates/*
+brand/tools/build-board.mjs     # writes the brand board
 ```
 
 ```bash
+node brand/tools/extract-glyphs.mjs   # only when a font or the glyph set changes
 node brand/tools/build-brand.mjs      # marks, icons, manifest, social card
 node brand/tools/build-templates.mjs  # corporate templates
+node brand/tools/build-board.mjs      # the brand board
 ```
+
+The outlines are extracted once and committed, so the artwork carries no font
+dependency: a mark reproduces identically whether or not Playfair Display is
+installed on the machine opening it.
 
 `build-brand.mjs` also writes `web/src/components/brand/paths.ts`, which the
 `Logo` React component reads — so the mark on the site and the mark in the

@@ -11,20 +11,18 @@
 import { mkdir, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { MONO, WORD, lockup, monogramBounds, monogramPath, wordmark, round } from './geometry.mjs'
+import { lockup, monogram, round, wordmark } from './geometry.mjs'
+import { GOLD, INK, IVORY, fills } from './svg.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..')
 const out = join(root, 'brand', 'templates')
 const written = []
 
-const INK = '#0A0A0A'
-const IVORY = '#FAF8F4'
-const GOLD = '#C8A96A'
 const MUTED = '#6B6257'
 
-const SANS = "'Instrument Sans', Helvetica, Arial, sans-serif"
-const SERIF = "'Newsreader', Georgia, serif"
-const MONOF = "'IBM Plex Mono', 'Courier New', monospace"
+const SANS = "'Montserrat', Helvetica, Arial, sans-serif"
+const SERIF = "'Playfair Display', Georgia, serif"
+const MONOF = "ui-monospace, 'Courier New', monospace"
 
 async function put(name, contents) {
   await mkdir(out, { recursive: true })
@@ -33,25 +31,41 @@ async function put(name, contents) {
 }
 
 const l = lockup()
-const mb = monogramBounds()
+const m = monogram()
+const w = wordmark()
 
-/** Lockup scaled to a given width, placed by its top-left ink corner. */
+const scaled = (x, y, factor, dy) =>
+  `<g transform="translate(${round(x)} ${round(y)}) `
+  + `scale(${round(factor * 10000) / 10000}) translate(0 ${round(-dy)})">`
+
+/**
+ * Lockup scaled to a given width, placed by its top-left ink corner.
+ *
+ * `ruleColour` takes the ink colour where a second colour cannot be held —
+ * a woven label runs one thread, an embossed card one die.
+ */
 function lockupAt(x, y, width, colour, ruleColour = GOLD) {
-  const s = width / l.width
-  return `<g transform="translate(${round(x)} ${round(y)}) scale(${round(s * 10000) / 10000}) translate(0 ${-l.top})">`
-    + `<g fill="none" stroke="${colour}" stroke-width="${MONO.stroke}" stroke-linecap="butt" stroke-linejoin="miter">`
-    + `<path d="${monogramPath()}" transform="${l.monoTransform}"/></g>`
+  return scaled(x, y, width / l.width, l.top)
+    + fills(l.word.parts, colour)
     + `<rect x="${l.rule.x}" y="${l.rule.y}" width="${l.rule.w}" height="${l.rule.h}" fill="${ruleColour}"/>`
-    + `<g fill="none" stroke="${colour}" stroke-width="${WORD.stroke}" stroke-linecap="butt" stroke-linejoin="miter" transform="${l.wordTransform}">`
-    + wordmark().parts.join('') + '</g></g>'
+    + `<g transform="${l.tagTransform}">${fills(l.tag.parts, ruleColour)}</g></g>`
+}
+
+/**
+ * Wordmark scaled to a given width — the mark for small applications.
+ *
+ * The lockup carries the tagline, and the tagline sets at 15.5% of the cap
+ * height. On a 40 mm business card that is a 0.75 mm cap: past the point any
+ * press holds it, and it would print as a grey smudge under the name. So
+ * anything below the lockup's minimum width uses the name on its own.
+ */
+function wordmarkAt(x, y, width, colour) {
+  return scaled(x, y, width / w.width, w.top) + fills(w.parts, colour) + '</g>'
 }
 
 /** Monogram scaled to a given height. */
 function monogramAt(x, y, height, colour) {
-  const s = height / (mb.maxY - mb.minY)
-  return `<g transform="translate(${round(x)} ${round(y)}) scale(${round(s * 10000) / 10000}) translate(${-mb.minX} ${-mb.minY})">`
-    + `<path d="${monogramPath()}" fill="none" stroke="${colour}" stroke-width="${MONO.stroke}"`
-    + ' stroke-linecap="butt" stroke-linejoin="miter"/></g>'
+  return scaled(x, y, height / (m.bottom - m.top), m.top) + fills(m.parts, colour) + '</g>'
 }
 
 const doc = (w, h, unit, title, body) =>
@@ -69,7 +83,7 @@ const text = (x, y, s, opts = {}) => {
 
 await put('business-card-front.svg', doc(85, 55, 'mm', 'JUSTEKS business card - front', `
   <rect width="85" height="55" fill="${INK}"/>
-  ${lockupAt(12, 20, 40, IVORY)}
+  ${wordmarkAt(12, 20, 40, IVORY)}
   <rect x="12" y="35" width="16" height="0.25" fill="${GOLD}"/>
   ${text(12, 41, 'BRITISH ORIGIN. GLOBAL REACH.', { size: 2.1, colour: IVORY, spacing: 0.42 })}`))
 
@@ -88,7 +102,7 @@ await put('business-card-back.svg', doc(85, 55, 'mm', 'JUSTEKS business card - b
 
 await put('letterhead-a4.svg', doc(210, 297, 'mm', 'JUSTEKS letterhead - A4', `
   <rect width="210" height="297" fill="${IVORY}"/>
-  ${lockupAt(20, 18, 46, INK)}
+  ${wordmarkAt(20, 18, 46, INK)}
   ${text(190, 24, 'Textile Expertise Since 2004.', { size: 2.6, colour: MUTED, anchor: 'end' })}
   <rect x="20" y="34" width="170" height="0.2" fill="${GOLD}"/>
 
@@ -111,7 +125,7 @@ await put('letterhead-a4.svg', doc(210, 297, 'mm', 'JUSTEKS letterhead - A4', `
 
 await put('quotation-cover.svg', doc(210, 297, 'mm', 'JUSTEKS quotation cover - A4', `
   <rect width="210" height="297" fill="${INK}"/>
-  ${lockupAt(24, 34, 54, IVORY)}
+  ${wordmarkAt(24, 34, 54, IVORY)}
   <rect x="24" y="150" width="30" height="0.3" fill="${GOLD}"/>
   ${text(24, 166, 'QUOTATION', { size: 11, colour: IVORY, family: SERIF })}
   ${text(24, 178, '[CLIENT NAME]', { size: 4.4, colour: '#A79E92' })}
@@ -133,14 +147,14 @@ await put('woven-label.svg', doc(60, 30, 'mm', 'JUSTEKS woven label', `
   <rect width="60" height="30" fill="${IVORY}"/>
   <rect x="0" y="0" width="60" height="0.4" fill="${INK}"/>
   <rect x="0" y="29.6" width="60" height="0.4" fill="${INK}"/>
-  ${lockupAt(14, 9, 32, INK, INK)}
+  ${wordmarkAt(14, 9, 32, INK)}
   ${text(30, 22.5, '[COMPOSITION] &#183; [ORIGIN]', { size: 1.9, colour: MUTED, anchor: 'middle', family: MONOF })}`))
 
 /* ---- Shipping document header, 210 x 45 mm ----------------------------- */
 
 await put('shipping-document-header.svg', doc(210, 45, 'mm', 'JUSTEKS shipping document header', `
   <rect width="210" height="45" fill="${IVORY}"/>
-  ${lockupAt(20, 12, 40, INK)}
+  ${wordmarkAt(20, 12, 40, INK)}
   ${text(190, 15, '[DOCUMENT TYPE]', { size: 3.4, weight: 600, anchor: 'end' })}
   ${text(190, 20.5, '[DOCUMENT NO]', { size: 2.6, family: MONOF, colour: MUTED, anchor: 'end' })}
   <rect x="20" y="30" width="170" height="0.2" fill="${GOLD}"/>
@@ -157,7 +171,7 @@ await put('social-profile.svg', doc(1000, 1000, '', 'JUSTEKS social profile', `
 
 await put('social-post.svg', doc(1080, 1080, '', 'JUSTEKS social post', `
   <rect width="1080" height="1080" fill="${INK}"/>
-  ${lockupAt(96, 96, 300, IVORY)}
+  ${lockupAt(96, 96, 420, IVORY)}
   <rect x="96" y="470" width="120" height="2" fill="${GOLD}"/>
   ${text(96, 560, '[HEADLINE - one line, factual]', { size: 62, colour: IVORY, family: SERIF })}
   ${text(96, 630, '[Supporting line: construction, weight, width or use.]', { size: 30, colour: '#A79E92' })}
@@ -177,23 +191,23 @@ await put('email-signature.html', `<!doctype html>
   Replace every [BRACKETED] value. Do not add certification logos here -
   certifications belong only to the specific article that holds them.
 -->
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: Helvetica, Arial, sans-serif; color: #0A0A0A;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: Helvetica, Arial, sans-serif; color: #0F0F0F;">
   <tr>
     <td style="padding: 0 18px 0 0; vertical-align: top;">
       <img src="https://justeks.com/brand/justeks-monogram.svg"
            width="34" height="50" alt="JUSTEKS" style="display: block; border: 0;">
     </td>
-    <td style="border-left: 1px solid #C8A96A; padding: 0 0 0 18px; vertical-align: top;">
+    <td style="border-left: 1px solid #C6A96B; padding: 0 0 0 18px; vertical-align: top;">
       <div style="font-size: 15px; font-weight: 600; letter-spacing: 0.02em;">[FULL NAME]</div>
       <div style="font-size: 13px; color: #6B6257; padding-top: 2px;">[JOB TITLE] &middot; JUSTEKS</div>
       <div style="height: 10px; line-height: 10px;">&nbsp;</div>
       <div style="font-size: 12px; color: #6B6257;">
-        <a href="mailto:[EMAIL]" style="color: #0A0A0A; text-decoration: none;">[EMAIL]</a>
+        <a href="mailto:[EMAIL]" style="color: #0F0F0F; text-decoration: none;">[EMAIL]</a>
         &nbsp;&middot;&nbsp;
-        <a href="tel:[PHONE E164]" style="color: #0A0A0A; text-decoration: none;">[PHONE]</a>
+        <a href="tel:[PHONE E164]" style="color: #0F0F0F; text-decoration: none;">[PHONE]</a>
       </div>
       <div style="font-size: 12px; color: #6B6257; padding-top: 2px;">
-        <a href="https://justeks.com" style="color: #0A0A0A; text-decoration: none;">justeks.com</a>
+        <a href="https://justeks.com" style="color: #0F0F0F; text-decoration: none;">justeks.com</a>
       </div>
       <div style="height: 10px; line-height: 10px;">&nbsp;</div>
       <div style="font-size: 11px; color: #6B6257; letter-spacing: 0.08em;">

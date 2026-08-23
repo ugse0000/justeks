@@ -1,161 +1,219 @@
 /**
  * JUSTEKS mark geometry — the single source for every logo file.
  *
- * Shapes are monoline: one stroke weight, butt caps, mitre joins. Drawing the
- * letters as strokes rather than filled outlines keeps the whole system
- * derivable from a handful of numbers, so the monogram, the wordmark and the
- * lockup cannot drift apart, and regenerating produces identical output.
- */
-
-/* ---- Monogram --------------------------------------------------------- */
-
-export const MONO = {
-  box: 64,
-  stroke: 10,
-  serifLeft: 30,
-  stemX: 42,
-  capY: 15,
-  bowlY: 39,
-  bowlR: 10,
-}
-
-/**
- * The J: a short top serif, a straight stem, and a true semicircular bowl.
+ * The identity is typographic. The wordmark is Playfair Display, the tagline
+ * Montserrat, and the monogram a JT built from the same Playfair capitals.
+ * Outlines come from `glyphs.mjs`, extracted once from the fonts in
+ * `brand/fonts/`, so the artwork needs no font installed anywhere it is
+ * reproduced.
  *
- * The bowl is a real half-circle rather than a calligraphic sweep — it reads
- * as the turn of a finished selvedge and holds its shape at 16px, where a
- * tapered curve turns to mush. The serif is what stops the mark reading as a
- * hook or a U once it gets small.
+ * Everything is expressed against the wordmark's cap height, which is 100
+ * units with the baseline at y = 0. One number therefore drives the whole
+ * system, and the marks cannot drift apart.
  */
-export function monogramPath() {
-  const { serifLeft, stemX, capY, bowlY, bowlR } = MONO
-  return `M${serifLeft} ${capY} H${stemX} V${bowlY} `
-    + `A${bowlR} ${bowlR} 0 0 1 ${stemX - bowlR * 2} ${bowlY}`
-}
+import { PLAYFAIR, MONTSERRAT } from './glyphs.mjs'
 
-export function monogramBounds() {
-  const { stroke, serifLeft, stemX, capY, bowlY, bowlR } = MONO
-  const h = stroke / 2
-  return {
-    minX: stemX - bowlR * 2 - h, maxX: stemX + h,
-    minY: capY - h, maxY: bowlY + bowlR + h,
-  }
-}
-
-/* ---- Wordmark --------------------------------------------------------- */
-
-export const WORD = {
-  cap: 40,
-  stroke: 8,
-  /** Optical gap between letters, tuned per pair below. */
-  tracking: 13,
-}
-
-/**
- * Letters on a shared baseline, drawn on their own 0..width origin.
- *
- * The J repeats the monogram's serif so the two marks are visibly the same
- * alphabet. Round letters overshoot the cap line slightly, which is what makes
- * them look the same height as the flat ones.
- */
-export const OVER = 0.5   // optical overshoot so round forms match flat ones
-
-/**
- * Letters drawn on their own origin, with the true ink extents recorded.
- *
- * `ink` is what the stroke actually spans horizontally, which is not the same
- * as the drawing origin: the J's bowl reaches further left than its serif, and
- * the K's lower leg further right than its stem. Spacing letters by their ink
- * rather than by a nominal advance is what keeps the gaps even.
- */
-export const LETTERS = {
-  J: { ink: [2, 22], d: 'M6 0 H22 V30 A10 10 0 0 1 2 30' },
-  U: { ink: [0, 24], d: 'M0 0 V28 A12 12 0 0 0 24 28 V0' },
-  S: {
-    ink: [2, 20],
-    d: `M20 ${10 - OVER} C20 4 16 ${-OVER} 11 ${-OVER} `
-     + `C6 ${-OVER} 2 4 2 9 C2 14 6 17 11 19 `
-     + `C16 21 20 25 20 30 C20 36 16 ${40 + OVER} 11 ${40 + OVER} `
-     + `C6 ${40 + OVER} 2 36 2 30`,
-  },
-  T: { ink: [0, 24], d: 'M0 0 H24 M12 0 V40' },
-  E: { ink: [0, 21], d: 'M21 0 H0 V40 H21 M0 20 H16' },
-  K: { ink: [0, 22], d: 'M0 0 V40 M20 0 L1 21 M7 15 L22 40' },
-}
-
-/**
- * Per-pair corrections on top of the even tracking.
- *
- * Open counters need less air than flat sides: T leaves a void under its arm,
- * so anything beside it closes up, and round shapes tuck slightly into their
- * neighbours.
- */
-const KERN = {
-  JU: 0, US: -1, ST: -4, TE: -4, EK: -1, KS: -2,
-}
-
-/** The wordmark as one set of paths plus the ink width it occupies. */
-export function wordmark(text = 'JUSTEKS') {
-  const parts = []
-  let cursor = 0
-  for (let i = 0; i < text.length; i++) {
-    const letter = LETTERS[text[i]]
-    if (!letter) throw new Error(`no glyph for "${text[i]}"`)
-    const [left, right] = letter.ink
-    // Shift so the letter's left ink edge lands exactly on the cursor.
-    parts.push(`<path d="${letter.d}" transform="translate(${round(cursor - left)} 0)"/>`)
-    cursor += (right - left) + WORD.tracking + (KERN[text.slice(i, i + 2)] ?? 0)
-  }
-  const last = text.slice(-2)
-  return { parts, width: round(cursor - WORD.tracking - (KERN[last] ?? 0)) }
-}
+export const CAP = 100
 
 export const round = (n) => Math.round(n * 100) / 100
 
-/* ---- Lockup ----------------------------------------------------------- */
+/* ---- Setting text ------------------------------------------------------ */
 
 /**
- * Horizontal lockup: monogram, hairline, wordmark.
+ * Set a string as positioned glyph outlines.
  *
- * The monogram is set well above the wordmark's cap height. At equal size the
- * two read as "J JUSTEKS", because the mark is the same letter the word starts
- * with; the size step plus the rule separate emblem from name. The rule is the
- * one place gold earns its keep in the logo system - a single hairline, the
- * width of a selvedge thread, and the mark is complete without it in one ink.
+ * Letters are spaced by their ink, not by their advance widths. At the very
+ * open tracking this identity uses the difference is visible: Playfair's J
+ * carries a tail that reaches left of its origin and a sidebearing that would
+ * otherwise push the whole word off centre, and the K's leg runs past its
+ * advance. Measuring between what the eye actually sees keeps every gap equal.
+ */
+function setText(glyphs, text, track) {
+  const parts = []
+  let cursor = 0
+  let top = 0
+  let bottom = 0
+
+  for (const ch of text) {
+    const glyph = glyphs[ch]
+    if (!glyph) throw new Error(`no outline for "${ch}"`)
+
+    if (glyph.d) {
+      parts.push({ d: glyph.d, x: round(cursor - glyph.ink[0]) })
+      top = Math.min(top, glyph.top)
+      bottom = Math.max(bottom, glyph.bottom)
+      cursor += glyph.ink[1] - glyph.ink[0] + track
+    } else {
+      // A space has no ink to measure, so it advances by its own width.
+      cursor += glyph.advance + track
+    }
+  }
+
+  return { parts, width: round(cursor - track), top: round(top), bottom: round(bottom) }
+}
+
+/* ---- Wordmark ---------------------------------------------------------- */
+
+/**
+ * Letterspacing is the wordmark's whole character.
+ *
+ * At normal setting the name reads as a word on a page. Opened to better than
+ * half the cap height it reads as a mark: the eye takes the letters one at a
+ * time and the shape holds at the width of a selvedge or a shopfront. This is
+ * the single number that most defines the logo, so it lives on its own.
+ */
+export const WORD = { track: 55 }
+
+export function wordmark(text = 'JUSTEKS') {
+  return setText(PLAYFAIR, text, WORD.track)
+}
+
+/* ---- Tagline ----------------------------------------------------------- */
+
+/**
+ * Montserrat, small, and tracked wider still than the wordmark.
+ *
+ * `cap` is the tagline's cap height as a fraction of the wordmark's. `track`
+ * is measured in the tagline's own cap units, which is why the number looks
+ * large beside the wordmark's.
+ */
+export const TAGLINE = {
+  text: 'FABRIC, PERFECTED.',
+  cap: 0.155,
+  track: 62,
+}
+
+export function tagline(text = TAGLINE.text) {
+  return setText(MONTSERRAT, text, TAGLINE.track)
+}
+
+/* ---- Monogram ---------------------------------------------------------- */
+
+/**
+ * The JT: two Playfair capitals set to interlock.
+ *
+ * The T is pulled back until its arm crosses the J's stem, so the pair merges
+ * into one figure instead of reading as two initials side by side. The J
+ * keeps its descending tail, which is what stops the monogram sitting as a
+ * dead square and ties it back to the wordmark's own J.
+ */
+export const MONOGRAM = { overlap: 18 }
+
+export function monogram() {
+  const j = PLAYFAIR.J
+  const t = PLAYFAIR.T
+  const tx = round(j.ink[1] - j.ink[0] - MONOGRAM.overlap - t.ink[0])
+
+  return {
+    parts: [
+      { d: j.d, x: round(-j.ink[0]) },
+      { d: t.d, x: tx },
+    ],
+    width: round(tx + t.ink[1]),
+    top: round(Math.min(j.top, t.top)),
+    bottom: round(Math.max(j.bottom, t.bottom)),
+  }
+}
+
+/* ---- Icon -------------------------------------------------------------- */
+
+/**
+ * The monogram inside a hairline ring — the avatar, app icon and stamp form.
+ *
+ * Drawn on a 100 x 100 field. The mark is fitted by its ink and centred on
+ * the ring by that ink too, so the J's tail is inside the circle rather than
+ * hanging out of it.
+ */
+export const ICON = { radius: 47, ring: 1.7, coverage: 0.45 }
+
+export function icon() {
+  const m = monogram()
+  const size = 100
+  const scale = round((size * ICON.coverage) / m.width)
+  const height = round((m.bottom - m.top) * scale)
+
+  return {
+    size,
+    ring: { cx: size / 2, cy: size / 2, r: ICON.radius, width: ICON.ring },
+    parts: m.parts,
+    transform: `translate(${round((size - m.width * scale) / 2)} `
+      + `${round((size - height) / 2 - m.top * scale)}) scale(${scale})`,
+  }
+}
+
+/* ---- Lockup ------------------------------------------------------------ */
+
+/**
+ * The primary lockup: wordmark, gold hairline, tagline.
+ *
+ * The rule is the one place gold appears in the mark — a single centred
+ * hairline the width of a woven selvedge stripe. It is also the only element
+ * carrying a second colour, so the lockup reproduces intact in one ink by
+ * drawing the rule in the same colour as the letters.
  */
 export const LOCKUP = {
-  /** Monogram height as a multiple of its natural size. */
-  monoScale: 1.5,
-  /** Space either side of the rule. */
-  gap: 16,
-  ruleWidth: 1.5,
+  /** Baseline to the top of the rule. */
+  ruleTop: 6,
+  ruleWidth: 78,
+  ruleHeight: 2.2,
+  /** Baseline to the tagline's baseline. */
+  taglineBase: 48,
 }
 
 export function lockup() {
-  const mb = monogramBounds()
-  const { parts, width: wordW } = wordmark()
-  const { monoScale, gap, ruleWidth } = LOCKUP
-  const half = WORD.stroke / 2 + OVER
+  const word = wordmark()
+  const tag = tagline()
+  const scale = TAGLINE.cap
+  const tagWidth = round(tag.width * scale)
 
-  const scaledH = (mb.maxY - mb.minY) * monoScale
-  const scaledW = (mb.maxX - mb.minX) * monoScale
-  const monoDX = round(-mb.minX * monoScale)
-  const monoDY = round(WORD.cap / 2 - scaledH / 2 - mb.minY * monoScale)
+  const rule = {
+    x: round((word.width - LOCKUP.ruleWidth) / 2),
+    y: LOCKUP.ruleTop,
+    w: LOCKUP.ruleWidth,
+    h: LOCKUP.ruleHeight,
+  }
 
-  const ruleX = round(scaledW + gap)
-  const wordX = round(ruleX + ruleWidth + gap + WORD.stroke / 2)
-
-  const top = round(Math.min(mb.minY * monoScale + monoDY, -half))
-  const bottom = round(Math.max(mb.maxY * monoScale + monoDY, WORD.cap + half))
-  const width = round(wordX + wordW + WORD.stroke / 2)
+  const bottom = round(LOCKUP.taglineBase + tag.bottom * scale)
 
   return {
-    parts,
-    monoTransform: `translate(${monoDX} ${monoDY}) scale(${monoScale})`,
-    wordTransform: `translate(${wordX} 0)`,
-    monoStroke: MONO.stroke,
-    rule: { x: ruleX, y: 0, w: ruleWidth, h: WORD.cap },
-    viewBox: `0 ${top} ${width} ${round(bottom - top)}`,
-    width, height: round(bottom - top), top,
+    word,
+    tag,
+    rule,
+    tagTransform: `translate(${round((word.width - tagWidth) / 2)} `
+      + `${LOCKUP.taglineBase}) scale(${scale})`,
+    width: word.width,
+    top: word.top,
+    bottom,
+    viewBox: `0 ${word.top} ${word.width} ${round(bottom - word.top)}`,
+  }
+}
+
+/* ---- Stack ------------------------------------------------------------- */
+
+/**
+ * The full vertical lockup: monogram over the primary lockup.
+ *
+ * This is the formal signature — the one for a label, a cover, a stamp on a
+ * dark ground. `gap` is measured between the monogram's lowest ink and the
+ * wordmark's cap line, so the J's tail is accounted for rather than clipped.
+ */
+export const STACK = { monoCap: 1.9, gap: 30 }
+
+export function stack() {
+  const base = lockup()
+  const mono = monogram()
+  const scale = STACK.monoCap
+  const monoWidth = round(mono.width * scale)
+
+  // Sit the monogram so its lowest ink clears the wordmark's cap line.
+  const dy = round(-CAP - STACK.gap - mono.bottom * scale)
+  const top = round(mono.top * scale + dy)
+
+  return {
+    ...base,
+    mono,
+    monoTransform: `translate(${round((base.width - monoWidth) / 2)} ${dy}) scale(${scale})`,
+    top,
+    viewBox: `0 ${top} ${base.width} ${round(base.bottom - top)}`,
   }
 }
