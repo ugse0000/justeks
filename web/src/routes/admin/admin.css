@@ -1,0 +1,62 @@
+/* Internal tool: plain on purpose. The design effort belongs on the site
+   customers see, not here. */
+.admin__note {
+  margin-top: var(--space-5);
+  padding: var(--space-4);
+  border-left: 2px solid var(--jt-gold);
+  color: var(--jt-muted);
+}
+
+.admin__signin { margin-top: var(--space-7); max-width: 22rem; }
+
+.admin__toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-7);
+  flex-wrap: wrap;
+}
+
+.admin__select {
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-body);
+  border: 1px solid var(--jt-cream);
+  background: var(--jt-warm-white);
+}
+
+.admin__error { color: #A33A2A; margin-top: var(--space-4); }
+
+.admin__table {
+  width: 100%;
+  margin-top: var(--space-6);
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.admin__table caption {
+  text-align: left;
+  color: var(--jt-muted);
+  padding-bottom: var(--space-3);
+}
+
+.admin__table th,
+.admin__table td {
+  text-align: left;
+  padding: var(--space-3) var(--space-3) var(--space-3) 0;
+  border-bottom: 1px solid var(--jt-cream);
+  vertical-align: top;
+}
+
+.admin__table th {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.6875rem;
+  color: var(--jt-muted);
+}
+
+/* The table is wider than a phone; let it scroll inside its own box rather
+   than making the whole page scroll sideways. */
+@media (max-width: 60rem) {
+  .admin__table { display: block; overflow-x: auto; white-space: nowrap; }
+}

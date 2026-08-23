@@ -120,6 +120,44 @@ export JAVA_HOME="C:\Program Files\Eclipse Adoptium\jdk-25.0.4.7-hotspot"
 
 Kalıcı çözüm için sistem `JAVA_HOME` değişkenini JDK 25'e almak yeterli.
 
+## Faz 1 durumu
+
+| Alan | Durum |
+| --- | --- |
+| Kurumsal vitrin | 56 rota × 2 dil = 112 sayfa, tamamı prerender |
+| Marka kimliği | Logo sistemi, favicon zinciri, OG kartı, şablonlar (`brand/`) |
+| Görseller | 29 fotoğraf, Unsplash ücretsiz lisans (`docs/image-credits.md`) |
+| Formlar | Dört form API'ye bağlı: iletişim, tedarik, toplu sipariş, ticari hesap |
+| Backend | Spring Boot 4.1 + PostgreSQL 17, 64 test |
+| Admin | `/admin/enquiries` — liste, filtre, durum değişikliği |
+| Testler | Frontend 248, backend 64 |
+| Lighthouse | Erişilebilirlik 100, En iyi uygulamalar 100, SEO 100 |
+| Core Web Vitals | LCP 321 ms, CLS 0.00 (yerel ölçüm, ağ kısıtlaması yok) |
+
+### Formların çalışması için
+
+Statik dağıtımda `VITE_API_BASE_URL` tanımlı değildir; formlar bu durumda
+boşluğa göndermek yerine e-posta bağlantısı sunar. Backend'i bağlamak için:
+
+```bash
+# web/.env.local
+VITE_API_BASE_URL=https://api.justeks.com
+```
+
+Backend `ADMIN_PASSWORD` olmadan başlamaz — tahmin edilebilir bir varsayılana
+düşmektense çalışmamayı tercih eder.
+
+### Yapılmayanlar
+
+- **Playwright uçtan uca testler.** Tarayıcı doğrulaması Chrome DevTools ile
+  yapıldı: 375/768/1100/1320/1366/1440 px genişliklerde yatay taşma yok,
+  mobil menü açılıp kapanıyor, altı sayfada marka ve metadata doğrulandı.
+  Playwright kurulumu ayrı bir adım olarak duruyor.
+- **SMTP.** `NotificationService` arayüzü hazır; Faz 1 uygulaması log yazıyor.
+- **Gerçek İngiltere adresi.** `site.config.ts` içinde `provisional: true`
+  işaretli; sayfada "teyit ediliyor" notuyla görünür ve yapılandırılmış veriye
+  girmez.
+
 ## Yapı
 
 ```
