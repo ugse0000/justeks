@@ -102,54 +102,58 @@ GitHub Actions artık yayın yapmıyor, yalnızca derleme ve testleri doğruluyo
 
 ## Backend (api/)
 
-Spring Boot 4.1 + PostgreSQL 17. Testler Testcontainers ile gerçek bir
-Postgres başlatır, yani Docker çalışıyor olmalı.
+Spring Boot 4.1 + PostgreSQL. Testler Testcontainers ile gerçek bir Postgres
+başlatır, yani yerelde Docker çalışıyor olmalı.
 
 ```bash
 cd api
-mvn test          # Testcontainers Postgres 17 ayağa kaldırır
+mvn test              # Testcontainers Postgres 17 ayağa kaldırır
 mvn spring-boot:run
 ```
 
-**JDK sürümü:** Proje Java 25 hedefler. Bu makinede `JAVA_HOME`
-JDK 17'yi gösteriyor ve Maven onu kullanıyor, bu yüzden derleme
-`release version 25 not supported` ile düşüyor. Maven'i JDK 25 ile
-çalıştırmak gerekiyor:
+**JDK sürümü:** Proje Java 25 hedefler. Bu makinede `JAVA_HOME` JDK 17'yi
+gösteriyor ve Maven onu kullanıyor, bu yüzden derleme
+`release version 25 not supported` ile düşer. Maven'i JDK 25 ile çalıştırmak
+gerekiyor:
 
 ```bash
 export JAVA_HOME="C:\Program Files\Eclipse Adoptium\jdk-25.0.4.7-hotspot"
 ```
 
-Kalıcı çözüm için sistem `JAVA_HOME` değişkenini JDK 25'e almak yeterli.
+### Yayındaki kurulum
 
-## Faz 1 durumu
-
-| Alan | Durum |
+| | |
 | --- | --- |
-| Kurumsal vitrin | 56 rota × 2 dil = 112 sayfa, tamamı prerender |
-| Marka kimliği | Logo sistemi, favicon zinciri, OG kartı, şablonlar (`brand/`) |
-| Görseller | 29 fotoğraf, Unsplash ücretsiz lisans (`docs/image-credits.md`) |
-| Formlar | Dört form API'ye bağlı: iletişim, tedarik, toplu sipariş, ticari hesap |
-| Backend | Spring Boot 4.1 + PostgreSQL 17, 64 test |
-| Admin | `/admin/enquiries` — liste, filtre, durum değişikliği |
-| Testler | Frontend 248, backend 64 |
-| Lighthouse | Erişilebilirlik 100, En iyi uygulamalar 100, SEO 100 |
-| Core Web Vitals | LCP 321 ms, CLS 0.00 (yerel ölçüm, ağ kısıtlaması yok) |
+| Servis | `justeks-api.service` (systemd), port 8090 |
+| Jar | `/opt/justeks-api/justeks-api.jar` |
+| Yapılandırma | `/etc/justeks/api.env` (mod 640, `justeks` grubu okur) |
+| Yüklenen dosyalar | `/var/lib/justeks/uploads` |
+| Veritabanı | PostgreSQL 16, `justeks` veritabanı ve kullanıcısı |
+| Erişim | nginx `/api/` yolunu `127.0.0.1:8090`'a iletir |
 
-### Formların çalışması için
+Yayınlamak için:
 
-Statik dağıtımda `VITE_API_BASE_URL` tanımlı değildir; formlar bu durumda
-boşluğa göndermek yerine e-posta bağlantısı sunar. Backend'i bağlamak için:
-
-```bash
-# web/.env.local
-VITE_API_BASE_URL=https://api.justeks.com
+```powershell
+pwsh scripts/deploy-api.ps1
 ```
 
-Backend `ADMIN_PASSWORD` olmadan başlamaz — tahmin edilebilir bir varsayılana
-düşmektense çalışmamayı tercih eder.
+Betik önce testleri koşar, sonra paketler, gönderir ve servisi yeniden
+başlatır; API beklenen yanıtı vermezse hata verir.
 
-### Yapılmayanlar
+**Sunucudaki iki incelik:**
+
+- Varsayılan `java` bu makinede 17 ve başka servisler ona bağlı. `openjdk-25`
+  yan yana kurulu; systemd unit'i yorumlayıcıyı tam yolla çağırır
+  (`/usr/lib/jvm/java-25-openjdk-amd64/bin/java`). **`update-alternatives` ile
+  varsayılanı değiştirmeyin** — `locqify-api-java` gibi servisler
+  `/usr/bin/java` çağırıyor.
+- Üretimde PostgreSQL **16**, testlerde 17 çalışır. Şema ikisinde de aynı
+  şekilde migrate oluyor; sürüme özgü bir şey kullanılmıyor.
+
+Yeni bir kurulumda `ADMIN_PASSWORD` verilmezse uygulama **başlamaz** — tahmin
+edilebilir bir varsayılana düşmektense çalışmamayı tercih eder.
+
+## Yapılmayanlar
 
 - **Playwright uçtan uca testler.** Tarayıcı doğrulaması Chrome DevTools ile
   yapıldı: 375/768/1100/1320/1366/1440 px genişliklerde yatay taşma yok,
